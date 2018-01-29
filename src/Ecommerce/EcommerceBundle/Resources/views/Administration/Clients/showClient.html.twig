@@ -1,0 +1,40 @@
+
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body -%}
+    <h1>Categories</h1>
+
+    <table class="record_properties">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.idclient }}</td>
+
+        </tr>
+        <tr>
+            <th>Raison</th>
+            <td>{{ entity.raison }}</td>
+
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ entity.adresse }}</td>
+
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td>{{ entity.telephone }}</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('adminClient') }}">
+                Back to the list
+            </a>
+        </li>
+
+    </ul>
+{% endblock %}

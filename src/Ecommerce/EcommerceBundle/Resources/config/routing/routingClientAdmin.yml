@@ -1,0 +1,16 @@
+adminClient:
+    pattern:  /
+    defaults: { _controller: "EcommerceBundle:Client:index" }
+
+adminClient_new:
+    pattern:  /new
+    defaults: { _controller: "EcommerceBundle:Client:newClient" }
+
+adminClient_show:
+     pattern:  /{id}/show
+     defaults: { _controller: "EcommerceBundle:Client:showClient" }
+
+adminClient_create:
+    pattern:  /create
+    defaults: { _controller: "EcommerceBundle:Client:create" }
+    requirements: { _method: post }

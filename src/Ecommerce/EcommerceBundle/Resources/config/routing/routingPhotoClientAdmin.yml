@@ -1,0 +1,16 @@
+adminPhotoClient:
+    pattern:  /
+    defaults: { _controller: "EcommerceBundle:PhotoClient:index" }
+
+adminPhotoClient_new:
+    pattern:  /new
+    defaults: { _controller: "EcommerceBundle:PhotoClient:newPhotoClient" }
+
+adminPhotoClient_show:
+     pattern:  /{id}/show
+     defaults: { _controller: "EcommerceBundle:PhotoClient:showPhotoClient" }
+
+adminPhotoClient_create:
+    pattern:  /create
+    defaults: { _controller: "EcommerceBundle:PhotoClient:create" }
+    requirements: { _method: post }
