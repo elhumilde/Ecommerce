@@ -7,15 +7,27 @@ use Ecommerce\EcommerceBundle\Form\RechercheType;
 use Ecommerce\EcommerceBundle\Entity\Categories;
 
 class ProduitsController extends Controller
-{  
+{
     public function produitsAction(Categories $categorie = null)
     {
+        $session = $this->getRequest()->getSession();
+        $em = $this->getDoctrine()->getManager();
 
+        if ($categorie != null)
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
+        else
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
+
+
+
+        $produits = $this->get('knp_paginator')->paginate($findProduits,$this->get('request')->query->get('page', 1),3);
+
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits));
     }
-    
+
     public function presentationAction($id)
     {
-
+       
     }
     
     public function rechercheAction() 

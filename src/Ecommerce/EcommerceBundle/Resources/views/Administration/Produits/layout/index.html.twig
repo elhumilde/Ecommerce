@@ -10,7 +10,8 @@
             <th>Prix</th>
             <th>Disponible</th>
             <th>Categorie</th>
-            <th>image</th>
+            <th>Categorie description</th>
+
             <th>Actions</th>
         </tr>
         </thead>
@@ -20,8 +21,8 @@
                 <td>{{ entity.nom }}</td>
                 <td>{{ entity.prix }}</td>
                 <td>{{ entity.disponible }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ entity.categorie.nomcategorie }}</td>
+                <td>{{ entity.categorie.description }}</td>
                 <td>
                     <a href="{{ path('adminProduits_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
                     <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
