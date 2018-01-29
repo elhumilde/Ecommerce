@@ -10,7 +10,7 @@ class ProduitsController extends Controller
 {
     public function produitsAction(Categories $categorie = null)
     {
-        $session = $this->getRequest()->getSession();
+
         $em = $this->getDoctrine()->getManager();
 
         if ($categorie != null)
@@ -27,7 +27,15 @@ class ProduitsController extends Controller
 
     public function presentationAction($id)
     {
-       
+
+        $em = $this->getDoctrine()->getManager();
+        $produit = $em->getRepository('EcommerceBundle:Produits')->find($id);
+
+        if (!$produit) throw $this->createNotFoundException('La page n\'existe pas.');
+
+
+
+        return $this->render('EcommerceBundle:Default:produits/layout/presentation.html.twig', array('produit' => $produit));
     }
     
     public function rechercheAction() 

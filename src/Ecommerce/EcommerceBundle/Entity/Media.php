@@ -54,7 +54,6 @@ class Media
      *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
      *
      */
-
     public $file;
 
     public function getUploadRootDir()
