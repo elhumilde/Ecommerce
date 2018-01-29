@@ -67,16 +67,34 @@ class Utilisateurs extends BaseUser
      */
     private $profil;
 
+    public function __construct()
+    {
+        $this->client = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
+     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\UtilisateursClient", mappedBy="utilisateurs", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $photoclient;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $client;
+
+
+     /**
+     *
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+        public function getId()
+        {
+            return $this->id;
+        }
 
     /**
      * @return string
@@ -224,5 +242,72 @@ class Utilisateurs extends BaseUser
     }
 
 
+
+    /**
+     * Add photoclient
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\UtilisateursClient $photoclient
+     * @return Utilisateurs
+     */
+    public function addPhotoclient(\Ecommerce\EcommerceBundle\Entity\UtilisateursClient $photoclient)
+    {
+        $this->photoclient[] = $photoclient;
+
+        return $this;
+    }
+
+    /**
+     * Remove photoclient
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\UtilisateursClient $photoclient
+     */
+    public function removePhotoclient(\Ecommerce\EcommerceBundle\Entity\UtilisateursClient $photoclient)
+    {
+        $this->photoclient->removeElement($photoclient);
+    }
+
+    /**
+     * Get photoclient
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhotoclient()
+    {
+        return $this->photoclient;
+    }
+
+
+    /**
+     * Add photoclient
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\UtilisateursClient $client
+     * @return Utilisateurs
+     */
+    public function addClient(\Ecommerce\EcommerceBundle\Entity\UtilisateursClient $client)
+    {
+        $this->photoclient[] = $client;
+
+        return $this;
+    }
+
+    /**
+     * Remove photoclient
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\UtilisateursClient $photoclient
+     */
+    public function removeClient(\Ecommerce\EcommerceBundle\Entity\UtilisateursClient $client)
+    {
+        $this->photoclient->removeElement($client);
+    }
+
+    /**
+     * Get photoclient
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClient()
+    {
+        return $this->Client;
+    }
 
 }

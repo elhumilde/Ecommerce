@@ -2,8 +2,6 @@ routingAdmin:
   resource: "@EcommerceBundle/Resources/config/routing/routingAdmin.yml"
   prefix: /admin
 
-
-
 routingProduits:
   resource: "@EcommerceBundle/Resources/config/routing/routingProduits.yml"
   prefix: /
@@ -16,4 +14,10 @@ routingCategoriesAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingCategoriesAdmin.yml"
     prefix:   /admin/categories
 
+routingPhotoClientAdmin:
+    resource: "@EcommerceBundle/Resources/config/routing/routingPhotoClientAdmin.yml"
+    prefix:   /admin/photoclients
 
+routingClientAdmin:
+    resource: "@EcommerceBundle/Resources/config/routing/routingClientAdmin.yml"
+    prefix:   /admin/clients
