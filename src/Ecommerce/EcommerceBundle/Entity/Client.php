@@ -7,19 +7,19 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Client
  *
- * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Table("client")
+ * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\UtilisateursClientRepository")
  */
 class Client
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_client", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id_client;
+    private $id;
 
     /**
      * @var string
@@ -42,18 +42,8 @@ class Client
      */
     private $telephone;
 
-
-
     /**
-     * @return int
-     */
-    public function getIdClient()
-    {
-        return $this->id_client;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getRaison()
     {
@@ -61,32 +51,15 @@ class Client
     }
 
     /**
-     * @param string $raison
+     * @param mixed $raison
      */
     public function setRaison($raison)
     {
         $this->raison = $raison;
     }
 
-
-
     /**
-     * Set adresse
-     *
-     * @param string $adresse
-     * @return Client
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string
+     * @return mixed
      */
     public function getAdresse()
     {
@@ -94,25 +67,118 @@ class Client
     }
 
     /**
-     * Set telephone
-     *
-     * @param integer $telephone
-     * @return Client
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param int $telephone
      */
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
+    }
+
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Utilisateurs", inversedBy="client")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $utilisateurs;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\Media $image
+     * @return Produits
+     */
+    public function setImage(\Ecommerce\EcommerceBundle\Entity\Media $image)
+    {
+<<<<<<< HEAD
+        $this->image = $image;
+=======
+        $this->adresse = $adresse;
+>>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
 
         return $this;
     }
 
     /**
-     * Get telephone
+     * Get image
      *
-     * @return integer
+<<<<<<< HEAD
+     * @return \Ecommerce\EcommerceBundle\Entity\Media
+=======
+     * @return string
+>>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
      */
-    public function getTelephone()
+    public function getImage()
     {
-        return $this->telephone;
+        return $this->image;
+    }
+
+    /**
+     * Set utilisateurs
+     *
+     * @param \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs
+     * @return Client
+     */
+    public function setUtilisateurs(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs = null)
+    {
+<<<<<<< HEAD
+        $this->utilisateurs = $utilisateurs;
+=======
+        $this->telephone = $telephone;
+>>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+<<<<<<< HEAD
+     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+=======
+     * @return integer
+>>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 }

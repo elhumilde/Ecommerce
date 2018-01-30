@@ -9,6 +9,8 @@
             <th>Raison</th>
             <th>Adresse</th>
             <th>Telephone</th>
+            <th>Nom Commercial</th>
+            <th>image Clients</th>
 
         </tr>
         </thead>
@@ -18,7 +20,12 @@
                 <td>{{ entity.raison }}</td>
                 <td>{{ entity.adresse }}</td>
                 <td>{{ entity.telephone }}</td>
-
+                <td>{{ entity.utilisateurs.username }}</td>
+                <td><img src="{{ asset('uploads/' ~ entity.image.Path) }}" alt="{{ entity.image.name }}" width="80" height="80"></td>
+                <td>
+                    <a href="{{ path('adminClient_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
+                    <a href="{{ path('adminClient_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

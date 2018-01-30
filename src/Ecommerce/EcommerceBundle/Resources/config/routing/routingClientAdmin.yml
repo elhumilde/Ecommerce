@@ -14,3 +14,16 @@ adminClient_create:
     pattern:  /create
     defaults: { _controller: "EcommerceBundle:Client:create" }
     requirements: { _method: post }
+
+adminClient_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Client:edit" }
+adminClient_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EcommerceBundle:Client:update" }
+    requirements: { _method: post|put }
+
+adminClient_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Client:delete" }
+    requirements: { _method: post|delete }

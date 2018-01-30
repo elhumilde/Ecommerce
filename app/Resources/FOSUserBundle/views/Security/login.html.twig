@@ -11,18 +11,8 @@
         <h2>Connexion</h2>
         <div id="collapseOne" class="accordion-body collapse in">
             <div class="accordion-inner">
-                <div class="span4">
-                    <h4>Pas encore inscrit ?</h4>
-                    <em>
-                        nous vous invitons à vous inscrire<br />
-                        afin de passer votre commande et de manger équilibré.
-                    </em>
-                    <br /><br />
-                    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">S'inscrire</a>
 
-                </div>
-
-                <div class="span4 offset2">
+                <div class="span6 offset2">
                     <h4>Connexion</h4>
                     <form action="{{ path("fos_user_security_check") }}" method="post">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
