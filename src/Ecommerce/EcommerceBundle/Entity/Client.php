@@ -131,15 +131,12 @@ class Client
 
         $this->image = $image;
 
-
     }
 
     /**
      * Get image
      *
-
      * @return \Ecommerce\EcommerceBundle\Entity\Media
-
      * @return string
 
      */
@@ -157,22 +154,17 @@ class Client
     public function setUtilisateurs(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs = null)
     {
 
+
         $this->utilisateurs = $utilisateurs;
 
 
-
-
-        return $this;
     }
 
     /**
      * Get utilisateurs
      *
-
      * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
-
      * @return integer
-
      */
     public function getUtilisateurs()
     {
