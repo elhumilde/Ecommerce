@@ -25,6 +25,8 @@ class ClientType extends AbstractType
             ->add('raison')
             ->add('adresse')
             ->add('telephone')
+            ->add('utilisateurs')
+            ->add('image', new MediaType())
 
         ;
     }

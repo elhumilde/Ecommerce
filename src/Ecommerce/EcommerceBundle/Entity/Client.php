@@ -7,19 +7,19 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Client
  *
- * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Table("client")
+ * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\UtilisateursClientRepository")
  */
 class Client
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_client", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id_client;
+    private $id;
 
     /**
      * @var string
@@ -42,18 +42,8 @@ class Client
      */
     private $telephone;
 
-
-
     /**
-     * @return int
-     */
-    public function getIdClient()
-    {
-        return $this->id_client;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getRaison()
     {
@@ -61,32 +51,15 @@ class Client
     }
 
     /**
-     * @param string $raison
+     * @param mixed $raison
      */
     public function setRaison($raison)
     {
         $this->raison = $raison;
     }
 
-
-
     /**
-     * Set adresse
-     *
-     * @param string $adresse
-     * @return Client
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
-    
-        return $this;
-    }
-
-    /**
-     * Get adresse
-     *
-     * @return string 
+     * @return mixed
      */
     public function getAdresse()
     {
@@ -94,25 +67,102 @@ class Client
     }
 
     /**
-     * Set telephone
-     *
-     * @param integer $telephone
-     * @return Client
+     * @param mixed $adresse
      */
-    public function setTelephone($telephone)
+    public function setAdresse($adresse)
     {
-        $this->telephone = $telephone;
-    
-        return $this;
+        $this->adresse = $adresse;
     }
 
     /**
-     * Get telephone
-     *
-     * @return integer 
+     * @return int
      */
     public function getTelephone()
     {
         return $this->telephone;
+    }
+
+    /**
+     * @param int $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Utilisateurs", inversedBy="client")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $utilisateurs;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\Media $image
+     * @return Produits
+     */
+    public function setImage(\Ecommerce\EcommerceBundle\Entity\Media $image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Ecommerce\EcommerceBundle\Entity\Media
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set utilisateurs
+     *
+     * @param \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs
+     * @return Client
+     */
+    public function setUtilisateurs(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs = null)
+    {
+        $this->utilisateurs = $utilisateurs;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 }
