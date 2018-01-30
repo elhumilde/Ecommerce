@@ -67,6 +67,16 @@ class Utilisateurs extends BaseUser
      */
     private $profil;
 
+<<<<<<< HEAD
+=======
+  
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\UtilisateursClient", mappedBy="utilisateurs", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $photoclient;
+>>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
 
     /**
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
