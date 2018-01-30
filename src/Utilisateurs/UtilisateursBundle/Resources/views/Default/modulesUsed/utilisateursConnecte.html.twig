@@ -1,9 +1,20 @@
 {% include '::modulesUsed/navigation.html.twig' %}
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="container">
+        <div class="row">
+            {% include '::modulesUsed/navigationAdmin.html.twig' %}
+            <div class="span9">
+
+            </div>
+        </div>
+    </div>
+{% endif %}
 <div class="well">
     <ul class="nav nav-list">
         <li>
             <a href="{{ path('fos_user_profile_show') }}">Mes informations</a>
         </li>
+
         <li>
             <a href="{{ path('fos_user_profile_edit') }}">Editer mes informations</a>
         </li>

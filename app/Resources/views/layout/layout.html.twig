@@ -30,20 +30,8 @@
                 </div>
             </div>
         </div>
-
-
-
         {% block body %}{% endblock %}
-        {% if is_granted('ROLE_ADMIN') %}
-        <div class="container">
-            <div class="row">
-                {% include '::modulesUsed/navigationAdmin.html.twig' %}
-                <div class="span9">
 
-                </div>
-            </div>
-        </div>
-        {% endif %}
         <hr />
         <footer id="footer" class="vspace20">
             <div class="container">
