@@ -17,3 +17,4 @@ routingCategoriesAdmin:
 routingClientAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingClientAdmin.yml"
     prefix:   /admin/clients
+

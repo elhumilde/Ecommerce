@@ -69,6 +69,17 @@ class Utilisateurs extends BaseUser
 
 
     /**
+<<<<<<< HEAD
+     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $client;
+
+
+     /**
+     *
+=======
+>>>>>>> fdb3c8f5ade05c46e41429969edd2ea7252c682c
      * Get id
      *
      * @return integer
