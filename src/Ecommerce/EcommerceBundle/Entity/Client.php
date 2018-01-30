@@ -128,23 +128,15 @@ class Client
      */
     public function setImage(\Ecommerce\EcommerceBundle\Entity\Media $image)
     {
-<<<<<<< HEAD
         $this->image = $image;
-=======
-        $this->adresse = $adresse;
->>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
 
-        return $this;
     }
 
     /**
      * Get image
      *
-<<<<<<< HEAD
      * @return \Ecommerce\EcommerceBundle\Entity\Media
-=======
      * @return string
->>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
      */
     public function getImage()
     {
@@ -159,23 +151,15 @@ class Client
      */
     public function setUtilisateurs(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs = null)
     {
-<<<<<<< HEAD
         $this->utilisateurs = $utilisateurs;
-=======
-        $this->telephone = $telephone;
->>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
 
-        return $this;
     }
 
     /**
      * Get utilisateurs
      *
-<<<<<<< HEAD
      * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
-=======
      * @return integer
->>>>>>> 14dd9e59a3c6cf2d05e5d3fdf7604ce2ce4c35b9
      */
     public function getUtilisateurs()
     {

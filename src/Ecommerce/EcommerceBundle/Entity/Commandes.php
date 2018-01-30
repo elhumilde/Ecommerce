@@ -52,9 +52,9 @@ class Commandes
     /**
      * @var array
      *
-     * @ORM\Column(name="commande", type="array")
+     * @ORM\Column(name="boncommande", type="array")
      */
-    private $commande;
+    private $boncommande;
 
 
     /**
@@ -137,33 +137,33 @@ class Commandes
     }
 
     /**
-     * Set commande
+     * Set boncommande
      *
-     * @param array $commande
-     * @return Commandes
+     * @param array $boncommande
+     * @return Boncommandes
      */
-    public function setCommande($commande)
+    public function setBoncommande($boncommande)
     {
-        $this->commande = $commande;
+        $this->boncommande = $boncommande;
 
         return $this;
     }
 
     /**
-     * Get commande
+     * Get boncommande
      *
      * @return array 
      */
-    public function getCommande()
+    public function getBoncommande()
     {
-        return $this->commande;
+        return $this->boncommande;
     }
 
     /**
      * Set utilisateur
      *
      * @param \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateur
-     * @return Commandes
+     * @return Boncommandes
      */
     public function setUtilisateur(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateur = null)
     {
