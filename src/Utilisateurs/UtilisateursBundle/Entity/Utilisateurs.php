@@ -69,6 +69,7 @@ class Utilisateurs extends BaseUser
 
 
     /**
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -77,14 +78,16 @@ class Utilisateurs extends BaseUser
 
      /**
      *
+=======
+>>>>>>> fdb3c8f5ade05c46e41429969edd2ea7252c682c
      * Get id
      *
      * @return integer
      */
-        public function getId()
-        {
-            return $this->id;
-        }
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return string
@@ -230,42 +233,6 @@ class Utilisateurs extends BaseUser
     {
         $this->profil = $profil;
     }
-
-
-    /**
-     * Add client
-     *
-     * @param \Ecommerce\EcommerceBundle\Entity\Client $photoclient
-     * @return Utilisateurs
-     */
-    public function addClient(\Ecommerce\EcommerceBundle\Entity\Client $client)
-    {
-        $this->client[] = $client;
-
-        return $this;
-    }
-
-    /**
-     * Remove client
-     *
-     * @param \Ecommerce\EcommerceBundle\Entity\Client $client
-     */
-    public function removeClient(\Ecommerce\EcommerceBundle\Entity\Client $client)
-    {
-        $this->client->removeElement($client);
-    }
-
-    /**
-     * Get client
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-
 
 
 
