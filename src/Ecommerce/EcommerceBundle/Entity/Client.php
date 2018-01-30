@@ -79,14 +79,14 @@ class Client
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
     /**
      * Get adresse
      *
-     * @return string 
+     * @return string
      */
     public function getAdresse()
     {
@@ -102,14 +102,14 @@ class Client
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-    
+
         return $this;
     }
 
     /**
      * Get telephone
      *
-     * @return integer 
+     * @return integer
      */
     public function getTelephone()
     {
