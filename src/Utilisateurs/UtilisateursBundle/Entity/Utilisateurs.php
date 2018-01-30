@@ -67,7 +67,7 @@ class Utilisateurs extends BaseUser
      */
     private $profil;
 
-  
+
 
     /**
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\UtilisateursClient", mappedBy="utilisateurs", cascade={"remove"})
