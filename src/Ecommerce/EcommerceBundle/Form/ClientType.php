@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class ClientType extends AbstractType
 {
     /**
@@ -25,6 +26,11 @@ class ClientType extends AbstractType
             ->add('raison')
             ->add('adresse')
             ->add('telephone')
+            ->add('ville')
+            ->add('telephone')
+            ->add('fax')
+            ->add('email','email')
+            ->add('nomdirigeant')
             ->add('utilisateurs')
             ->add('image', new MediaType())
 

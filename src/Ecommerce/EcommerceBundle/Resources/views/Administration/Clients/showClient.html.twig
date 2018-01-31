@@ -4,35 +4,55 @@
 {% block body -%}
     <h1>Client</h1>
 
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
+    <div class="span4" style="text-align: justify">
+        <table class="record_properties">
+            <tbody>
+            <tr>
+            </tr>
+            <tr>
+                <th>Raison   :</th>
+                <td>{{ entity.raison }}</td>
 
-        </tr>
-        <tr>
-            <th>Raison</th>
-            <td>{{ entity.raison }}</td>
+            </tr>
+            <tr>
+                <th>Adresse   :</th>
+                <td>{{ entity.adresse }}</td>
 
-        </tr>
-        <tr>
-            <th>Adresse</th>
-            <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville   :</th>
+                <td>{{ entity.ville }}</td>
 
-        </tr>
-        <tr>
-            <th>Telephone</th>
-            <td>{{ entity.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Telephone   :</th>
+                <td>{{ entity.telephone }}</td>
 
-        </tr>
-        <tr>
-            <th>Telephone</th>
-            <td>{{ entity.utilisateurs.username }}</td>
+            </tr>
+            <tr>
+                <th>Fax  :</th>
+                <td>{{ entity.fax }}</td>
 
-        </tr>
-        </tbody>
-    </table>
+            </tr>
+            <tr>
+                <th>Email   :</th>
+                <td>{{ entity.email }}</td>
+
+            </tr>
+            <tr>
+                <th>Nom dirigeant   :</th>
+                <td>{{ entity.nomdirigeant }}</td>
+
+            </tr>
+            <tr>
+                <th>Commercial   :</th>
+                <td>{{ entity.utilisateurs.username }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 
     <ul class="record_actions">
         <li>

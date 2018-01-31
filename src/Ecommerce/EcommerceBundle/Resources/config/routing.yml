@@ -18,3 +18,10 @@ routingClientAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingClientAdmin.yml"
     prefix:   /admin/clients
 
+clients:
+    pattern:  /clients
+    defaults: { _controller: EcommerceBundle:Client:clients   }
+
+presentationclient:
+    pattern:  /clients/{id}
+    defaults: { _controller: EcommerceBundle:Client:presentation }

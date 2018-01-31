@@ -1,0 +1,7 @@
+clients:
+    pattern:  /clients
+    defaults: { _controller: EcommerceBundle:Client:clients   }
+
+presentationclient:
+    pattern:  /clients/{id}
+    defaults: { _controller: EcommerceBundle:Client:presentation }

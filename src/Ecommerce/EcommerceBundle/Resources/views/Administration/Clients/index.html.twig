@@ -8,7 +8,11 @@
         <tr>
             <th>Raison</th>
             <th>Adresse</th>
+            <th>Ville</th>
             <th>Telephone</th>
+            <th>Fax</th>
+            <th>Email</th>
+            <th>Nom du dirigeant</th>
             <th>Nom Commercial</th>
             <th>image Clients</th>
 
@@ -19,7 +23,11 @@
             <tr>
                 <td>{{ entity.raison }}</td>
                 <td>{{ entity.adresse }}</td>
+                <td>{{ entity.ville }}</td>
                 <td>{{ entity.telephone }}</td>
+                <td>{{ entity.fax }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.nomdirigeant }}</td>
                 <td>{{ entity.utilisateurs.username }}</td>
                 <td><img src="{{ asset('uploads/' ~ entity.image.Path) }}" alt="{{ entity.image.name }}" width="80" height="80"></td>
                 <td>

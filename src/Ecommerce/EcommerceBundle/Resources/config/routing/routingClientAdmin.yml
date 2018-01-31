@@ -1,29 +1,29 @@
 adminClient:
     pattern:  /
-    defaults: { _controller: "EcommerceBundle:Client:index" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:index" }
 
 adminClient_new:
     pattern:  /new
-    defaults: { _controller: "EcommerceBundle:Client:newClient" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:newClient" }
 
 adminClient_show:
      pattern:  /{id}/show
-     defaults: { _controller: "EcommerceBundle:Client:showClient" }
+     defaults: { _controller: "EcommerceBundle:ClientAdmin:showClient" }
 
 adminClient_create:
     pattern:  /create
-    defaults: { _controller: "EcommerceBundle:Client:create" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:create" }
     requirements: { _method: post }
 
 adminClient_edit:
     pattern:  /{id}/edit
-    defaults: { _controller: "EcommerceBundle:Client:edit" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:edit" }
 adminClient_update:
     pattern:  /{id}/update
-    defaults: { _controller: "EcommerceBundle:Client:update" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:update" }
     requirements: { _method: post|put }
 
 adminClient_delete:
     pattern:  /{id}/delete
-    defaults: { _controller: "EcommerceBundle:Client:delete" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:delete" }
     requirements: { _method: post|delete }
