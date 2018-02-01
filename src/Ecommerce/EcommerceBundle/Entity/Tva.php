@@ -21,12 +21,7 @@ class Tva
      */
     private $id;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="multiplicate", type="float")
-     */
-    private $multiplicate;
+
 
     /**
      * @var string
@@ -53,28 +48,6 @@ class Tva
         return $this->id;
     }
 
-    /**
-     * Set multiplicate
-     *
-     * @param float $multiplicate
-     * @return Tva
-     */
-    public function setMultiplicate($multiplicate)
-    {
-        $this->multiplicate = $multiplicate;
-
-        return $this;
-    }
-
-    /**
-     * Get multiplicate
-     *
-     * @return float 
-     */
-    public function getMultiplicate()
-    {
-        return $this->multiplicate;
-    }
 
     /**
      * Set nom
