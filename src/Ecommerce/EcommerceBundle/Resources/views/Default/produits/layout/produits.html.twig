@@ -26,11 +26,18 @@
                                         <h4>{{ produit.nom }}</h4>
                                         <p>{{ produit.prix }}MAD</p>
                                         <a class="btn btn-primary" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
-
-                                </div>
+                                        {% if panier[produit.id] is not defined %}
+                                        <a class="btn btn-primary" href="{{ path('ajouter', {'id': produit.id }) }}">Ajouter au panier</a>
+                                        {% endif %}
+                                    </div>
                             </li>
                         {% endfor %}
                     </ul>
+
+
+                    <div class="navigation">
+                        {{ knp_pagination_render(produits) }}
+                    </div>
 
 
 
