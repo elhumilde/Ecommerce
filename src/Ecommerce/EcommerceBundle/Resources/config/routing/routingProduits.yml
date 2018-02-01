@@ -1,5 +1,5 @@
 produits:
-    pattern:  /produits
+    pattern:  /admin/produits
     defaults: { _controller: EcommerceBundle:Produits:produits }
 
 presentation:

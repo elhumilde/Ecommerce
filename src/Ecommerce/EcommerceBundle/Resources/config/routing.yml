@@ -23,7 +23,7 @@ routingClientAdmin:
     prefix:   /admin/clients
 
 clients:
-    pattern:  /clients
+    pattern:  /admin/clts
     defaults: { _controller: EcommerceBundle:Client:clients   }
 
 presentationclient:
