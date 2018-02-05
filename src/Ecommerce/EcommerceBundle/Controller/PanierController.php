@@ -27,10 +27,11 @@ class PanierController extends Controller
         $session = $this->getRequest()->getSession();
 
         if (!$session->has('panier')) $session->set('panier',array());
-        $panier = $session->get('panier');
+        $panier = $session->get('panier');  // je declare variable session du panier
 
-        if (array_key_exists($id, $panier)) {
-            if ($this->getRequest()->query->get('qte') != null) $panier[$id] = $this->getRequest()->query->get('qte');
+        if (array_key_exists($id, $panier)) // Si le produit existe au panier
+        {
+            if ($this->getRequest()->query->get('qte') != null) $panier[$id] = $this->getRequest()->query->get('qte'); //le produit egale a la nouvelle qtz
             $this->get('session')->getFlashBag()->add('success','Quantité modifié avec succès');
         } else {
             if ($this->getRequest()->query->get('qte') != null)
@@ -44,9 +45,8 @@ class PanierController extends Controller
         $session->set('panier',$panier);
 
 
-        return $this->redirect($this->generateUrl('panier'));
+        return $this->redirect($this->generateUrl('produits'));
     }
-
 
     public function supprimerAction($id)
     {
@@ -63,6 +63,7 @@ class PanierController extends Controller
         return $this->redirect($this->generateUrl('panier'));
     }
 
+
     public function panierAction()
     {
         $session = $this->getRequest()->getSession();
@@ -73,6 +74,22 @@ class PanierController extends Controller
 
         return $this->render('EcommerceBundle:Default:panier/layout/panier.html.twig', array('produits' => $produits,
             'panier' => $session->get('panier')));
+    }
+
+
+    public function validerAction()
+    {
+
+        if ($this->get('request')->getMethod() =='POST')
+
+            $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
+
+        return $this->render('EcommerceBundle:Default:panier/layout/valider.html.twig',array('produits' => $produits,
+                                                                                            ));
+
     }
 
 }

@@ -28,12 +28,7 @@ class Commandes
     
     private $utilisateur;
     
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="valider", type="boolean")
-     */
-    private $valider;
+
 
     /**
      * @var \DateTime
@@ -67,28 +62,9 @@ class Commandes
         return $this->id;
     }
 
-    /**
-     * Set valider
-     *
-     * @param boolean $valider
-     * @return Commandes
-     */
-    public function setValider($valider)
-    {
-        $this->valider = $valider;
 
-        return $this;
-    }
 
-    /**
-     * Get valider
-     *
-     * @return boolean 
-     */
-    public function getValider()
-    {
-        return $this->valider;
-    }
+
 
     /**
      * Set date
