@@ -81,8 +81,7 @@ class Utilisateurs extends BaseUser
      */
     private $client;
 
-<<<<<<< HEAD
-=======
+
 
      /**
      *
@@ -95,7 +94,6 @@ class Utilisateurs extends BaseUser
         return $this->id;
     }
 
->>>>>>> 61771f4a32dabf8389f2a58210fea2e20862dee3
     /**
      * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
      * @ORM\JoinColumn(nullable=true)
@@ -341,15 +339,7 @@ class Utilisateurs extends BaseUser
         if (file_exists($this->tempFile)) unlink($this->tempFile);
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+
 
     public function getPath()
     {

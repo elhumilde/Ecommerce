@@ -21,7 +21,7 @@ class UtilisateurAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('UtilisateursBundle:Medias')->findAll();
+        $entities = $em->getRepository('UtilisateursBundle:Utilisateurs')->findAll();
 
         return $this->render('UtilisateursBundle:Utilisateurs:index.html.twig', array(
             'entities' => $entities,
@@ -33,10 +33,10 @@ class UtilisateurAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('UtilisateursBundle:Medias')->find($id);
+        $entity = $em->getRepository('UtilisateursBundle:Utilisateurs')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Client Utilisateurs.');
+            throw $this->createNotFoundException('Unable to find Utilisateurs entity.');
         }
 
 
@@ -53,7 +53,7 @@ class UtilisateurAdminController extends Controller
         $entity = $em->getRepository('UtilisateursBundle:Medias')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Utilisateur entity.');
+            throw $this->createNotFoundException('Unable to find Utilisateurs entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -89,7 +89,7 @@ class UtilisateurAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('UtilisateursBundle:Medias')->find($id);
+        $entity = $em->getRepository('UtilisateursBundle:Utilisateurs')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Utilisateur entity.');
@@ -122,10 +122,10 @@ class UtilisateurAdminController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('UtilisateursBundle:Medias')->find($id);
+            $entity = $em->getRepository('UtilisateursBundle:Utilisateurs')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Utilisateur entity.');
+                throw $this->createNotFoundException('Unable to find Utilisateurs entity.');
             }
 
             $em->remove($entity);
