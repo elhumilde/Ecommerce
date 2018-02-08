@@ -1,9 +1,7 @@
 <?php
 namespace Utilisateurs\UtilisateursBundle\Entity;
-
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * @ORM\Entity(repositoryClass="Utilisateurs\UtilisateursBundle\Repository\UtilisateursRepository")
  * @ORM\Table(name="utilisateurs")
@@ -16,44 +14,36 @@ class Utilisateurs extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=100)
      */
     private $adresse;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50)
      */
     private $nom;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="telephone", type="integer")
      */
     private $telephone;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=100)
      */
     private $description;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="anneeExpAvtEmb", type="integer")
      */
     private $anneeExpAvtEmb;
-
-
-
     /**
      * @var integer
      *
@@ -66,20 +56,13 @@ class Utilisateurs extends BaseUser
      * @ORM\Column(name="profil", type="string", length=20)
      */
     private $profil;
-
-
     /**
-<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
-
-
-     /**
+    /**
      *
-=======
->>>>>>> fdb3c8f5ade05c46e41429969edd2ea7252c682c
      * Get id
      *
      * @return integer
@@ -88,7 +71,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->id;
     }
-
     /**
      * @return string
      */
@@ -96,7 +78,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->username;
     }
-
     /**
      * @param string $username
      */
@@ -104,7 +85,6 @@ class Utilisateurs extends BaseUser
     {
         $this->username = $username;
     }
-
     /**
      * @return string
      */
@@ -112,7 +92,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->adresse;
     }
-
     /**
      * @param string $adresse
      */
@@ -120,7 +99,6 @@ class Utilisateurs extends BaseUser
     {
         $this->adresse = $adresse;
     }
-
     /**
      * @return string
      */
@@ -128,7 +106,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->nom;
     }
-
     /**
      * @param string $nom
      */
@@ -136,7 +113,6 @@ class Utilisateurs extends BaseUser
     {
         $this->nom = $nom;
     }
-
     /**
      * @return int
      */
@@ -144,7 +120,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->telephone;
     }
-
     /**
      * @param int $telephone
      */
@@ -152,7 +127,6 @@ class Utilisateurs extends BaseUser
     {
         $this->telephone = $telephone;
     }
-
     /**
      * @return string
      */
@@ -160,7 +134,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->usernameCanonical;
     }
-
     /**
      * @param string $usernameCanonical
      */
@@ -168,7 +141,6 @@ class Utilisateurs extends BaseUser
     {
         $this->usernameCanonical = $usernameCanonical;
     }
-
     /**
      * @return string
      */
@@ -176,7 +148,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->description;
     }
-
     /**
      * @param string $description
      */
@@ -184,7 +155,6 @@ class Utilisateurs extends BaseUser
     {
         $this->description = $description;
     }
-
     /**
      * @return int
      */
@@ -192,7 +162,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->anneeExpAvtEmb;
     }
-
     /**
      * @param int $anneeExpAvtEmb
      */
@@ -200,8 +169,6 @@ class Utilisateurs extends BaseUser
     {
         $this->anneeExpAvtEmb = $anneeExpAvtEmb;
     }
-
-
     /**
      * @return int
      */
@@ -209,7 +176,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->nbrCltAnneePrec;
     }
-
     /**
      * @param int $nbrCltAnneePrec
      */
@@ -217,7 +183,6 @@ class Utilisateurs extends BaseUser
     {
         $this->nbrCltAnneePrec = $nbrCltAnneePrec;
     }
-
     /**
      * @return string
      */
@@ -225,7 +190,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->profil;
     }
-
     /**
      * @param string $profil
      */
@@ -233,7 +197,4 @@ class Utilisateurs extends BaseUser
     {
         $this->profil = $profil;
     }
-
-
-
 }

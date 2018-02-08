@@ -24,7 +24,7 @@ class CommandesController extends Controller
       $commande->setDate(new \DateTime());
       $commande->setUtilisateur($this->container->get('security.context')->getToken()->getUser());
       $commande->setReference(0);
-      $commande->setBoncommande($this->facture());
+
 
       if(! $session->has('commande'))
       {
