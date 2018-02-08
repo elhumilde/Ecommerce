@@ -23,10 +23,10 @@ class ProduitsController extends Controller
         else
             $panier = false;
 
-        $produits = $this->get('knp_paginator')->paginate($findProduits,$this->get('request')->query->get('page', 1),3);
+        $produits = $this->get('knp_paginator')->paginate($findProduits,$this->get('request')->query->get('page', 1),6);
 
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
-                                                                                                        'pannier' => $panier));
+                                                                                                        'panier' => $panier));
     }
 
     public function presentationAction($id)
@@ -36,6 +36,8 @@ class ProduitsController extends Controller
         $produit = $em->getRepository('EcommerceBundle:Produits')->find($id);
 
         if (!$produit) throw $this->createNotFoundException('La page n\'existe pas.');
+
+        // produit qui existe deja en panier on px pas le rajouter
 
         if ($session->has('panier'))
             $panier = $session->get('panier');

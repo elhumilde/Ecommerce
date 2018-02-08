@@ -72,12 +72,30 @@ class Utilisateurs extends BaseUser
 
 
     /**
+<<<<<<< HEAD
 
+=======
+>>>>>>> 61771f4a32dabf8389f2a58210fea2e20862dee3
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
 
+<<<<<<< HEAD
+=======
+
+     /**
+     *
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+>>>>>>> 61771f4a32dabf8389f2a58210fea2e20862dee3
     /**
      * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
      * @ORM\JoinColumn(nullable=true)

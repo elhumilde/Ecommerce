@@ -6,11 +6,13 @@ ajouter:
     pattern:  /ajouter/{id}
     defaults: { _controller: EcommerceBundle:Panier:ajouter }
 
+valider:
+    pattern:  /valider
+    defaults: { _controller: EcommerceBundle:Panier:valider }
+
 panier:
     pattern:  /
     defaults: { _controller: EcommerceBundle:Panier:panier }
 
 
-validation:
-    pattern:  /validation
-    defaults: { _controller: EcommerceBundle:Panier:validation }
+
