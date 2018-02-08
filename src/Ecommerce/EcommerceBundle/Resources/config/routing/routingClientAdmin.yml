@@ -4,11 +4,11 @@ adminClient:
 
 adminClient_new:
     pattern:  /new
-    defaults: { _controller: "EcommerceBundle:ClientAdmin:newClient" }
+    defaults: { _controller: "EcommerceBundle:ClientAdmin:newMedia" }
 
 adminClient_show:
      pattern:  /{id}/show
-     defaults: { _controller: "EcommerceBundle:ClientAdmin:showClient" }
+     defaults: { _controller: "EcommerceBundle:ClientAdmin:showMedia" }
 
 adminClient_create:
     pattern:  /create

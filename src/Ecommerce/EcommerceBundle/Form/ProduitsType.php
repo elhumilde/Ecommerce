@@ -5,7 +5,7 @@ namespace Ecommerce\EcommerceBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Ecommerce\EcommerceBundle\Form\MediaType;
+use Ecommerce\EcommerceBundle\Form\ClientType;
 
 class ProduitsType extends AbstractType
 {

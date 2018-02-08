@@ -160,7 +160,7 @@ class Response
         412 => 'Precondition Failed',
         413 => 'Request Entity Too Large',
         414 => 'Request-URI Too Long',
-        415 => 'Unsupported Media Type',
+        415 => 'Unsupported Client Type',
         416 => 'Requested Range Not Satisfiable',
         417 => 'Expectation Failed',
         418 => 'I\'m a teapot',                                               // RFC2324

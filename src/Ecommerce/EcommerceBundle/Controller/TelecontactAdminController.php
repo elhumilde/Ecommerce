@@ -2,34 +2,35 @@
 /**
  * Created by PhpStorm.
  * User: l.fahimi
- * Date: 29/01/2018
- * Time: 13:49
+ * Date: 06/02/2018
+ * Time: 14:53
  */
 
 namespace Ecommerce\EcommerceBundle\Controller;
 
+
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Ecommerce\EcommerceBundle\Entity\Client;
-use Ecommerce\EcommerceBundle\Form\ClientType;
-
-class ClientAdminController extends Controller
+use Ecommerce\EcommerceBundle\Entity\Telecontact;
+use Ecommerce\EcommerceBundle\Form\TelecontactType;
+class TelecontactAdminController extends Controller
 {
 
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EcommerceBundle:Client')->findAll();
+        $entities = $em->getRepository('EcommerceBundle:Telecontact')->findAll();
 
-        return $this->render('EcommerceBundle:Administration:Client/index.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Telecontact/index.html.twig', array(
             'entities' => $entities,
         ));
     }
 
     public function createAction(Request $request)
     {
-        $entity = new Client();
+        $entity = new Telecontact();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -37,19 +38,19 @@ class ClientAdminController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('adminClient_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('adminTelecontact_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('EcommerceBundle:Administration:Client/newClient.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Telecontact/newTelecontact.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
-    private function createCreateForm(Client $entity)
+    private function createCreateForm(Telecontact $entity)
     {
-        $form = $this->createForm(new ClientType(), $entity, array(
-            'action' => $this->generateUrl('adminClient_create'),
+        $form = $this->createForm(new TelecontactType(), $entity, array(
+            'action' => $this->generateUrl('adminTelecontact_create'),
             'method' => 'POST',
         ));
 
@@ -58,46 +59,46 @@ class ClientAdminController extends Controller
         return $form;
     }
 
-    public function newMediaAction()
+    public function newTelecontactAction()
     {
-        $entity = new Client();
+        $entity = new Telecontact();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('EcommerceBundle:Administration:Client/newClient.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Telecontact/newTelecontact.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
-    public function showMediaAction($id)
+    public function showTelecontactAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EcommerceBundle:Client')->find($id);
+        $entity = $em->getRepository('EcommerceBundle:Telecontact')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Client entity.');
+            throw $this->createNotFoundException('Unable to find Telecontact entity.');
         }
 
 
 
-        return $this->render('EcommerceBundle:Administration:Client/showClient.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Telecontact/showTelecontact.html.twig', array(
             'entity'      => $entity ));
     }
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EcommerceBundle:Client')->find($id);
+        $entity = $em->getRepository('EcommerceBundle:Telecontact')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Client entity.');
+            throw $this->createNotFoundException('Unable to find Telecontact entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('EcommerceBundle:Administration:Client/edit.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Telecontact/edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -107,14 +108,14 @@ class ClientAdminController extends Controller
     /**
      * Creates a form to edit a Produits entity.
      *
-     * @param Produits $entity The entity
+     * @param Telecontact $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Client $entity)
+    private function createEditForm(Telecontact $entity)
     {
-        $form = $this->createForm(new ClientType(), $entity, array(
-            'action' => $this->generateUrl('adminClient_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new TelecontactType(), $entity, array(
+            'action' => $this->generateUrl('adminTelecontact_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -130,10 +131,10 @@ class ClientAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EcommerceBundle:Client')->find($id);
+        $entity = $em->getRepository('EcommerceBundle:Telecontact')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Client entity.');
+            throw $this->createNotFoundException('Unable to find Telecontact entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -143,10 +144,10 @@ class ClientAdminController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('adminClient', array('id' => $id)));
+            return $this->redirect($this->generateUrl('adminTelecontact', array('id' => $id)));
         }
 
-        return $this->render('EcommerceBundle:Administration:Client/edit.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Telecontact/edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -163,17 +164,17 @@ class ClientAdminController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EcommerceBundle:Client')->find($id);
+            $entity = $em->getRepository('EcommerceBundle:Telecontact')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Client entity.');
+                throw $this->createNotFoundException('Unable to find Telecontact entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('adminClient'));
+        return $this->redirect($this->generateUrl('adminTelecontact'));
     }
 
     /**
@@ -186,13 +187,11 @@ class ClientAdminController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('adminClient_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('adminTelecontact_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
             ;
     }
-
-
 
 }

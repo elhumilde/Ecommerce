@@ -3,13 +3,14 @@
 namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\validator\Constraints as Assert;
 
 /**
  * Client
  *
  * @ORM\Table("client")
- * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\UtilisateursClientRepository")
+ * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\ClientRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Client
 {
@@ -72,10 +73,16 @@ class Client
     private $ville;
 
     /**
-     * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @var \DateTime
+     *
+     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
      */
-    private $image;
+    private $updateAt;
+
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    private $path;
 
     /**
      * @ORM\ManyToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Utilisateurs", inversedBy="client")
@@ -83,8 +90,30 @@ class Client
      */
     private $utilisateurs;
 
+
+
     /**
-     * @return mixed
+     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
+     *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
+     *
+     */
+    public $file;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * @return string
      */
     public function getRaison()
     {
@@ -92,7 +121,7 @@ class Client
     }
 
     /**
-     * @param mixed $raison
+     * @param string $raison
      */
     public function setRaison($raison)
     {
@@ -100,7 +129,7 @@ class Client
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAdresse()
     {
@@ -108,7 +137,7 @@ class Client
     }
 
     /**
-     * @param mixed $adresse
+     * @param string $adresse
      */
     public function setAdresse($adresse)
     {
@@ -129,24 +158,6 @@ class Client
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-    }
-
-
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -198,7 +209,7 @@ class Client
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getVille()
     {
@@ -206,7 +217,7 @@ class Client
     }
 
     /**
-     * @param mixed $ville
+     * @param string $ville
      */
     public function setVille($ville)
     {
@@ -214,33 +225,33 @@ class Client
     }
 
 
-
-
-    /**
-     * Set image
-     *
-     * @param \Ecommerce\EcommerceBundle\Entity\Media $image
-     * @return Produits
-     */
-    public function setImage(\Ecommerce\EcommerceBundle\Entity\Media $image)
+    public function getPath()
     {
-
-        $this->image = $image;
-
+        return $this->path;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
     }
 
     /**
-     * Get image
-     *
-     * @return \Ecommerce\EcommerceBundle\Entity\Media
-     * @return string
-
+     * @param \DateTime $updateAt
      */
-    public function getImage()
+    public function setUpdateAt($updateAt)
     {
-        return $this->image;
+        $this->updateAt = $updateAt;
     }
 
+    /**
+     * @ORM\PostLoad()
+     */
+    public function postLoad()
+    {
+        $this->updateAt = new \DateTime();
+    }
     /**
      * Set utilisateurs
      *
@@ -249,11 +260,7 @@ class Client
      */
     public function setUtilisateurs(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs = null)
     {
-
-
         $this->utilisateurs = $utilisateurs;
-
-
     }
 
     /**
@@ -266,4 +273,63 @@ class Client
     {
         return $this->utilisateurs;
     }
+    public function getUploadRootDir()
+    {
+        return __dir__.'/../../../../web/uploads';
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getAssetPath()
+    {
+        return 'uploads/'.$this->path;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+        $this->oldFile = $this->getPath();
+        $this->updateAt = new \DateTime();
+
+        if (null !== $this->file)
+            $this->path = sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null !== $this->file) {
+            $this->file->move($this->getUploadRootDir(),$this->path);
+            unset($this->file);
+
+            if ($this->oldFile != null) unlink($this->tempFile);
+        }
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->tempFile)) unlink($this->tempFile);
+    }
+
 }

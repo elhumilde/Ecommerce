@@ -38,22 +38,13 @@ class Media
         $this->updateAt = new \DateTime();
     }
 
-    /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank
-     */
-    private $name;
+
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     private $path;
 
-    /**
-     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
-     *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
-     *
-     */
     public $file;
 
     public function getUploadRootDir()
@@ -130,15 +121,5 @@ class Media
         return $this->path;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 }

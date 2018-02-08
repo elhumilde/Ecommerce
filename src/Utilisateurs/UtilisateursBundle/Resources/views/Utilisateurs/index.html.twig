@@ -1,0 +1,45 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des Utilisateurs</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Telephone</th>
+            <th>Description</th>
+            <th>anneeExpAvtEmb</th>
+            <th>nbrCltAnneePrec</th>
+            <th>Profill</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.username}}</td>
+                <td>{{ entity.adresse}}</td>
+                <td>{{ entity.telephone }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.anneeExpAvtEmb }}</td>
+                <td>{{ entity.nbrCltAnneePrec }}</td>
+                <td>{{ entity.profil}}</td>
+                <td><img src="{{ asset('uploads/' ~ entity.path) }}"  width="80" height="80"></td>
+                <td>
+                    <a href="{{ path('adminUsers_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
+                    <a href="{{ path('adminUsers_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('fos_user_registration_register') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}

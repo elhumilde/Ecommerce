@@ -186,7 +186,7 @@ class Produits
     /**
      * Get image
      *
-     * @return \Ecommerce\EcommerceBundle\Entity\Media 
+     * @return \Ecommerce\EcommerceBundle\Entity\Media
      */
     public function getImage()
     {

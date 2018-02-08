@@ -45,9 +45,11 @@ class RegistrationFormType extends AbstractType
             ->add('description', null, array('label' => 'Description', 'translation_domain' => 'FOSUserBundle'))
             ->add('anneeExpAvtEmb', null, array('label' => 'Année expérience evant embauche', 'translation_domain' => 'FOSUserBundle'))
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle'))
-            ->add('profil', null, array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
+            ->add('profil', 'choice', array(
+                 'choices'   => array('Responsable d\'equipe' => 'Responsable d\'equipe', 'Senior' => 'Senior','Junior' => 'Junior'),
+                 'required'  => false,), array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
+            ->add('file','file', array('required' => false));
 
-        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

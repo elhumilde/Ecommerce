@@ -1,15 +1,15 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Ajouter Photo Client</h1>
+    <h1>Ajouter  Telecontact</h1>
 
-    <form action="{{ path('adminClient_create') }}" method="POST" {{ form_enctype(form) }}>
+    <form action="{{ path('adminTelecontact_create') }}" method="POST" {{ form_enctype(form) }}>
         {{ form(form) }}
     </form>
 
     <ul class="record_actions">
         <li>
-            <a href="{{ path('adminClient') }}">
+            <a href="{{ path('adminTelecontact') }}">
                 Back to the list
             </a>
         </li>
