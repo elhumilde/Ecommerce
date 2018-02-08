@@ -16,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in users %}
             <tr>
                 <td>{{ entity.username}}</td>
                 <td>{{ entity.adresse}}</td>
@@ -34,7 +34,9 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <div class="navigation">
+        {{ knp_pagination_render(users) }}
+    </div>
     <ul>
         <li>
             <a href="{{ path('fos_user_registration_register') }}">

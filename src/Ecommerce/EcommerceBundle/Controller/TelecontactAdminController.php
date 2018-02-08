@@ -38,7 +38,7 @@ class TelecontactAdminController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('adminTelecontact_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('adminTelecontact', array('id' => $entity->getId())));
         }
 
         return $this->render('EcommerceBundle:Administration:Telecontact/newTelecontact.html.twig', array(
