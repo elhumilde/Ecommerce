@@ -20,7 +20,8 @@ class TelecontactType extends AbstractType
             ->add('description1')
             ->add('description2')
             ->add('description3')
-            ->add('experience');
+            ->add('experience', 'date', array ('widget' => 'choice','pattern' => '{{ day }}-{{ month }}-{{ year }', 'years'=> range(date('Y'), date('Y') - 30, -1)))
+            ;
 
     }
 

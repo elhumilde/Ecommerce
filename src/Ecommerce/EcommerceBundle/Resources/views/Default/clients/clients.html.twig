@@ -22,7 +22,7 @@
                             <li class="span3">
                                 <div class="thumbnail">
 
-                                    <img src="{{ asset('uploads/' ~ client.image.Path) }}" alt="{{ client.image.name }}" width="300" height="150">
+                                    <img src="{{ asset('uploads/' ~ client.Path) }}"  width="300" height="150">
                                     <div class="caption">
                                         <a class="btn btn-primary" href="{{ path('presentationclient', { 'id' : client.id }) }}">Plus d'infos</a>
 

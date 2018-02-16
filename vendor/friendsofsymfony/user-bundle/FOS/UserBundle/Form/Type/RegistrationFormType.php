@@ -44,11 +44,15 @@ class RegistrationFormType extends AbstractType
             ->add('telephone', null, array('label' => 'Téléphone', 'translation_domain' => 'FOSUserBundle'))
             ->add('description', null, array('label' => 'Description', 'translation_domain' => 'FOSUserBundle'))
             ->add('anneeExpAvtEmb', null, array('label' => 'Année expérience evant embauche', 'translation_domain' => 'FOSUserBundle'))
+            ->add('anneeEmb', 'date', array ('widget' => 'choice','pattern' => '{{ day }}-{{ month }}-{{ year }', 'years'       => range(date('Y'), date('Y') - 30, -1)))
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle'))
             ->add('profil', 'choice', array(
                  'choices'   => array('Responsable d\'equipe' => 'Responsable d\'equipe', 'Senior' => 'Senior','Junior' => 'Junior'),
                  'required'  => false,), array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
-            ->add('file','file', array('required' => false));
+            ->add('file','file', array('required' => false))
+            ->add('teleconatct',"entity", array( 'label' => false ,"class"=>"EcommerceBundle:Telecontact", "property"=>"nom",'attr'=>array('style'=>'display:none;')));
+
+
 
     }
 

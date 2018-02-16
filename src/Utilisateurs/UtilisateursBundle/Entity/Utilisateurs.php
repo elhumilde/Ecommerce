@@ -55,7 +55,12 @@ class Utilisateurs extends BaseUser
      */
     private $anneeExpAvtEmb;
 
-
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="anneeEmb", type="datetimetz")
+     */
+    private $anneeEmb;
 
     /**
      * @var integer
@@ -72,16 +77,16 @@ class Utilisateurs extends BaseUser
 
 
     /**
-<<<<<<< HEAD
-
-=======
->>>>>>> 61771f4a32dabf8389f2a58210fea2e20862dee3
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $teleconatct;
 
      /**
      *
@@ -94,11 +99,7 @@ class Utilisateurs extends BaseUser
         return $this->id;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $teleconatct;
+
 
     /**
      * @return string
@@ -181,6 +182,25 @@ class Utilisateurs extends BaseUser
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getAnneeEmb()
+    {
+        return $this->anneeEmb;
+    }
+
+    /**
+     * @param \DateTime $anneeEmb
+     */
+    public function setAnneeEmb($anneeEmb)
+    {
+        $this->anneeEmb = $anneeEmb;
+    }
+
+
+
+
+    /**
      * @return int
      */
     public function getNbrCltAnneePrec()
@@ -228,20 +248,21 @@ class Utilisateurs extends BaseUser
         $this->client = $client;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTeleconatct()
+    {
+        return $this->teleconatct;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * @param mixed $teleconatct
+     */
+    public function setTeleconatct($teleconatct)
+    {
+        $this->teleconatct = $teleconatct;
+    }
 
 
 

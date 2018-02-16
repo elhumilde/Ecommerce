@@ -1,36 +1,80 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans }}</div>
-{% endif %}
-<div class="row">
-    <div class="span12">
-        <h2>Connexion</h2>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <link href="{{asset ('https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-min.css') }}" />
+        {% block stylesheets %}{% endblock %}
 
-                <div class="span6 offset2">
-                    <h4>Connexion</h4>
-                    <form action="{{ path("fos_user_security_check") }}" method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-                    <label for="username">{{ 'security.login.username'|trans }}</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    </head>
+    <body>
+    <div class="bg-img "
+         style="
+         background-image: url('https://image.noelshack.com/fichiers/2018/01/5/1515156608-background1.jpg');
 
-                    <label for="password">{{ 'security.login.password'|trans }}</label>
-                    <input type="password" id="password" name="_password" required="required" />
-                    <br />
-                    <input class="btn btn-primary" type="submit" value="{{ 'security.login.submit'|trans }}" />
-                    </form>
-                </div>
-                <div class="span10">
-                    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
-                </div>
-            </div>
+
+    ">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="bg-img">
+        <a href="{{ path("fos_user_security_login") }}">
+            <img class="logo  img-logo" src="https://image.noelshack.com/fichiers/2018/02/1/1515423139-logo.png"  >
+        </a>
+    </div>
+
+
+    <!-- /Logo -->
+
+
+    <!-- /login -->
+    <div class="login-page">
+        {% block fos_user_content %}
+        {% if error %}
+            <div style="color: red;text-align: center">{{ error|trans }}</div>
+        {% endif %}
+        <div class="form">
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="login-form">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Identifiant" />
+
+
+                <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe " />
+                <br />
+                <button>Se connecter</button>
+                <br />
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- /login -->
+
+
+
+    <!-- Back to top -->
+    <div id="back-to-top"></div>
+    <!-- /Back to top -->
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
-</div>
+    </body>
+    </html>
 {% endblock fos_user_content %}
+
+
+

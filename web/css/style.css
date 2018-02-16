@@ -1,8 +1,13 @@
 body {
-    padding-bottom: 40px;
-    padding-top: 60px;
-}
 
+
+}
+.img-logo{
+    display: block;
+    position: inherit;
+    margin: 0 auto;
+    margin-top: 340px;
+}
 .loading {
     float:right;
     margin-right:115px;
@@ -11,3 +16,121 @@ body {
     display:block;
     background:url('../img/loading.gif');
 }
+
+
+.bg-grey {
+    background-color: #FAFAFA;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+.bg-dark {
+    background-color: #1C1D21;
+}
+
+
+/* --  background image section  -- */
+
+.bg-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bg-img .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .8;
+    background: #1C1D21;
+}
+
+
+
+
+/*------------------------------------*\
+	Logo
+\*------------------------------------*/
+
+.navbar-brand {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+/*------------------------------------*\
+    login
+\*------------------------------------*/
+
+.login-page {
+    width: 460px;
+    padding: 0 0 0 0;
+    margin: auto;
+    margin-top: 500px;
+}
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 460px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.form button {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    outline: 0;
+    background: #fedc32;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: black;
+    font-size: 20px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+    background: #ffc830;
+}
+.form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.form .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+.form .register-form {
+    display: none;
+}
+

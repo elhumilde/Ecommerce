@@ -56,12 +56,19 @@ class Telecontact
      */
     private $description3;
 
+
+
+
     /**
-     * @var integer
+     * @var \Date
      *
-     * @ORM\Column(name="experience", type="integer")
+     * @ORM\Column(name="experience", type="datetimetz")
      */
     private $experience;
+
+
+
+
 
     /**
      * @ORM\OneToMany(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Utilisateurs", mappedBy="teleconatct", cascade={"remove"})
@@ -73,7 +80,7 @@ class Telecontact
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -89,14 +96,14 @@ class Telecontact
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -112,14 +119,14 @@ class Telecontact
     public function setProfil($profil)
     {
         $this->profil = $profil;
-    
+
         return $this;
     }
 
     /**
      * Get profil
      *
-     * @return string 
+     * @return string
      */
     public function getProfil()
     {
@@ -135,14 +142,14 @@ class Telecontact
     public function setDescription1($description1)
     {
         $this->description1 = $description1;
-    
+
         return $this;
     }
 
     /**
      * Get description1
      *
-     * @return string 
+     * @return string
      */
     public function getDescription1()
     {
@@ -158,14 +165,14 @@ class Telecontact
     public function setDescription2($description2)
     {
         $this->description2 = $description2;
-    
+
         return $this;
     }
 
     /**
      * Get description2
      *
-     * @return string 
+     * @return string
      */
     public function getDescription2()
     {
@@ -188,29 +195,46 @@ class Telecontact
         $this->description3 = $description3;
     }
 
-
-
     /**
-     * Set experience
-     *
-     * @param integer $experience
-     * @return Telecontact
-     */
-    public function setExperience($experience)
-    {
-        $this->experience = $experience;
-    
-        return $this;
-    }
-
-    /**
-     * Get experience
-     *
-     * @return integer 
+     * @return \Date
      */
     public function getExperience()
     {
         return $this->experience;
+    }
+
+    /**
+     * @param \Date $experience
+     */
+    public function setExperience($experience)
+    {
+        $this->experience = $experience;
+    }
+
+
+
+
+
+    /**
+     * Set utilisateurs
+     *
+     * @param \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs
+     * @return Client
+     */
+    public function setUtilisateurs(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateurs = null)
+    {
+        $this->utilisateurs = $utilisateurs;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+     * @return integer
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 
 

@@ -23,7 +23,7 @@
                 <td>{{ entity.description1 }}</td>
                 <td>{{ entity.description2 }}</td>
                 <td>{{ entity.description3 }}</td>
-                <td>{{ entity.experience }}</td>
+                <td>{{ entity.experience|date("m/d/Y") }}</td>
                 <td>
                     <a href="{{ path('adminTelecontact_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
                     <a href="{{ path('adminTelecontact_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
@@ -32,11 +32,12 @@
         {% endfor %}
         </tbody>
     </table>
-    <ul>
+    {# <ul>
         <li>
             <a href="{{ path('adminTelecontact_new') }}">
                 Create a new entry
             </a>
         </li>
-    </ul>
+    </ul>#}
+
 {% endblock %}

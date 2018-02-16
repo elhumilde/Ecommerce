@@ -34,6 +34,7 @@ class UtilisateurFormType extends AbstractType
             ->add('telephone', null, array('label' => 'Téléphone', 'translation_domain' => 'FOSUserBundle'))
             ->add('description', null, array('label' => 'Description', 'translation_domain' => 'FOSUserBundle'))
             ->add('anneeExpAvtEmb', null, array('label' => 'Année expérience evant embauche', 'translation_domain' => 'FOSUserBundle'))
+            ->add('anneeEmb', null, array('label' => 'Année D\' embauche', 'translation_domain' => 'FOSUserBundle'))
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle'))
             ->add('profil', null, array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
 
