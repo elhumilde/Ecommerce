@@ -6,9 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ecommerce\EcommerceBundle\Form\UtilisateursAdressesType;
 use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
+use Ecommerce\EcommerceBundle\Entity\Categories;
 
 class PanierController extends Controller
 {
+
     public function menuAction()
     {
         $session = $this->getRequest()->getSession();
@@ -45,7 +47,7 @@ class PanierController extends Controller
         $session->set('panier',$panier);
 
 
-        return $this->redirect($this->generateUrl('produits'));
+        return $this->redirect($this->generateUrl('panier'));
     }
 
     public function supprimerAction($id)

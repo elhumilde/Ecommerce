@@ -13,19 +13,20 @@ class ProduitsController extends Controller
         $session = $this ->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
-        if ($categorie != null)
-            $findProduits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
-        else
-            $findProduits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
 
+            $findProduitsCatalogue = $em->getRepository('EcommerceBundle:Produits')->findLimitCatalogue();
+            $findProduitsCatalogueReference = $em->getRepository('EcommerceBundle:Produits')->findLimitCatalogueReference();
+            $findProduitsVideo = $em->getRepository('EcommerceBundle:Produits')->findLimitVideo();
+            $findProduitsPack = $em->getRepository('EcommerceBundle:Produits')->findLimitPack();
         if ($session->has('panier'))
             $panier = $session->get('panier');
         else
             $panier = false;
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produitsCatalogue' => $findProduitsCatalogue,
+                                                                                                       'produitsCatalogueReference' => $findProduitsCatalogueReference,
+                                                                                                       'produitsVideo' => $findProduitsVideo,
+                                                                                                       'produitsPack' => $findProduitsPack,
 
-        $produits = $this->get('knp_paginator')->paginate($findProduits,$this->get('request')->query->get('page', 1),6);
-
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
                                                                                                         'panier' => $panier));
     }
 
