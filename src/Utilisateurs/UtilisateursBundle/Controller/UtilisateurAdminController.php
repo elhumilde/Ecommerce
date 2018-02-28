@@ -22,9 +22,9 @@ class UtilisateurAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('UtilisateursBundle:Utilisateurs')->findAll();
-
+        $users = $this->get('knp_paginator')->paginate($entities,$this->get('request')->query->get('page', 1),6);
         return $this->render('UtilisateursBundle:Utilisateurs:index.html.twig', array(
-            'entities' => $entities,
+            'users' => $users,
         ));
     }
 
@@ -50,7 +50,7 @@ class UtilisateurAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('UtilisateursBundle:Medias')->find($id);
+        $entity = $em->getRepository('UtilisateursBundle:Utilisateurs')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Utilisateurs entity.');

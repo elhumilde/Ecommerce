@@ -22,8 +22,10 @@ class ClientAdminController extends Controller
 
         $entities = $em->getRepository('EcommerceBundle:Client')->findAll();
 
+        $clients = $this->get('knp_paginator')->paginate($entities,$this->get('request')->query->get('page', 1),6);
+
         return $this->render('EcommerceBundle:Administration:Client/index.html.twig', array(
-            'entities' => $entities,
+            'clients' => $clients,
         ));
     }
 
@@ -39,6 +41,7 @@ class ClientAdminController extends Controller
 
             return $this->redirect($this->generateUrl('adminClient_show', array('id' => $entity->getId())));
         }
+
 
         return $this->render('EcommerceBundle:Administration:Client/newClient.html.twig', array(
             'entity' => $entity,

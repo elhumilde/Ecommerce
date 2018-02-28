@@ -6,23 +6,32 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
+            <th>Code </th>
             <th>Nom</th>
             <th>Prix</th>
+<<<<<<< HEAD
 
+=======
+            <th>Description</th>
+>>>>>>> 0d140e8403f4d0adf984ce8537b9fe029928ebe8
             <th>Categorie</th>
-            <th>Categorie description</th>
+
 
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in produits %}
             <tr>
+                <td>{{ entity.codeprod }}</td>
                 <td>{{ entity.nom }}</td>
                 <td>{{ entity.prix }}</td>
+<<<<<<< HEAD
 
+=======
+                <td>{{ entity.description }}</td>
+>>>>>>> 0d140e8403f4d0adf984ce8537b9fe029928ebe8
                 <td>{{ entity.categorie.nomcategorie }}</td>
-                <td>{{ entity.categorie.description }}</td>
                 <td>
                     <a href="{{ path('adminProduits_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
                     <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
@@ -31,6 +40,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(produits) }}
+    </div>
 
     <div class="navigation">
         {{ knp_pagination_render(entities) }}

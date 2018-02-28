@@ -12,6 +12,42 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProduitsRepository extends EntityRepository
 {
+
+    public function findLimitCatalogue()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+        ->setFirstResult(0)
+        ->setMaxResults(4);
+        return $qb->getQuery()->getResult();
+    }
+    public function findLimitCatalogueReference()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+        ->setFirstResult(4)
+        ->setMaxResults(4);
+
+        return $qb->getQuery()->getResult();
+    }
+    public function findLimitVideo()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->setFirstResult(8)
+            ->setMaxResults(6);
+
+        return $qb->getQuery()->getResult();
+    }
+    public function findLimitPack()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->setFirstResult(14)
+            ->setMaxResults(6);
+
+        return $qb->getQuery()->getResult();
+    }
     public function findArray($array)
     {
         $qb = $this->createQueryBuilder('u')

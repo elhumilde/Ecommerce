@@ -31,11 +31,13 @@ class UtilisateurFormType extends AbstractType
                 'invalid_message' => 'fos_user.password.mismatch', ))
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('adresse', null, array('label' => 'Adresse', 'translation_domain' => 'FOSUserBundle'))
-            ->add('telephone', null, array('label' => 'Téléphone', 'translation_domain' => 'FOSUserBundle'))
-            ->add('description', null, array('label' => 'Description', 'translation_domain' => 'FOSUserBundle'))
+            ->add('telephone', 'textarea', array('label' => 'Téléphone', 'translation_domain' => 'FOSUserBundle'))
             ->add('anneeExpAvtEmb', null, array('label' => 'Année expérience evant embauche', 'translation_domain' => 'FOSUserBundle'))
+            ->add('anneeEmb', null, array('label' => 'Année D\' embauche', 'translation_domain' => 'FOSUserBundle'))
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle'))
-            ->add('profil', null, array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
+            ->add('profil', 'textarea', array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
+            ->add('description','textarea',array('label' => 'Description', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
+            ->add('experiececontenu','textarea',array('label' => 'Description Experience', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
 
 
 

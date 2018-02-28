@@ -24,11 +24,16 @@ class ProduitsAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('EcommerceBundle:Produits')->findAll();
+        $produits = $this->get('knp_paginator')->paginate($entities,$this->get('request')->query->get('page', 1),6);
 
         $produits = $this->get('knp_paginator')->paginate($entities,$this->get('request')->query->get('page', 1),6);
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/index.html.twig', array(
+
             'entities' => $produits,
+
+            'produits' => $produits,
+
         ));
     }
     /**

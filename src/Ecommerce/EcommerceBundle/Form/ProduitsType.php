@@ -16,14 +16,26 @@ class ProduitsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('code_prod')
             ->add('nom')
             ->add('description')
             ->add('prix')
+<<<<<<< HEAD
 
             ->add('image', new MediaType())
             ->add('categorie')
 
         ;
+=======
+            ->add('disponible')
+            ->add('image', new MediaType(),array('label'=> 'Image Produit'))
+            ->add('categorie', 'entity', array(
+                'class'    => 'EcommerceBundle:Categories', 'property' => 'nomcategorie', 'empty_value' => '- sélectionner une Categories -','label'    => 'Categorie Produit  ',  ))
+                 ;
+
+
+
+>>>>>>> 0d140e8403f4d0adf984ce8537b9fe029928ebe8
     }
     
     /**

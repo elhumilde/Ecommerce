@@ -6,9 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ecommerce\EcommerceBundle\Form\UtilisateursAdressesType;
 use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
+use Ecommerce\EcommerceBundle\Entity\Categories;
 
 class PanierController extends Controller
 {
+
     public function menuAction()
     {
         $session = $this->getRequest()->getSession();

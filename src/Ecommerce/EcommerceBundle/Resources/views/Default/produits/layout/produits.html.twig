@@ -1,9 +1,9 @@
 {% extends "::layout/layout.html.twig" %}
 
 {% block body %}
+
     <div class="container">
         <div class="row">
-
             <div class="span3">
 
 
@@ -14,36 +14,106 @@
                 {% endif %}
                 {% render(controller('EcommerceBundle:Panier:menu')) %}
 
+
             </div>
+
 
             <div class="span9">
 
-                    <ul class="thumbnails">
-                        {% for produit in produits %}
-                            <li class="span3">
-                                <div class="thumbnail">
-                                    <img src="{{ asset('uploads/' ~ produit.image.Path) }}"  width="300" height="150">
-                                    <div class="caption">
-                                        <h4>{{ produit.nom }}</h4>
-                                        <p>{{ produit.prix }}MAD</p>
-                                        <a class="btn btn-primary" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
-                                        {% if panier[produit.id] is not defined %}
-                                        <a class="btn btn-primary" href="{{ path('ajouter', {'id': produit.id }) }}">Ajouter au panier</a>
-                                        {% endif %}
-                                    </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
 
-
-                    <div class="navigation">
-                        {{ knp_pagination_render(produits) }}
-                    </div>
+            <div class="span3">
 
 
 
 
             </div>
+            <h4> Gestion contenu</h4>
+            <h5>Catalogue</h5>
+            <div id="wrap">
+                <div class="span9">
+
+                    <ul class="thumbnails">
+                        {% for produit in produitsCatalogue %}
+                            <li id="{{ produit.id }}">
+                                <div class="thumbnail">
+
+                                    <h5><input class="my-activity" type="checkbox"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            <h5>Catalogue Référencé</h5>
+            <div class="span9">
+                <ul class="thumbnails">
+                    {% for produit in produitsCatalogueReference %}
+                        <li id="{{ produit.id }}">
+                            <div class="thumbnail">
+
+                                <h5><input type="checkbox"  class="my-activity"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <h5>Vidéo</h5>
+            <div class="span9">
+                <ul class="thumbnails">
+                    {% for produit in produitsVideo %}
+                        <li id="{{ produit.id }}">
+                            <div class="thumbnail">
+
+                                <h5><input type="checkbox" class="my-activity"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+            <h5>Pack Visibilité</h5>
+            <div class="span9">
+                <ul class="thumbnails">
+                    {% for produit in produitsPack %}
+                        <li id="{{ produit.id }}">
+                            <div class="thumbnail">
+
+                                <h5><input type="checkbox" class="my-activity"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            </div>
+            <p>
+                <strong> Budget estimé<br> Gestion de contenu</strong>: <input type="text" id="total" />
+            </p>
         </div>
     </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".my-activity").click(function(event) {
+                var total = 0;
+                $(".my-activity:checked").each(function() {
+                    total += parseInt($(this).val());
+                });
+
+                if (total == 0) {
+                    $('#total').val('');
+                } else {
+                    $('#total').val(total);
+                }
+            });
+        });
+    </script>
 {% endblock %}

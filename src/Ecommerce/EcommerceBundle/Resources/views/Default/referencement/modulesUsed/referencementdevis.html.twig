@@ -20,9 +20,27 @@
             <option  selected >Selectionné une prestation</option>
 
         </select><br>
-        <div>
-<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-chevron-down"></span> Ajouter rubrique suplémentaire</a>
+        <div style="align-content: center; margin-left:207px">
+
+            <button type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+                Ajouter rubrique suplémentaire &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+            </button>
+<div id="demo-1" class="collapse bouton-2">
+
+            <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique">
+                <option  selected >Selectionné une rubrique</option>
+                {% for rubriqu in rubriques %}
+
+                    <option value="{{ rubriqu.id }}" >{{ rubriqu.libelle }}</option>
+                {% endfor %}
+            </select>
+
+
+            <select   id="prestation">
+                <option  selected >Selectionné une prestation</option>
+            </select>
 </div>
+        </div>
      {#   <select class="selectpicker "  #}{#multiple data-max-options="1"#}{#  >
 
 
@@ -89,11 +107,5 @@
 
             });
         });
-
-
-    </script>
-
-
-
+  </script>
 {% endblock %}
-

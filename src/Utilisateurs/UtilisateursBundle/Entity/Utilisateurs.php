@@ -43,11 +43,23 @@ class Utilisateurs extends BaseUser
      */
     private $description;
     /**
+     * @var string
+     *
+     * @ORM\Column(name="experiececontenu", type="text")
+     */
+    private $experiececontenu;
+    /**
      * @var integer
      *
      * @ORM\Column(name="anneeExpAvtEmb", type="integer")
      */
     private $anneeExpAvtEmb;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="anneeEmb", type="datetime",nullable=true)
+     */
+    private $anneeEmb;
     /**
      * @var integer
      *
@@ -57,7 +69,7 @@ class Utilisateurs extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="profil", type="string", length=20)
+     * @ORM\Column(name="profil", type="text")
      */
     private $profil;
     /**
@@ -65,6 +77,11 @@ class Utilisateurs extends BaseUser
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $teleconatct;
     /**
      *
      * Get id
@@ -75,11 +92,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->id;
     }
-    /**
-     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $teleconatct;
     /**
      * @return string
      */
@@ -137,6 +149,20 @@ class Utilisateurs extends BaseUser
         $this->description = $description;
     }
     /**
+     * @return string
+     */
+    public function getExperiececontenu()
+    {
+        return $this->experiececontenu;
+    }
+    /**
+     * @param string $experiececontenu
+     */
+    public function setExperiececontenu($experiececontenu)
+    {
+        $this->experiececontenu = $experiececontenu;
+    }
+    /**
      * @return int
      */
     public function getAnneeExpAvtEmb()
@@ -149,6 +175,20 @@ class Utilisateurs extends BaseUser
     public function setAnneeExpAvtEmb($anneeExpAvtEmb)
     {
         $this->anneeExpAvtEmb = $anneeExpAvtEmb;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getAnneeEmb()
+    {
+        return $this->anneeEmb;
+    }
+    /**
+     * @param \DateTime $anneeEmb
+     */
+    public function setAnneeEmb($anneeEmb)
+    {
+        $this->anneeEmb = $anneeEmb;
     }
     /**
      * @return int
@@ -191,6 +231,20 @@ class Utilisateurs extends BaseUser
     public function setClient($client)
     {
         $this->client = $client;
+    }
+    /**
+     * @return mixed
+     */
+    public function getTeleconatct()
+    {
+        return $this->teleconatct;
+    }
+    /**
+     * @param mixed $teleconatct
+     */
+    public function setTeleconatct($teleconatct)
+    {
+        $this->teleconatct = $teleconatct;
     }
     /**
      * @var \DateTime

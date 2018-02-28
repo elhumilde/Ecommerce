@@ -15,12 +15,11 @@ class TelecontactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('profil')
-            ->add('description1')
-            ->add('description2')
-            ->add('description3')
-            ->add('experience');
+            ->add('titre','textarea',array('attr' => array('class' => 'ckeditor')))
+            ->add('contenu','textarea',array('attr' => array('class' => 'ckeditor')))
+            ->add('experience', 'date', array ('widget' => 'choice','pattern' => '{{ day }}-{{ month }}-{{ year }', 'years'=> range(date('Y'), date('Y') - 30, -1)))
+            ->add('experiececontenu','textarea',array('attr' => array('class' => 'ckeditor')));
+
 
     }
 
