@@ -7,6 +7,8 @@
         <h4>Mes activités:</h4>
         <textarea></textarea><br>
         selectionner rubrique principale  :
+        <div id="contenu_lists">
+        <div id="select_rub_prest">
         <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique">
             <option  selected >Selectionné une rubrique</option>
         {% for rubriqu in rubriques %}
@@ -21,8 +23,11 @@
         </span><select   id="prestation">
             <option  selected >Selectionné une prestation</option>
         </select> <br>
-
-        <div id="test"></div>
+        </div>
+        </div>
+        <button id="addrub-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+            Ajouter rubrique suplémentaire &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+        </button>
 
 
 {#
@@ -59,15 +64,16 @@
 
     <script type="text/javascript">
 
-        jQuery(document).ready(function() {
+        $(document).ready(function() {
 
-            var rubrique = jQuery('#select-rubrique');
+            var rubrique = $('#select-rubrique');
 
 
+            // declanché lorsqu'on change le choix de la rub
 
-            jQuery('#select-rubrique').on('change', function () {
+            $('#select-rubrique').on('change', function () {
 
-                jQuery('#prestaAjax').css('display','');
+               $('#prestaAjax').css('display','');
 
                 console.log("CHANGE rubrique AND prestation....................");
                 var select = jQuery(this);
@@ -82,26 +88,20 @@
                     type: 'POST',
                     data: data_send,
                     statusCode: {
-
-
                         //traitement en cas de succès
                         200: function (response) {
                             var successMessage = response;
 
-                    if(response){
-
-
                         $('#prestation').children("option").remove();
                         $.each(JSON.parse(successMessage), function(i, pres) {
                             $('#prestation').append(('<option value="' +pres.id+'">'+pres.prestation+'</option>'));
-                            jQuery('#prestaAjax').css('display','none');
+                            $('#prestaAjax').css('display','none');
                         });
-                    }  else
 
 
 
-                  jQuery('#prestaAjax').css('display','none');
 
+                  $('#prestaAjax').css('display','none');
 
                             //on vide les champs formulaires ou on le supprime ou ...
                             //on retire le loader...
@@ -112,17 +112,27 @@
                             var errorsForm = response.responseJSON.formErrors;
                             //on affiche les erreurs...
                             alert('error');
-                            jQuery('#prestaAjax').css('display','none');
+                            $('#prestaAjax').css('display','none');
                         }
                     }
 
                 });
 
 
-                $( "#select-rubrique" ).clone().appendTo("#test");
+             //   $( "#select-rubrique" ).clone().appendTo("#test");
 
 
             });
+            //declanche lorsqu'on clique sur btn addrub-btn
+            $('#addrub-btn').on('click', function (){
+                var duplicatedLists=$("#select_rub_prest").last().clone();
+
+                duplicatedLists.appendTo("#contenu_lists");
+
+
+            });
+
+
         });
   </script>
 {% endblock %}
