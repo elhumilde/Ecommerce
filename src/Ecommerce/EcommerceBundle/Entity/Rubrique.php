@@ -15,25 +15,11 @@ class Rubrique
     /**
      * @var integer
      *
-     * @ORM\Column(name="CODE_RUBRIQUE", type="integer", nullable=false)
+     * @ORM\Column(name="CODERUBRIQUE", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="LIBELLE", type="string", length=65, nullable=true)
-     */
-    private $libelle;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Prestation", mappedBy="prestation", cascade={"remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $rubrique;
 
     /**
      * @return int
@@ -51,6 +37,35 @@ class Rubrique
         $this->id = $id;
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Prestation", mappedBy="Rubrique")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $prestation;
+
+    /**
+     * @return mixed
+     */
+    public function getPrestation()
+    {
+        return $this->prestation;
+    }
+
+    /**
+     * @param mixed $prestation
+     */
+    public function setPrestation($prestation)
+    {
+        $this->prestation = $prestation;
+    }
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LIBELLE", type="string", length=65, nullable=true)
+     */
+    private $libelle;
 
     /**
      * @return string
@@ -68,22 +83,7 @@ class Rubrique
         $this->libelle = $libelle;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRubrique()
-    {
-        return $this->rubrique;
-    }
-
-    /**
-     * @param mixed $rubrique
-     */
-    public function setRubrique($rubrique)
-    {
-        $this->rubrique = $rubrique;
-    }
-
-
 
 }
+
+

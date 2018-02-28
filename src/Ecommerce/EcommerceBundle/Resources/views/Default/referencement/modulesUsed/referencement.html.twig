@@ -1,0 +1,45 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+
+{% block body -%}
+
+<form class="form-group" >
+    <h4>Mes activités:</h4>
+    Prestations <b>Nbre:</b> <input type="text"><br>
+    Marques <b>Nbre:</b> <input type="text"><br>
+    Rubriques <b>Nbre:</b> <input type="text">
+
+<h4>Ma Visibilité sur:</h4></br>
+
+   Ville principale  :
+    <select class="selectpicker"  multiple data-max-options="5" data-live-search="true">
+            {% for villes in villes %}
+           <option >{{ villes.ville }}</option>
+            {% endfor %}
+        </select>
+
+
+    <label> Ville(s) Supplémentaires </label>
+
+   Nombre des villes : <input type="text" name="ville" ><br>
+
+    Région principale
+    <select class="selectpicker"  multiple data-max-options="5" data-live-search="true" >
+        {% for entity in entities %}
+            <option  >{{ entity.region }}</option>
+        {% endfor %}
+    </select><br>
+
+    <td> Region(s) Supplémentaires </td><br>
+
+    Nombre des regions : <input type="text" name="ville" ><br>
+
+    <div>
+        <button class="btn btn-large 	btn btn-inverse " style="display: block; margin: 0 auto;" type="submit">Budget estimé</button>
+    </div>
+
+</form>
+
+
+{% endblock %}
+

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MobileVille
  *
  * @ORM\Table(name="mobile_ville", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\ReferencementRepository")
  */
 class MobileVille
 {

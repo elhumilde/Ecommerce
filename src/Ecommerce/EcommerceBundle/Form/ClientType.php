@@ -32,7 +32,7 @@ class ClientType extends AbstractType
             ->add('email','email')
             ->add('nomdirigeant')
             ->add('utilisateurs')
-            ->add('image', new MediaType())
+            ->add('file','file', array('required' => false))
 
         ;
     }

@@ -8,24 +8,53 @@ use Doctrine\ORM\Mapping as ORM;
  * Prestation
  *
  * @ORM\Table(name="prestation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\ReferencementRepository")
  */
 class Prestation
 {
     /**
-     * @var integer
+     * @var int
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Rubrique", inversedBy="prestation")
-     * @ORM\JoinColumn(nullable=true)
+     * One Cart has One Customer.
+     * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="prestation")
+     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="CODERUBRIQUE")
      */
     private $rubrique;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rubrique_id", type="integer")
+     *
+     */
+    private $rub;
+
+
+    /**
+     * @return mixed
+     */
+    public function getRubrique()
+    {
+        return $this->rubrique;
+    }
+
+    /**
+     * @param mixed $rubrique
+     */
+    public function setRubrique($rubrique)
+    {
+        $this->rubrique = $rubrique;
+    }
+
+
 
     /**
      * @var string
@@ -50,21 +79,7 @@ class Prestation
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRubrique()
-    {
-        return $this->rubrique;
-    }
 
-    /**
-     * @param mixed $rubrique
-     */
-    public function setRubrique($rubrique)
-    {
-        $this->rubrique = $rubrique;
-    }
 
     /**
      * @return string
@@ -80,6 +95,22 @@ class Prestation
     public function setPrestation($prestation)
     {
         $this->prestation = $prestation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRub()
+    {
+        return $this->rub;
+    }
+
+    /**
+     * @param int $rub
+     */
+    public function setRub($rub)
+    {
+        $this->rub = $rub;
     }
 
 

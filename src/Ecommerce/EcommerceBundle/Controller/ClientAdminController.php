@@ -22,7 +22,7 @@ class ClientAdminController extends Controller
 
         $entities = $em->getRepository('EcommerceBundle:Client')->findAll();
 
-        return $this->render('EcommerceBundle:Administration:Clients/index.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Client/index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -32,7 +32,6 @@ class ClientAdminController extends Controller
         $entity = new Client();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -41,7 +40,7 @@ class ClientAdminController extends Controller
             return $this->redirect($this->generateUrl('adminClient_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('EcommerceBundle:Administration:Clients/newClient.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Client/newClient.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -59,18 +58,18 @@ class ClientAdminController extends Controller
         return $form;
     }
 
-    public function newClientAction()
+    public function newMediaAction()
     {
         $entity = new Client();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('EcommerceBundle:Administration:Clients/newClient.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Client/newClient.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
-    public function showClientAction($id)
+    public function showMediaAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -82,14 +81,9 @@ class ClientAdminController extends Controller
 
 
 
-        return $this->render('EcommerceBundle:Administration:Clients/showClient.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Client/showClient.html.twig', array(
             'entity'      => $entity ));
     }
-
-
-
-
-
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -103,7 +97,7 @@ class ClientAdminController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('EcommerceBundle:Administration:Clients/edit.html.twig', array(
+        return $this->render('EcommerceBundle:Administration:Client/edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -149,7 +143,7 @@ class ClientAdminController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('adminClient_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('adminClient', array('id' => $id)));
         }
 
         return $this->render('EcommerceBundle:Administration:Client/edit.html.twig', array(
@@ -198,7 +192,6 @@ class ClientAdminController extends Controller
             ->getForm()
             ;
     }
-
 
 
 

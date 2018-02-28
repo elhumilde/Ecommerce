@@ -29,7 +29,11 @@
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.nomdirigeant }}</td>
                 <td>{{ entity.utilisateurs.username }}</td>
-                <td><img src="{{ asset('uploads/' ~ entity.image.Path) }}"  width="80" height="80"></td>
+
+                <td><img src="{{ asset('uploads/' ~ entity.Path) }}"  width="80" height="80"></td>
+
+
+
                 <td>
                     <a href="{{ path('adminClient_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
                     <a href="{{ path('adminClient_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>

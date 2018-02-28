@@ -1,16 +1,20 @@
 <?php
 namespace Utilisateurs\UtilisateursBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="Utilisateurs\UtilisateursBundle\Repository\UtilisateursRepository")
  * @ORM\Table(name="utilisateurs")
+ * @ORM\HasLifecycleCallbacks
  */
 class Utilisateurs extends BaseUser
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -35,7 +39,7 @@ class Utilisateurs extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=100)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
     /**
@@ -72,19 +76,10 @@ class Utilisateurs extends BaseUser
         return $this->id;
     }
     /**
-     * @return string
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
+     * @ORM\JoinColumn(nullable=true)
      */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-    /**
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
+    private $teleconatct;
     /**
      * @return string
      */
@@ -126,20 +121,6 @@ class Utilisateurs extends BaseUser
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-    }
-    /**
-     * @return string
-     */
-    public function getUsernameCanonical()
-    {
-        return $this->usernameCanonical;
-    }
-    /**
-     * @param string $usernameCanonical
-     */
-    public function setUsernameCanonical($usernameCanonical)
-    {
-        $this->usernameCanonical = $usernameCanonical;
     }
     /**
      * @return string
@@ -196,5 +177,96 @@ class Utilisateurs extends BaseUser
     public function setProfil($profil)
     {
         $this->profil = $profil;
+    }
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+    /**
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
+     */
+    private $updateAt;
+    /**
+     * @ORM\PostLoad()
+     */
+    public function postLoad()
+    {
+        $this->updateAt = new \DateTime();
+    }
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    private $path;
+    /**
+     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
+     *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
+     *
+     */
+    public $file;
+    public function getUploadRootDir()
+    {
+        return __dir__.'/../../../../web/uploads';
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+    public function getAssetPath()
+    {
+        return 'uploads/'.$this->path;
+    }
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+        $this->oldFile = $this->getPath();
+        $this->updateAt = new \DateTime();
+        if (null !== $this->file)
+            $this->path = sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
+    }
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null !== $this->file) {
+            $this->file->move($this->getUploadRootDir(),$this->path);
+            unset($this->file);
+            if ($this->oldFile != null) unlink($this->tempFile);
+        }
+    }
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+    }
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->tempFile)) unlink($this->tempFile);
+    }
+    public function getPath()
+    {
+        return $this->path;
     }
 }

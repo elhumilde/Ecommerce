@@ -33,7 +33,7 @@ class InflectorTest extends DoctrineTestCase
             array('vertex', 'vertices'),
             array('index', 'indices'),
             array('Alias', 'Aliases'),
-            array('Media', 'Media'),
+            array('Client', 'Client'),
             array('NodeMedia', 'NodeMedia'),
             array('alumnus', 'alumni'),
             array('bacillus', 'bacilli'),

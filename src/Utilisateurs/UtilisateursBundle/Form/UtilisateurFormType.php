@@ -15,17 +15,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
-class RegistrationFormType extends AbstractType
+class UtilisateurFormType extends AbstractType
 {
-    private $class;
-
-    /**
-     * @param string $class The User class name
-     */
-    public function __construct($class)
-    {
-        $this->class = $class;
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -46,19 +37,23 @@ class RegistrationFormType extends AbstractType
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle'))
             ->add('profil', null, array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
 
+
+
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => $this->class,
-            'intention'  => 'registration',
+            'data_class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'
         ));
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
-        return 'fos_user_registration';
+        return 'utilisateurs_utilisateursbundle_utilisateur';
     }
 }

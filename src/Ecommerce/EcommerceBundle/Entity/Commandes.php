@@ -25,9 +25,9 @@ class Commandes
      * @ORM\ManyToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Utilisateurs", inversedBy="commandes")
      * @ORM\JoinColumn(nullable=true)
      */
-    
+
     private $utilisateur;
-    
+
 
 
     /**
@@ -55,7 +55,7 @@ class Commandes
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -82,7 +82,7 @@ class Commandes
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -105,7 +105,7 @@ class Commandes
     /**
      * Get reference
      *
-     * @return integer 
+     * @return integer
      */
     public function getReference()
     {
@@ -128,7 +128,7 @@ class Commandes
     /**
      * Get boncommande
      *
-     * @return array 
+     * @return array
      */
     public function getBoncommande()
     {
@@ -151,7 +151,7 @@ class Commandes
     /**
      * Get utilisateur
      *
-     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs 
+     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
      */
     public function getUtilisateur()
     {

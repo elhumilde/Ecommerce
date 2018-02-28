@@ -1,0 +1,29 @@
+adminTelecontact:
+    pattern:  /
+    defaults: { _controller: "EcommerceBundle:TelecontactAdmin:index" }
+
+adminTelecontact_new:
+    pattern:  /new
+    defaults: { _controller: "EcommerceBundle:TelecontactAdmin:newTelecontact" }
+
+adminTelecontact_show:
+     pattern:  /{id}/show
+     defaults: { _controller: "EcommerceBundle:TelecontactAdmin:showTelecontact" }
+
+adminTelecontact_create:
+    pattern:  /create
+    defaults: { _controller: "EcommerceBundle:TelecontactAdmin:create" }
+    requirements: { _method: post }
+
+adminTelecontact_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EcommerceBundle:TelecontactAdmin:edit" }
+adminTelecontact_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EcommerceBundle:TelecontactAdmin:update" }
+    requirements: { _method: post|put }
+
+adminTelecontact_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EcommerceBundle:TelecontactAdmin:delete" }
+    requirements: { _method: post|delete }

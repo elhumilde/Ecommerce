@@ -6,7 +6,7 @@
     </div>
 
     <div class="span9">
-        <h2>Mes informations</h2>
+        <h3>PROFIL DU CONSEILLER COMMERCIAL</h3>
         <div id="collapseOne" class="accordion-body collapse in">
             <div class="accordion-inner">
                 <div class="span6">
@@ -19,10 +19,46 @@
                     <p>{{ 'Nombre client d\'année precidente'|trans }}: {{ user.nbrCltAnneePrec }}</p>
                     <p>{{ 'Profil'|trans }}: {{ user.profil }}</p>
                     <p>{{ 'Login'|trans }}: {{ user.nom }}</p>
+                    <p>{{ 'Login'|trans }}: {{ user.nom }}</p>
+                    <td><img src="{{ asset('uploads/' ~ user.path) }}"  width="80" height="80"></td>
+                    <h5>Mes Clients:</h5>
+                    <td>
+                        <ul>
+                        {% for en in user.client %}
+                            <li>
+                        <img src="{{ asset('uploads/' ~en.path) }}"  width="80" height="80">
+                            </li>
+                        </ul>
+                    {% endfor %}
+
+                    </td>
+
+
+<hr>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <div class="span9">
+        <h3>PRESENTATION DE L'ENTREPRISE</h3>
+        <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+                <div class="span6">
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </div>
 
 <div class="fos_user_user_show">

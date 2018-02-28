@@ -1,0 +1,99 @@
+{% extends '::layout/layoutAdmin.html.twig' %}
+
+
+{% block body -%}
+
+    <form class="form-group" action="" method="GET">
+        <h4>Mes activités:</h4>
+        <textarea></textarea><br>
+        selectionner rubrique principale  :
+        <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique">
+            <option  selected >Selectionné une rubrique</option>
+        {% for rubriqu in rubriques %}
+
+            <option value="{{ rubriqu.id }}" >{{ rubriqu.libelle }}</option>
+        {% endfor %}
+        </select>
+
+
+        <select   id="prestation">
+            <option  selected >Selectionné une prestation</option>
+
+        </select><br>
+        <div>
+<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-chevron-down"></span> Ajouter rubrique suplémentaire</a>
+</div>
+     {#   <select class="selectpicker "  #}{#multiple data-max-options="1"#}{#  >
+
+
+            #}{#         {% for presta in prestations %}
+                         <option value="{{ presta.id }}" >{{ presta.prestation }}</option>
+                     {% endfor %}#}{#
+
+
+        </select>#}
+
+{#
+        <h4></h4>
+        <ul id="JQResult">
+        </ul>#}
+
+
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function() {
+
+            var rubrique = jQuery('#select-rubrique');
+
+
+
+            jQuery('#select-rubrique').on('change', function () {
+                console.log("CHANGE rubrique AND prestation....................");
+                var select = jQuery(this);
+                var r = rubrique.val();
+                console.log('rubrique sss: ', r)
+
+           //     console.log('rubrique : ', r);
+                var data_send = { 'rubrique': r};
+                $.ajax({
+                    url: '{{ path('ajax') }}',
+                    type: 'POST',
+                    data: data_send,
+                    statusCode: {
+                        //traitement en cas de succès
+                        200: function (response) {
+                            var successMessage = response;
+
+              $('#prestation').children("option").remove();
+              $.each(JSON.parse(successMessage), function(i, pres) {
+                  $('#prestation').append(('<option value="' +pres.id+'">'+pres.prestation+'</option>'));
+
+              });
+
+                            //on vide les champs formulaires ou on le supprime ou ...
+                            //on retire le loader...
+                            //on prévient l'utilistateur du bonne envoi...
+                        },
+                        //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                        412: function (response) {
+                            var errorsForm = response.responseJSON.formErrors;
+                            //on affiche les erreurs...
+                            alert('error');
+                        }
+                    }
+                });
+
+            });
+        });
+
+
+    </script>
+
+
+
+{% endblock %}
+

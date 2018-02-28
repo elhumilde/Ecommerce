@@ -13,11 +13,8 @@ class ProduitsController extends Controller
         $session = $this ->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
-        if ($categorie != null)
             $findProduits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
-        else
-            $findProduits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
-
+        
         if ($session->has('panier'))
             $panier = $session->get('panier');
         else

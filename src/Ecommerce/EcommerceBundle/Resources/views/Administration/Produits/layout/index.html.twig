@@ -8,7 +8,7 @@
         <tr>
             <th>Nom</th>
             <th>Prix</th>
-            <th>Disponible</th>
+
             <th>Categorie</th>
             <th>Categorie description</th>
 
@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ entity.nom }}</td>
                 <td>{{ entity.prix }}</td>
-                <td>{{ entity.disponible }}</td>
+
                 <td>{{ entity.categorie.nomcategorie }}</td>
                 <td>{{ entity.categorie.description }}</td>
                 <td>
@@ -31,6 +31,10 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(entities) }}
+    </div>
 
     <ul>
         <li>

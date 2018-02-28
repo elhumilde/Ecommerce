@@ -44,11 +44,6 @@ class Media
      */
     private $path;
 
-    /**
-     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
-     *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
-     *
-     */
     public $file;
 
     public function getUploadRootDir()
@@ -125,4 +120,41 @@ class Media
         return $this->path;
     }
 
+
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     * @return Media
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Media
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
 }
