@@ -27,9 +27,16 @@
         </div>
 
         <button id="addrub-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
-            Ajouter rubrique suplémentaire &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
-        </button>
+            Ajouter rubrique suplémentaire  </button>
 
+        <h4>Vos Marques:</h4>
+<div id="contenu_marq">
+    <div id="marq">
+        <input type="text" class="form-control" >
+    </div>
+</div>
+        <button id="addmarq-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+            Ajouter une marque </button>
 
         {#
                 <div style="align-content: center; margin-left:207px">
@@ -61,10 +68,10 @@
             console.log(rubrique .val());*/
 
             // declanché lorsqu'on change le choix de la rub
-            $('#select-rubrique').on('change', function () {
+            $(document).on('change', '#select-rubrique', function () {
                 var current = this;
                 var rubrique = $(this);
-                console.log(rubrique .val());
+
 
                 $('#prestaAjax').css('display','');
                 console.log("CHANGE rubrique AND prestation....................");
@@ -88,9 +95,12 @@
 
                             $.each(JSON.parse(successMessage), function(i, pres) {
                                 $(current).siblings("select").first().append(('<option value="' +pres.id+'">'+pres.prestation+'</option>'));
+
+
+
                                /* $(current).next().remove();*/
 
-                               console.log(rubrique);
+
 
                                 $('#prestaAjax').css('display','none');
                             });
@@ -121,6 +131,21 @@
             });
 
 
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            var count = 1 ;
+            $('#addmarq-btn').on('click', function (){
+
+                    var duplicatedLists = $("#marq").last().clone();
+                    duplicatedLists.appendTo("#contenu_marq");
+             
+
+            });
 
         });
     </script>
