@@ -21,9 +21,9 @@ class ReferencementController extends Controller
 
         if(!$session->has('referencement')) $session->set('referencement',array());
 
-        $villes = $em->getRepository('EcommerceBundle:Mobileville')->findAll();
+        $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
 
-        $entities = $em->getRepository('EcommerceBundle:Mobileville')->getSelectlist();
+       $entities = $em->getRepository('EcommerceBundle:region')->findAll();
 
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencement.html.twig',
           array(  'entities' => $entities,
@@ -43,8 +43,8 @@ class ReferencementController extends Controller
 
 
         $rubriques = $em->getRepository('EcommerceBundle:Rubrique')->findAll();
-        $villes = $em->getRepository('EcommerceBundle:Mobileville')->findAll();
-        $entities = $em->getRepository('EcommerceBundle:Mobileville')->getSelectlist();
+        $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
+        $entities = $em->getRepository('EcommerceBundle:region')->findAll();
 
 
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencementdevis.html.twig',  array(  'rubriques' => $rubriques,

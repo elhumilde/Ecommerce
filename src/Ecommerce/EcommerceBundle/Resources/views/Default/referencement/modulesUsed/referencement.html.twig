@@ -14,7 +14,7 @@
    Ville principale  :
     <select class="selectpicker"  multiple data-max-options="5" data-live-search="true">
             {% for villes in villes %}
-           <option >{{ villes.ville }}</option>
+           <option >{{ villes.libelle }}</option>
             {% endfor %}
         </select>
 
@@ -26,7 +26,7 @@
     Région principale
     <select class="selectpicker"  multiple data-max-options="5" data-live-search="true" >
         {% for entity in entities %}
-            <option  >{{ entity.region }}</option>
+            <option  >{{ entity.libelle }}</option>
         {% endfor %}
     </select><br>
 

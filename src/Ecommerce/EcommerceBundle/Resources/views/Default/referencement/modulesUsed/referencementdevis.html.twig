@@ -7,49 +7,54 @@
         <h4>Mes activités:</h4>
         <textarea></textarea><br>
         selectionner rubrique principale  :
-        <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique">
-            <option  selected >Selectionné une rubrique</option>
-        {% for rubriqu in rubriques %}
+        <div id="contenu_lists">
+            <div id="select_rub_prest">
+                <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique">
+                    <option  selected >Selectionné une rubrique</option>
+                    {% for rubriqu in rubriques %}
 
-            <option value="{{ rubriqu.id }}" >{{ rubriqu.libelle }}</option>
-        {% endfor %}
-        </select>
+                        <option value="{{ rubriqu.id }}" >{{ rubriqu.libelle }}</option>
+                    {% endfor %}
+                </select>
 
-<span id="prestaAjax" style="display: none">
+                <span id="prestaAjax" style="display: none">
         <img src='../../web/ajax-loader.gif' alt='loading...'  height="25" width="25"/>
 
         </span><select   id="prestation">
-            <option  selected >Selectionné une prestation</option>
-        </select> <br>
+                    <option  selected >Selectionné une prestation</option>
+                </select> <br>
+            </div>
+        </div>
 
-        <div id="test"></div>
+        <button id="addrub-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+            Ajouter rubrique suplémentaire  </button>
 
-
-{#
-        <div style="align-content: center; margin-left:207px">
-
-            <button type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
-                Ajouter rubrique suplémentaire &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
-            </button>
-<div id="demo-1" class="collapse bouton-2">
-
-            <select #}{#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#}{# id="select-rubrique">
-                <option  selected >Selectionné une rubrique</option>
-                {% for rubriqu in rubriques %}
-
-                    <option value="{{ rubriqu.id }}" >{{ rubriqu.libelle }}</option>
-                {% endfor %}
-            </select>
-
-
-        <select   id="prestation">
-            <option  selected >Selectionné une prestation</option>
-        </select>
-
-
-
+        <h4>Vos Marques:</h4>
+<div id="contenu_marq">
+    <div id="marq">
+        <input type="text" class="form-control" >
+    </div>
 </div>
-        </div>#}
+        <button id="addmarq-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+            Ajouter une marque </button>
+
+        {#
+                <div style="align-content: center; margin-left:207px">
+                    <button type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+                        Ajouter rubrique suplémentaire &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    </button>
+        <div id="demo-1" class="collapse bouton-2">
+                    <select #}{#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#}{# id="select-rubrique">
+                        <option  selected >Selectionné une rubrique</option>
+                        {% for rubriqu in rubriques %}
+                            <option value="{{ rubriqu.id }}" >{{ rubriqu.libelle }}</option>
+                        {% endfor %}
+                    </select>
+                <select   id="prestation">
+                    <option  selected >Selectionné une prestation</option>
+                </select>
+        </div>
+                </div>#}
 
 
 
@@ -58,71 +63,90 @@
     <script src="http://code.jquery.com/jquery.js"></script>
 
     <script type="text/javascript">
+        $(document).ready(function() {
+          /*  var rubrique = $(this);
+            console.log(rubrique .val());*/
 
-        jQuery(document).ready(function() {
+            // declanché lorsqu'on change le choix de la rub
+            $(document).on('change', '#select-rubrique', function () {
+                var current = this;
+                var rubrique = $(this);
 
-            var rubrique = jQuery('#select-rubrique');
 
-
-
-            jQuery('#select-rubrique').on('change', function () {
-
-                jQuery('#prestaAjax').css('display','');
-
+                $('#prestaAjax').css('display','');
                 console.log("CHANGE rubrique AND prestation....................");
                 var select = jQuery(this);
                 var r = rubrique.val();
                 console.log('rubrique sss: ', r)
-
-           //     console.log('rubrique : ', r);
+                //     console.log('rubrique : ', r);
                 var data_send = { 'rubrique': r};
                 $.ajax({
-
                     url: '{{ path('ajax') }}',
                     type: 'POST',
                     data: data_send,
                     statusCode: {
-
-
                         //traitement en cas de succès
                         200: function (response) {
                             var successMessage = response;
 
-                    if(response){
+                          /*  $('#prestation').children("option").remove();*/
 
+                            $(current).siblings("select").first().find("option").remove();
 
-                        $('#prestation').children("option").remove();
-                        $.each(JSON.parse(successMessage), function(i, pres) {
-                            $('#prestation').append(('<option value="' +pres.id+'">'+pres.prestation+'</option>'));
-                            jQuery('#prestaAjax').css('display','none');
-                        });
-                    }  else
+                            $.each(JSON.parse(successMessage), function(i, pres) {
+                                $(current).siblings("select").first().append(('<option value="' +pres.id+'">'+pres.prestation+'</option>'));
 
 
 
-                  jQuery('#prestaAjax').css('display','none');
+                               /* $(current).next().remove();*/
 
 
+
+                                $('#prestaAjax').css('display','none');
+                            });
+                            $('#prestaAjax').css('display','none');
                             //on vide les champs formulaires ou on le supprime ou ...
                             //on retire le loader...
-                            //on prévient l'utilistateur du bonne envoi...
+
                         },
                         //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
                         412: function (response) {
                             var errorsForm = response.responseJSON.formErrors;
                             //on affiche les erreurs...
                             alert('error');
-                            jQuery('#prestaAjax').css('display','none');
+                            $('#prestaAjax').css('display','none');
                         }
                     }
-
                 });
+                //   $( "#select-rubrique" ).clone().appendTo("#test");
+            });
+            //declanche lorsqu'on clique sur btn addrub-btn
+            var count = 1 ;
+            $('#addrub-btn').on('click', function (){
+                if (count < 5) {
+                    var duplicatedLists = $("#select_rub_prest").last().clone();
+                    duplicatedLists.appendTo("#contenu_lists");
+                    count++;
+                }
+            });
 
 
-                $( "#select-rubrique" ).clone().appendTo("#test");
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            var count = 1 ;
+            $('#addmarq-btn').on('click', function (){
+
+                    var duplicatedLists = $("#marq").last().clone();
+                    duplicatedLists.appendTo("#contenu_marq");
 
 
             });
+
         });
-  </script>
+    </script>
 {% endblock %}
