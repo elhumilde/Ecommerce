@@ -3,42 +3,72 @@
 
 {% block body -%}
 
-<form class="form-group" >
-    <h4>Mes activités:</h4>
-    Prestations <b>Nbre:</b> <input type="text"><br>
-    Marques <b>Nbre:</b> <input type="text"><br>
-    Rubriques <b>Nbre:</b> <input type="text">
+    <form class="form-group" name="form1" method="post" action="" >
+        <table>
+            <tr><td>Rubrique</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="num1" /></td></tr>
 
-<h4>Ma Visibilité sur:</h4></br>
+            <tr><td>Prestation</td><td><b>Nbre:</b>&nbsp<input type="text" name="sum" id="sum" readonly /></td></tr>
 
-   Ville principale  :
-    <select class="selectpicker"  multiple data-max-options="5" data-live-search="true">
+            <tr><td>Prestation sup</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="" /></td></tr>
+            <tr><td>Marque</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="" /></td></tr>
+
+        </table>
+
+
+        <h4>Ma Visibilité sur:</h4></br>
+
+        Ville principale  :
+        <select class="selectpicker"  multiple data-max-options="5" data-live-search="true">
             {% for villes in villes %}
-           <option >{{ villes.libelle }}</option>
+                <option >{{ villes.libelle }}</option>
             {% endfor %}
         </select>
 
 
-    <label> Ville(s) Supplémentaires </label>
+        <label> Ville(s) Supplémentaires </label>
 
-   Nombre des villes : <input type="text" name="ville" ><br>
+        Nombre des villes : <input type="text" name="ville" ><br>
 
-    Région principale
-    <select class="selectpicker"  multiple data-max-options="5" data-live-search="true" >
-        {% for entity in entities %}
-            <option  >{{ entity.libelle }}</option>
-        {% endfor %}
-    </select><br>
+        Région principale
+        <select class="selectpicker"  multiple data-max-options="5" data-live-search="true" >
+            {% for entity in entities %}
+                <option  >{{ entity.libelle }}</option>
+            {% endfor %}
+        </select><br>
 
-    <td> Region(s) Supplémentaires </td><br>
+        <td> Region(s) Supplémentaires </td><br>
 
-    Nombre des regions : <input type="text" name="ville" ><br>
+        Nombre des regions : <input type="text" name="ville" ><br>
 
-    <div>
-        <button class="btn btn-large 	btn btn-inverse " style="display: block; margin: 0 auto;" type="submit">Budget estimé</button>
-    </div>
+        <div>
+            <button class="btn btn-large 	btn btn-inverse " style="display: block; margin: 0 auto;" type="submit">Budget estimé</button>
+        </div>
+    </form>
 
-</form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            //this calculates values automatically
+            sum();
+            $("#num1").on("keydown keyup", function() {
+                sum();
+            });
+        });
+
+        function sum() {
+            var num1 = document.getElementById('num1').value;
+           /* var num2 = document.getElementById('num2').value;*/
+            var result = parseInt(num1) * 3;
+           /* var result1 = parseInt(num2) - parseInt(num1);*/
+            if (!isNaN(result)) {
+                document.getElementById('sum').value = result;
+               /* document.getElementById('subt').value = result1;*/
+            }
+        }
+    </script>
 
 
 {% endblock %}
