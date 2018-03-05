@@ -49,3 +49,8 @@ referencementdevis:
 ajax:
     pattern:  /ajax
     defaults: { _controller: EcommerceBundle:referencement:ajax }
+
+ajaxRef:
+    pattern:  /ajaxRef
+    defaults: { _controller: EcommerceBundle:referencement:ajaxRef }
+
