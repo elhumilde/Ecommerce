@@ -13,13 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Ville
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="codeville", type="integer", nullable=false)
+     * @ORM\Column(name="codeville", type="string", length=11, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $codeville;
+    private $codeville = '';
 
     /**
      * @var string
@@ -28,15 +28,22 @@ class Ville
      */
     private $libelle;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="coderegion", type="integer", nullable=true)
-     */
-    private $coderegion;
 
     /**
-     * @return int
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Region", cascade={"persist"})
+     * @ORM\JoinColumn(name="coderegion", referencedColumnName="coderegion")
+     */
+    private $region;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=20, nullable=false)
+     */
+    private $categorie;
+
+    /**
+     * @return string
      */
     public function getCodeville()
     {
@@ -44,7 +51,7 @@ class Ville
     }
 
     /**
-     * @param int $codeville
+     * @param string $codeville
      */
     public function setCodeville($codeville)
     {
@@ -68,20 +75,35 @@ class Ville
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getCoderegion()
+    public function getRegion()
     {
-        return $this->coderegion;
+        return $this->region;
     }
 
     /**
-     * @param int $coderegion
+     * @param mixed $region
      */
-    public function setCoderegion($coderegion)
+    public function setRegion($region)
     {
-        $this->coderegion = $coderegion;
+        $this->region = $region;
     }
 
+    /**
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param string $categorie
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+    }
 
 }
