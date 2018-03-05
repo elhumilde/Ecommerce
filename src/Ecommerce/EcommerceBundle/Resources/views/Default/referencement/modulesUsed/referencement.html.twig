@@ -9,66 +9,170 @@
 
             <tr><td>Prestation</td><td><b>Nbre:</b>&nbsp<input type="text" name="sum" id="sum" readonly /></td></tr>
 
-            <tr><td>Prestation sup</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="" /></td></tr>
-            <tr><td>Marque</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="" /></td></tr>
-
+            <tr><td>Prestation sup</td><td><b>Nbre:</b>&nbsp<input type="text" name="num2" id="num2" class="pres_marq" /></td></tr>
+            <tr><td><input type="text" name="sum2" id="sum2" class="pres_marq" style="display:none;"/></td></tr>
+            <tr><td>Marque</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="num3" class="pres_marq" /></td></tr>
+            <tr><td><input type="text" name="num1" id="sum3" class="pres_marq" style="display:none;" /></td></tr>
+            <tr><td>    budget estimé</td> <td><input type="text" id="mari" value=""></td></tr>
         </table>
 
 
-        <h4>Ma Visibilité sur:</h4></br>
 
-        Ville principale  :
-        <select class="selectpicker"  multiple data-max-options="5" data-live-search="true">
-            {% for villes in villes %}
-                <option >{{ villes.libelle }}</option>
-            {% endfor %}
-        </select>
+        <h4>Affichage</h4>
+        <h5>Vignette thématique</h5>
+
+        <input type="text" id="amal" value="">
 
 
-        <label> Ville(s) Supplémentaires </label>
 
-        Nombre des villes : <input type="text" name="ville" ><br>
 
-        Région principale
-        <select class="selectpicker"  multiple data-max-options="5" data-live-search="true" >
-            {% for entity in entities %}
-                <option  >{{ entity.libelle }}</option>
-            {% endfor %}
-        </select><br>
+            <div class="span9">
+                <ul class="thumbnails">
 
-        <td> Region(s) Supplémentaires </td><br>
+                    <li id="">
+                        <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
 
-        Nombre des regions : <input type="text" name="ville" ><br>
 
-        <div>
-            <button class="btn btn-large 	btn btn-inverse " style="display: block; margin: 0 auto;" type="submit">Budget estimé</button>
-        </div>
-    </form>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery.js"></script>
+                            <div class="titre">Ville principale</div>
 
-    <script>
+                            {% for ville in villes %}
+                                <div class="tex" >
+                                    <input id="select" class="my-activitys" type="radio" name="villes"  value="{{ ville.region.coderegion }}"/>{{ ville.libelle }}
 
-        $(document).ready(function() {
-            //this calculates values automatically
-            sum();
-            $("#num1").on("keydown keyup", function() {
-                sum();
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </li>
+
+                    <li id="">
+                        <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
+
+                            <div class="titre">Ville sup</div>
+
+                            <h5><input type="checkbox" id="chk1" name="chk1"   class="my-activity"  value="0">Sa région</h5>
+
+
+                            <h5><input type="checkbox" id="chk2" name="chk2"   class="my-activity"  value="1">+1 région</h5>
+
+
+                            <h5><input type="checkbox" id="chk3" name="chk3"   class="my-activity"  value="3">+3 région</h5>
+
+
+                            <h5><input type="checkbox" id="chk4" name="chk4"   class="my-activity"  value="6">+6 région</h5>
+
+                            <h5><input type="checkbox" id="chk4" name="chk5"   class="my-activity"  value="9">+9 région</h5>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+
+        $(document).on('click', '.my-activity', function () {
+         
+            var ctar  = 'VA';
+            console.log("CHANGE rubrique AND prestation....................");
+            var select = jQuery(this);
+            var v = $('input[name=villes]:checked').val();
+            var o = $(this).attr("value");
+            console.log('ville : ', v, 'opt1 :',o);
+            var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
+            $.ajax({
+                url: '{{ path('ajaxRef') }}',
+                type: 'POST',
+                data: data_send,
+                statusCode: {
+                    //traitement en cas de succès
+                    200: function (response) {
+
+                        var successMessage = response.nom.VAR;
+
+
+                        $('input[id=amal]').val(successMessage);
+
+                        sum()+ successMessage;
+
+
+                    },
+
+                    412: function (response) {
+                        var errorsForm = response.responseJSON.formErrors;
+                        //on affiche les erreurs...
+                        alert('error');
+
+                    }
+                }
             });
+
+        });
+        $(document).on("keydown keyup", function() {
+
+            sum();
+
+
+            function sum() {
+                var num1 = document.getElementById('num1').value;
+                var num2 = document.getElementById('num2').value;
+                var num3 = document.getElementById('num3').value;
+                var v = $('input[name=amal]').val();
+
+                var result = parseInt(num1) * 3;
+                var result2 = parseInt(num2) * 1500;
+                var result3 = parseInt(num3) * 400;
+
+                if (!isNaN(result)) {
+                    document.getElementById('sum').value = result;
+                    document.getElementById('sum2').value = result2;
+                    document.getElementById('sum3').value = result3;
+
+                }
+                document.getElementById("mari").value = result2 + result3 ;
+
+                return result2 + result3;
+            }
+
+
+
         });
 
-        function sum() {
-            var num1 = document.getElementById('num1').value;
-           /* var num2 = document.getElementById('num2').value;*/
-            var result = parseInt(num1) * 3;
-           /* var result1 = parseInt(num2) - parseInt(num1);*/
-            if (!isNaN(result)) {
-                document.getElementById('sum').value = result;
-               /* document.getElementById('subt').value = result1;*/
+    });
+</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
+
+
+{#
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".my-activity").click(function(event) {
+            var total = 0;
+            $(".my-activity:checked").each(function() {
+                total = parseInt($(this).val());
+            });
+
+            if (total == 0) {
+                $('#total').val('');
+            } else {
+                $('#total').val(total);
             }
-        }
-    </script>
+        });
+    });
+</script>
+#}
+
+
+
 
 
 {% endblock %}
