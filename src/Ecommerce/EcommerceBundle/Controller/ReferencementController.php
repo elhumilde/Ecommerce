@@ -21,7 +21,7 @@ class ReferencementController extends Controller
 
         if (!$session->has('referencement')) $session->set('referencement', array());
 
-        $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
+        $villes = $em->getRepository('EcommerceBundle:ville')->findBy(array(), array('libelle' => 'asc'));
 
         $entities = $em->getRepository('EcommerceBundle:region')->findAll();
 
