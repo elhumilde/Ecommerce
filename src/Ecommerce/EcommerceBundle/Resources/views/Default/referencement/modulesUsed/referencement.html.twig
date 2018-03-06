@@ -14,16 +14,16 @@
 
     <form class="form-group" name="form1" method="post" action="" >
         <table>
-            <tr><td>Rubrique</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="num1" /></td></tr>
+            <tr><td>Rubrique</td><td><b>Nbre:</b>&nbsp<input type="number" name="num1" id="num1" /></td></tr>
 
-            <tr><td>Prestation</td><td><b>Nbre:</b>&nbsp<input type="text" name="sum" id="sum" readonly /></td></tr>
+            <tr><td>Prestation</td><td><b>Nbre:</b>&nbsp<input type="number" name="sum" id="sum" readonly /></td></tr>
 
-            <tr><td>Prestation sup</td><td><b>Nbre:</b>&nbsp<input type="text" name="num2" id="num2" class="pres_marq" /></td></tr>
-            <tr><td><input type="text" name="sum2" id="sum2" class="pres_marq" style="display:none;"/></td></tr>
-            <tr><td>Marque</td><td><b>Nbre:</b>&nbsp<input type="text" name="num1" id="num3" class="pres_marq" /></td></tr>
-            <tr><td><input type="text" name="num1" id="sum3" class="pres_marq" style="display:none;" /></td></tr>
-            <tr><td>    budget estimé</td> <td><input type="text" id="mari" style="display:none;" value=""></td></tr>
-            <tr><td>    budget estimé</td> <td><input type="text" id="rania"   value=""></td></tr>
+            <tr><td>Prestation sup</td><td><b>Nbre:</b>&nbsp<input type="number" name="num2" id="num2" class="pres_marq" /></td></tr>
+            <tr><td><input type="number" name="sum2" id="sum2" class="pres_marq" style="display:none;" /></td></tr>
+            <tr><td>Marque</td><td><b>Nbre:</b>&nbsp<input type="number" name="num1" id="num3" class="pres_marq" /></td></tr>
+            <tr><td><input type="number" name="num1" id="sum3" class="pres_marq" style="display:none;" /></td></tr>
+            <tr> <td>TEST</td><td><input type="number" id="mari"  value=""></td></tr>
+            <tr> <td>TEST</td><td><input type="number" id="fayssal"  value=""></td></tr>
         </table>
 
 
@@ -37,7 +37,7 @@
 
 
             <div class="span9">
-                <ul class="thumbnails">
+                <ul class="thumbnails" style="margin-left: -180px">
 
                     <li id="">
                         <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
@@ -45,6 +45,27 @@
 
 
                             <div class="titre">Ville principale</div>
+                            <div class="tex">
+                                <input id="select" class="my-activitys" type="radio" name="villes" value="9">Casablanca
+
+                            </div>
+                            <div class="tex">
+                                <input id="select" class="my-activitys" type="radio" name="villes" value="10">Rabat
+
+                            </div>
+                            <div class="tex">
+                                <input id="select" class="my-activitys" type="radio" name="villes" value="14">Fes
+
+                            </div>
+                            <div class="tex">
+                                <input id="select" class="my-activitys" type="radio" name="villes" value="16">Tanger
+
+                            </div>
+                            <div class="tex">
+                                <input id="select" class="my-activitys" type="radio" name="villes" value="4">Agadir
+
+                            </div>
+
 
                             {% for ville in villes %}
                                 <div class="tex" >
@@ -61,18 +82,18 @@
 
                             <div class="titre">Ville supplementaires</div>
 
-                            <h5><input type="checkbox" id="chk1" name="chk1"   class="my-activity"  value="0">Sur sa localité</h5>
+                            <h5><input type="radio" id="chk1" name="chk2"   class="my-activity"  value="0">Sur sa localité</h5>
 
 
-                            <h5><input type="checkbox" id="chk2" name="chk2"   class="my-activity"  value="1">+1 localité</h5>
+                            <h5><input type="radio" id="chk2" name="chk2"   class="my-activity"  value="1">+1 localité</h5>
 
 
-                            <h5><input type="checkbox" id="chk3" name="chk3"   class="my-activity"  value="3">+3 localité</h5>
+                            <h5><input type="radio" id="chk3" name="chk2"   class="my-activity"  value="3">+3 localité</h5>
 
 
-                            <h5><input type="checkbox" id="chk4" name="chk4"   class="my-activity"  value="6">+6 localité</h5>
+                            <h5><input type="radio" id="chk4" name="chk2"   class="my-activity"  value="6">+6 localité</h5>
 
-                            <h5><input type="checkbox" id="chk4" name="chk5"   class="my-activity"  value="9">+9 localité</h5>
+                            <h5><input type="radio" id="chk4" name="chk2"   class="my-activity"  value="9">+9 localité</h5>
 
                         </div>
                     </li>
@@ -86,8 +107,8 @@
                             <div class="titre">Region principale</div>
 
                             {% for  entities in entities %}
-                                <div class="tex" >
-                                    <input id="select" class="region" type="radio" name="villes"  value="{{ entities.coderegion }}"/>{{ entities.libelle }}
+                                <div class="tex xxx" >
+                                    <input id="select" class="regiontest" type="radio" name="regions"  value="{{ entities.coderegion }}"/>{{ entities.libelle }}
 
                                 </div>
                             {% endfor %}
@@ -100,18 +121,18 @@
 
                             <div class="titre">Region supplementaires</div>
 
-                            <h5><input type="checkbox" id="chk1" name="chk1"   class="region"  value="0">Sur sa region</h5>
+                            <h5><input type="radio" id="chk1" name="chk1"   class="region"  value="0">Sur sa region</h5>
 
 
-                            <h5><input type="checkbox" id="chk2" name="chk2"   class="region"  value="1">+1 region</h5>
+                            <h5><input type="radio" id="chk2" name="chk1"   class="region"  value="1">+1 region</h5>
 
 
-                            <h5><input type="checkbox" id="chk3" name="chk3"   class="region"  value="3">+3 region</h5>
+                            <h5><input type="radio" id="chk3" name="chk1"   class="region"  value="3">+3 region</h5>
 
 
-                            <h5><input type="checkbox" id="chk4" name="chk4"   class="region"  value="6">+6 region</h5>
+                            <h5><input type="radio" id="chk4" name="chk1"   class="region"  value="6">+6 region</h5>
 
-                            <h5><input type="checkbox" id="chk4" name="chk5"   class="region"  value="N">National</h5>
+                            <h5><input type="radio" id="chk4" name="chk1"   class="region"  value="N">National</h5>
 
                         </div>
                     </li>
@@ -119,13 +140,27 @@
 
                 </ul>
             </div>
-
+<div>
+        <tr><td>    budget estimé</td> <td><input type="text" id="rania"   value=""></td></tr>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        cal();
+  function cal(){
+        var total = +$("#rania").val() || 0;
+        var vat = +$("#mari").val() || 0;
+        $("#fayssal").val(vat + total);
+  }
         var sum_result =0;
+        var total = 0
+
+        $(document).on('click', '.my-activitys', function () {
+            var o = $(this).attr("value");
+            $('.xxx input[value='+o+']').prop("checked", true);
+        });
 
         $(document).on('click', '.my-activity', function () {
 
@@ -148,10 +183,9 @@
                         var successMessage = response.nom.VAR;
 
 
-                        $('input[id=amal]').val(successMessage);
+                        $('input[id=rania]').val(successMessage);
 
-                        console.log();
-                        $('input[id=rania]').val(sum_result+successMessage);
+                        cal();
 
                     },
 
@@ -166,6 +200,13 @@
 
         });
 
+
+
+
+
+
+
+
         $(document).on('click', '.region', function () {
 
             var ctar  = 'ML';
@@ -174,7 +215,7 @@
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
 
-            console.log('ville : ', v, 'opt1 :',o);
+            console.log('villesss : ', v, 'opt1sss :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
                 url: '{{ path('ajaxRef') }}',
@@ -187,10 +228,10 @@
                         var successMessage = response.nom.VAR;
 
 
-                        $('input[id=amal]').val(successMessage);
-
-                        console.log();
-                        $('input[id=rania]').val(sum_result+successMessage);
+                        $('input[id=rania]').val(successMessage);
+                        cal();
+                    /* console.log();
+                        $('input[id=rania]').val(sum_result+successMessage);*/
 
                     },
 
@@ -213,7 +254,7 @@
                 var num1 = document.getElementById('num1').value;
                 var num2 = document.getElementById('num2').value;
                 var num3 = document.getElementById('num3').value;
-                var v = $('input[name=amal]').val();
+
 
                 var result = parseInt(num1) * 3;
                 var result2 = parseInt(num2) * 1500;
@@ -228,11 +269,16 @@
                 document.getElementById("mari").value = result2 + result3 ;
 
                 sum_result =  result2 + result3;
+                cal();
             }
 
 
 
         });
+
+
+
+
 
     });
 </script>
