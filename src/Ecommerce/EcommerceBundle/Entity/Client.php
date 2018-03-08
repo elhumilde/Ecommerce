@@ -332,4 +332,17 @@ class Client
         if (file_exists($this->tempFile)) unlink($this->tempFile);
     }
 
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Client
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
 }

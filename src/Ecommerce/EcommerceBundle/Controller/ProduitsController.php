@@ -16,21 +16,13 @@ class ProduitsController extends Controller
         $session = $this ->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
-
-            $findProduitsCatalogue = $em->getRepository('EcommerceBundle:Produits')->findLimitCatalogue();
-            $findProduitsCatalogueReference = $em->getRepository('EcommerceBundle:Produits')->findLimitCatalogueReference();
-            $findProduitsVideo = $em->getRepository('EcommerceBundle:Produits')->findLimitVideo();
-            $findProduitsPack = $em->getRepository('EcommerceBundle:Produits')->findLimitPack();
         if ($session->has('panier'))
             $panier = $session->get('panier');
         else
             $panier = false;
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produitsCatalogue' => $findProduitsCatalogue,
-                                                                                                       'produitsCatalogueReference' => $findProduitsCatalogueReference,
-                                                                                                       'produitsVideo' => $findProduitsVideo,
-                                                                                                       'produitsPack' => $findProduitsPack,
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array( 'panier' => $panier));
 
-                                                                                                        'panier' => $panier));
+
     }
 
     public function presentationAction($id)

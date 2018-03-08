@@ -39,7 +39,6 @@ class Media
     }
 
 
-
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
      */
@@ -122,4 +121,40 @@ class Media
     }
 
 
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     * @return Media
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Media
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
 }

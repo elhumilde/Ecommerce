@@ -5,8 +5,9 @@ namespace Ecommerce\EcommerceBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Ecommerce\EcommerceBundle\Form\ClientType;
 
-class MediaType extends AbstractType
+class ReferencementType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,12 +16,11 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('file','file', array('required' => false))
-
-            ->add('file','file', array('required' => false));
+            ->add( 'ville' , 'checkbox')
+            ->add('region', 'checkbox')
 
 
+        ;
     }
 
     /**
@@ -29,7 +29,7 @@ class MediaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ecommerce\EcommerceBundle\Entity\Media'
+            'data_class' => 'Ecommerce\EcommerceBundle\Entity\MobileVille'
         ));
     }
 
@@ -38,6 +38,6 @@ class MediaType extends AbstractType
      */
     public function getName()
     {
-        return 'ecommerce_ecommercebundle_media';
+        return 'ecommerce_ecommercebundle_MobileVille';
     }
 }

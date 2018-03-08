@@ -20,6 +20,16 @@ class ProduitsType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('prix')
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+            ->add('image', new MediaType())
+            ->add('categorie')
+
+        ;
+=======
+>>>>>>> ee97fec43556099e1446799d18ed4c7840a18c44
             ->add('disponible')
             ->add('image', new MediaType(),array('label'=> 'Image Produit'))
             ->add('categorie', 'entity', array(
@@ -28,6 +38,10 @@ class ProduitsType extends AbstractType
 
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> 0d140e8403f4d0adf984ce8537b9fe029928ebe8
+>>>>>>> ee97fec43556099e1446799d18ed4c7840a18c44
     }
     
     /**

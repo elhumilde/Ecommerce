@@ -5,7 +5,6 @@ routingAdmin:
 routingPanier:
   resource: "@EcommerceBundle/Resources/config/routing/routingPanier.yml"
   prefix: /panier
-
 routingProduits:
   resource: "@EcommerceBundle/Resources/config/routing/routingProduits.yml"
   prefix: /
@@ -29,6 +28,7 @@ routingTelecontactAdmin:
   resource: "@EcommerceBundle/Resources/config/routing/routingTelecontactAdmin.yml"
   prefix:   /admin/telecontact
 
+
 ajax_va:
     pattern:  /ajax_va
     defaults: { _controller: EcommerceBundle:Produits:ajaxVA }
@@ -44,6 +44,12 @@ ajax_ep:
 ajax_hb:
     pattern:  /ajax_hb
     defaults: { _controller: EcommerceBundle:Produits:ajaxhb }
+
+routingReferencement:
+  resource: "@EcommerceBundle/Resources/config/routing/routingReferencement.yml"
+  prefix: /referencement
+
+
 clients:
     pattern:  /admin/clts
     defaults: { _controller: EcommerceBundle:Client:clients   }
@@ -51,3 +57,16 @@ clients:
 presentationclient:
     pattern:  /clients/{id}
     defaults: { _controller: EcommerceBundle:Client:presentation }
+
+referencementdevis:
+    pattern:  /referencementdevis
+    defaults: { _controller: EcommerceBundle:referencement:referencementdevis }
+
+ajax:
+    pattern:  /ajax
+    defaults: { _controller: EcommerceBundle:referencement:ajax }
+
+ajaxRef:
+    pattern:  /ajaxRef
+    defaults: { _controller: EcommerceBundle:referencement:ajaxRef }
+

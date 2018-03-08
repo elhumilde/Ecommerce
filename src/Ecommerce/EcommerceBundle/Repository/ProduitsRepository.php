@@ -62,7 +62,7 @@ class ProduitsRepository extends EntityRepository
          $qb = $this->createQueryBuilder('u')
                     ->select('u')
                     ->where('u.categorie = :categorie')
-                    ->andWhere('u.disponible = 1')
+
                     ->orderBy('u.id')
                     ->setParameter('categorie', $categorie);
         return $qb->getQuery()->getResult();
@@ -73,7 +73,6 @@ class ProduitsRepository extends EntityRepository
          $qb = $this->createQueryBuilder('u')
                     ->select('u')
                     ->where('u.nom like :chaine')
-                    ->andWhere('u.disponible = 1')
                     ->orderBy('u.id')
                     ->setParameter('chaine', $chaine);
         return $qb->getQuery()->getResult();

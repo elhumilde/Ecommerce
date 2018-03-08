@@ -26,7 +26,7 @@ class UtilisateursAdresses
      * @ORM\JoinColumn(nullable=true)
      */
     private $utilisateur;
-    
+
     /**
      * @var string
      *
@@ -87,7 +87,7 @@ class UtilisateursAdresses
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -110,7 +110,7 @@ class UtilisateursAdresses
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -133,7 +133,7 @@ class UtilisateursAdresses
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
@@ -156,7 +156,7 @@ class UtilisateursAdresses
     /**
      * Get telephone
      *
-     * @return string 
+     * @return string
      */
     public function getTelephone()
     {
@@ -179,7 +179,7 @@ class UtilisateursAdresses
     /**
      * Get adresse
      *
-     * @return string 
+     * @return string
      */
     public function getAdresse()
     {
@@ -202,7 +202,7 @@ class UtilisateursAdresses
     /**
      * Get cp
      *
-     * @return string 
+     * @return string
      */
     public function getCp()
     {
@@ -225,7 +225,7 @@ class UtilisateursAdresses
     /**
      * Get pays
      *
-     * @return string 
+     * @return string
      */
     public function getPays()
     {
@@ -248,7 +248,7 @@ class UtilisateursAdresses
     /**
      * Get ville
      *
-     * @return string 
+     * @return string
      */
     public function getVille()
     {
@@ -271,7 +271,7 @@ class UtilisateursAdresses
     /**
      * Get complement
      *
-     * @return string 
+     * @return string
      */
     public function getComplement()
     {
@@ -294,7 +294,7 @@ class UtilisateursAdresses
     /**
      * Get utilisateur
      *
-     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs 
+     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
      */
     public function getUtilisateur()
     {

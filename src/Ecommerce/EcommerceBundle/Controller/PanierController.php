@@ -82,15 +82,14 @@ class PanierController extends Controller
     public function validerAction()
     {
 
-        if ($this->get('request')->getMethod() =='POST')
+        if ($this->get('request')->getMethod() == 'POST')
+            $this->setLivraisonOnSession();
 
-            $em = $this->getDoctrine()->getManager();
-        $session = $this->getRequest()->getSession();
+        $em = $this->getDoctrine()->getManager();
+        $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande');
+        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
 
-        $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
-
-        return $this->render('EcommerceBundle:Default:panier/layout/valider.html.twig',array('produits' => $produits,
-                                                                                            ));
+        return $this->render('EcommerceBundle:Default:panier/layout/valider.html.twig', array('commande' => $commande));
 
     }
 

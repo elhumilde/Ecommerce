@@ -8,6 +8,12 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot');
+  src: url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),	url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff') format('woff'),	url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf') format('truetype'),	url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
 .clearfix {
   *zoom: 1;
 }
@@ -3520,7 +3526,7 @@ input[type="button"].btn-block {
 }
 
 .btn-inverse {
-  color: #ffffff;
+  color: #ffdd00;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #363636;
   *background-color: #222222;
@@ -6161,4 +6167,29 @@ a.badge:focus {
 
 .affix {
   position: fixed;
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-ok:before {
+  content: "\e013";
+}
+
+
+
+
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }

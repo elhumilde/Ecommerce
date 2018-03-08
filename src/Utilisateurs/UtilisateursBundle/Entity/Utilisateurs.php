@@ -1,10 +1,8 @@
 <?php
 namespace Utilisateurs\UtilisateursBundle\Entity;
-
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * @ORM\Entity(repositoryClass="Utilisateurs\UtilisateursBundle\Repository\UtilisateursRepository")
  * @ORM\Table(name="utilisateurs")
@@ -26,28 +24,24 @@ class Utilisateurs extends BaseUser
      * @ORM\Column(name="adresse", type="string", length=100)
      */
     private $adresse;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50)
      */
     private $nom;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="telephone", type="integer")
      */
     private $telephone;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-
     /**
      * @var string
      *
@@ -61,14 +55,12 @@ class Utilisateurs extends BaseUser
      * @ORM\Column(name="anneeExpAvtEmb", type="integer")
      */
     private $anneeExpAvtEmb;
-
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="anneeEmb", type="datetimetz")
+     * @ORM\Column(name="anneeEmb", type="datetime",nullable=true)
      */
     private $anneeEmb;
-
     /**
      * @var integer
      *
@@ -81,19 +73,17 @@ class Utilisateurs extends BaseUser
      * @ORM\Column(name="profil", type="text")
      */
     private $profil;
-
-
     /**
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Client", mappedBy="utilisateurs", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
-
     /**
      * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Telecontact", inversedBy="utilisateurs")
      * @ORM\JoinColumn(nullable=true)
      */
     private $teleconatct;
+
 
     /**
      *
@@ -105,9 +95,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->id;
     }
-
-
-
     /**
      * @return string
      */
@@ -115,7 +102,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->adresse;
     }
-
     /**
      * @param string $adresse
      */
@@ -123,7 +109,6 @@ class Utilisateurs extends BaseUser
     {
         $this->adresse = $adresse;
     }
-
     /**
      * @return string
      */
@@ -131,7 +116,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->nom;
     }
-
     /**
      * @param string $nom
      */
@@ -139,7 +123,6 @@ class Utilisateurs extends BaseUser
     {
         $this->nom = $nom;
     }
-
     /**
      * @return int
      */
@@ -147,7 +130,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->telephone;
     }
-
     /**
      * @param int $telephone
      */
@@ -155,7 +137,6 @@ class Utilisateurs extends BaseUser
     {
         $this->telephone = $telephone;
     }
-
     /**
      * @return string
      */
@@ -163,7 +144,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->description;
     }
-
     /**
      * @param string $description
      */
@@ -171,7 +151,6 @@ class Utilisateurs extends BaseUser
     {
         $this->description = $description;
     }
-
     /**
      * @return string
      */
@@ -179,7 +158,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->experiececontenu;
     }
-
     /**
      * @param string $experiececontenu
      */
@@ -189,6 +167,7 @@ class Utilisateurs extends BaseUser
     }
 
 
+
     /**
      * @return int
      */
@@ -196,7 +175,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->anneeExpAvtEmb;
     }
-
     /**
      * @param int $anneeExpAvtEmb
      */
@@ -204,7 +182,6 @@ class Utilisateurs extends BaseUser
     {
         $this->anneeExpAvtEmb = $anneeExpAvtEmb;
     }
-
     /**
      * @return \DateTime
      */
@@ -212,7 +189,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->anneeEmb;
     }
-
     /**
      * @param \DateTime $anneeEmb
      */
@@ -220,10 +196,6 @@ class Utilisateurs extends BaseUser
     {
         $this->anneeEmb = $anneeEmb;
     }
-
-
-
-
     /**
      * @return int
      */
@@ -231,7 +203,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->nbrCltAnneePrec;
     }
-
     /**
      * @param int $nbrCltAnneePrec
      */
@@ -239,7 +210,6 @@ class Utilisateurs extends BaseUser
     {
         $this->nbrCltAnneePrec = $nbrCltAnneePrec;
     }
-
     /**
      * @return string
      */
@@ -247,7 +217,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->profil;
     }
-
     /**
      * @param string $profil
      */
@@ -255,7 +224,6 @@ class Utilisateurs extends BaseUser
     {
         $this->profil = $profil;
     }
-
     /**
      * @return mixed
      */
@@ -263,7 +231,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->client;
     }
-
     /**
      * @param mixed $client
      */
@@ -271,7 +238,6 @@ class Utilisateurs extends BaseUser
     {
         $this->client = $client;
     }
-
     /**
      * @return mixed
      */
@@ -279,7 +245,6 @@ class Utilisateurs extends BaseUser
     {
         return $this->teleconatct;
     }
-
     /**
      * @param mixed $teleconatct
      */
@@ -287,22 +252,12 @@ class Utilisateurs extends BaseUser
     {
         $this->teleconatct = $teleconatct;
     }
-
-
-
-
-
-
-
-
-
     /**
      * @var \DateTime
      *
      * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
      */
     private $updateAt;
-
     /**
      * @ORM\PostLoad()
      */
@@ -310,36 +265,28 @@ class Utilisateurs extends BaseUser
     {
         $this->updateAt = new \DateTime();
     }
-
-
-
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     private $path;
-
     /**
      * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
      *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
      *
      */
     public $file;
-
     public function getUploadRootDir()
     {
         return __dir__.'/../../../../web/uploads';
     }
-
     public function getAbsolutePath()
     {
         return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
     }
-
     public function getAssetPath()
     {
         return 'uploads/'.$this->path;
     }
-
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -349,11 +296,9 @@ class Utilisateurs extends BaseUser
         $this->tempFile = $this->getAbsolutePath();
         $this->oldFile = $this->getPath();
         $this->updateAt = new \DateTime();
-
         if (null !== $this->file)
             $this->path = sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
     }
-
     /**
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
@@ -363,11 +308,9 @@ class Utilisateurs extends BaseUser
         if (null !== $this->file) {
             $this->file->move($this->getUploadRootDir(),$this->path);
             unset($this->file);
-
             if ($this->oldFile != null) unlink($this->tempFile);
         }
     }
-
     /**
      * @ORM\PreRemove()
      */
@@ -375,7 +318,6 @@ class Utilisateurs extends BaseUser
     {
         $this->tempFile = $this->getAbsolutePath();
     }
-
     /**
      * @ORM\PostRemove()
      */
@@ -383,15 +325,8 @@ class Utilisateurs extends BaseUser
     {
         if (file_exists($this->tempFile)) unlink($this->tempFile);
     }
-
-
-
     public function getPath()
     {
         return $this->path;
     }
-
-
-
-
 }

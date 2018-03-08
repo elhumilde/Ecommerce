@@ -40,7 +40,9 @@ class Produits
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
-    
+
+
+
 
     
     /**
@@ -64,12 +66,6 @@ class Produits
      */
     private $prix;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="disponible", type="boolean")
-     */
-    private $disponible;
 
     /**
      * Get id
@@ -115,7 +111,7 @@ class Produits
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -138,7 +134,7 @@ class Produits
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -161,35 +157,14 @@ class Produits
     /**
      * Get prix
      *
-     * @return float 
+     * @return float
      */
     public function getPrix()
     {
         return $this->prix;
     }
 
-    /**
-     * Set disponible
-     *
-     * @param boolean $disponible
-     * @return Produits
-     */
-    public function setDisponible($disponible)
-    {
-        $this->disponible = $disponible;
 
-        return $this;
-    }
-
-    /**
-     * Get disponible
-     *
-     * @return boolean 
-     */
-    public function getDisponible()
-    {
-        return $this->disponible;
-    }
 
     /**
      * Set image
@@ -230,33 +205,11 @@ class Produits
     /**
      * Get categorie
      *
-     * @return \Ecommerce\EcommerceBundle\Entity\Categories 
+     * @return \Ecommerce\EcommerceBundle\Entity\Categories
      */
     public function getCategorie()
     {
         return $this->categorie;
     }
 
-    /**
-     * Set tva
-     *
-     * @param \Ecommerce\EcommerceBundle\Entity\Tva $tva
-     * @return Produits
-     */
-    public function setTva(\Ecommerce\EcommerceBundle\Entity\Tva $tva)
-    {
-        $this->tva = $tva;
-
-        return $this;
-    }
-
-    /**
-     * Get tva
-     *
-     * @return \Ecommerce\EcommerceBundle\Entity\Tva 
-     */
-    public function getTva()
-    {
-        return $this->tva;
-    }
 }
