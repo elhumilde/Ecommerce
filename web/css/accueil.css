@@ -1,0 +1,310 @@
+.container-fluid{
+    padding: 0;
+    margin: 0;
+}
+section {
+    width:100%;
+    height: 800px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#fond-1 .transparence{
+    width: 100%;
+    height: 800px;
+    position: absolute;
+    opacity: 0.5;
+    background-color: #1C1D21;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.logo {
+    margin-left: 20px;
+    margin-top: 20px;
+    z-index: 1;
+    Position: Absolute;
+}
+
+
+.header {
+    background-color: black;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: black;
+    margin-top: 140px;
+    letter-spacing: 2px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.titre {
+    width: 200px;
+    height: 40px;
+    background-color: #c8d0d5;
+    color: black;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-top: 7px;
+    margin-top: 20px;
+}
+
+
+.avatar {
+    margin-top: 50px;
+}
+.well {
+    background-color: #ffdb2e;
+    border: 0
+
+}
+.container {
+    margin-bottom: 40px;
+
+
+}
+
+.tex {
+    text-align: left;
+    font-size: 16px;
+}
+
+.texte1 {
+    font-size: 16px;
+}
+
+#fond-1 {
+    background-image:url('https://image.noelshack.com/fichiers/2018/07/4/1518687844-background1.jpg');
+    left: 0;
+    height: 800px;
+
+}
+
+#fond-2 {
+    background-image:url('https://image.noelshack.com/fichiers/2018/08/3/1519208528-background2.jpg');
+    left: 0;
+    height: 800px;
+
+}
+
+#fond-3 {
+    background-color: white;
+    left: 0;
+    height: 850px;
+}
+
+#fond-4 {
+    background-color: black;
+    left: 0;
+    height: 500px;
+}
+
+#fond-5 {
+    background-image:url('https://image.noelshack.com/fichiers/2018/08/4/1519314683-solution-tlc.jpg');
+    left: 0;
+    height: 600px;
+}
+
+#fond-6 {
+    background-color: white;
+    left: 0;
+    height: 680px;
+}
+
+#fond-7 {
+    background-image:url('https://image.noelshack.com/fichiers/2018/08/5/1519390875-construison-ensemble.jpg');
+    left: 0;
+    height: 600px;
+}
+
+#fond-8 {
+    background-color: white;
+    left: 0;
+    height: 680px;
+}
+
+#marketing {
+    background-color: #ffdb2e;
+    padding:50px 0 50px 40px;
+    height: 300px;
+}
+
+#image-marketing {
+    height: 300px;
+    padding: 0;
+}
+
+.img-responsive {
+    width: 100%;
+    height: 300px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#texte-marketing {
+    padding: 50px 80px 20px 80px;
+}
+
+.rectangle {
+    width: 290px;
+    height: 70px;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    padding-top: 15px;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+.ligne {
+    width: 100%;
+    height: 6px;
+    background-color: white;
+    padding: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    Position: Absolute;
+
+}
+
+.tiret {
+    width: 100px;
+    height: 10px;
+    background-color: white;
+}
+
+#fond-4 #content-4 h1 {
+    color: #ffdb2e;
+    padding-top: 40px;
+}
+
+#fond-4 #content-4 p {
+    color: white;
+    font-size: 23px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+#fond-4 #content-4 .texte {
+    font-size: 28px;
+    font-weight: lighter;
+    color: white;
+    letter-spacing: 2px;
+}
+
+#fond-4 #content-4 #pourquoi {
+    color: white;
+    letter-spacing: 2px;
+}
+
+#fond-4 #content-4 .img {
+    width: 100%;
+    height: 400px;
+    padding: 0;
+    margin: 0;
+}
+
+#fond-5 .titre {
+    background-color: #ffdb2e;
+    width: 600px;
+    height: 80px;
+    border-radius: 5px;
+    margin-top: 260px;
+}
+
+#fond-6 #content-6 .icone {
+    padding-top: 50px;
+    padding-bottom: 5px;
+}
+
+#fond-6 #content-6 .list-group .titre {
+    width: 350px;
+    height: 50px;
+    background-color: black;
+    font-size: 24px;
+    border: 0;
+    color: white;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#fond-6 #content-6 .list-group .content {
+    color: black;
+    padding-left: 40px;
+    font-size: 20px;
+}
+
+#fond-6 #content-6 .list-group {
+    width: 350px;
+}
+
+#fond-6 #content-6 .colone-1 .list-group #jaune {
+    background-color: #ffdb2e;
+}
+
+#fond-7 .titre {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 940px;
+    height: 200px;
+    border-radius: 0;
+    margin-top: 220px;
+    padding-top: 30px;
+}
+
+#fond-7 .titre .acroche {
+    color: white;
+    letter-spacing: 2px;
+    line-height: 1.4;
+}
+
+#fond-8 #content-8 .bouton-1 {
+    width: 460px;
+    height: 80px;
+    margin-top: 100px;
+    background-color: black;
+    border: 0;
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+
+span.glyphicon-triangle-bottom {
+    font-size: 32px;
+    color: #ffdb2e;
+}
+
+span.glyphicon-triangle-right {
+    font-size: 20px;
+    vertical-align: -2px;
+}
+
+#fond-8 #content-8 .bouton-2 .btn-info {
+    background-color: #ffdb2e;
+    margin: 50px 15px 10px 15px;
+    width: 340px;
+    height: 60px;
+    border: 0;
+    font-size: 25px;
+    padding: 8px 0 0 0;
+    color: black;
+}
+
+#fond-8 #content-8 #bouton-3 {
+    background-color: black;
+    padding-top: 10px;
+    color: #ffdb2e;
+}
+
+#fond-8 #content-8 .bouton-2 .btn-info .icone {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+}

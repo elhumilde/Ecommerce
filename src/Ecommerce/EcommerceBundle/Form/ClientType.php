@@ -31,7 +31,12 @@ class ClientType extends AbstractType
             ->add('fax')
             ->add('email','email')
             ->add('nomdirigeant')
-            ->add('utilisateurs')
+            ->add('utilisateurs', 'entity', array(
+                'class'    => 'UtilisateursBundle:Utilisateurs',
+                'property' => 'username',
+                'empty_value' => '- sélectionner un Utilisateur -',
+                'label'    => 'Utilisateur  ',
+            ))
             ->add('file','file', array('required' => false))
 
         ;

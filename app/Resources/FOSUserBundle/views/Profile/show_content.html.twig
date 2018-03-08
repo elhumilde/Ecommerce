@@ -1,140 +1,454 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}" />
+</head>
+<div class="container-fluid" id="fond-1">
+<section >
+    <div class="transparence"></div>
+
+    <a href="{{ path('produits') }}"> <img class="logo" src="https://image.noelshack.com/fichiers/2018/07/4/1518687555-logo-econtact-2.png" alt="logo"></a>
+
+
+
+    <div class="container" >
+
+
+
+        <div class="row">
+
+            <div class="col-md-3 col-sm-2 "></div>
+            <div align=center class="header col-md-6 col-sm-8 col-xs-12">
+                <p class="text-uppercase">PROFIL DU CONSEILLER COMMERCIAL</p></div>
+            <div class="col-md-3 col-sm-2 "></div>
+
+        </div>
+
+
+        <div class="row" style="margin-top: 50px;">
+
+            <div align=center class="col-md-3 col-md-12">
+                <div class="well" style="height:380px;padding: 50px">
+
+                    <img class="avatar" src="{{ asset('uploads/' ~user.path) }}" alt="icone-avatar" width="80" height="80" style="
+                                            -moz-border-radius: 50px!important;
+                                            -webkit-border-radius: 50px!important;
+                                            border-radius: 100%!important; margin: 0 auto">
+                    <h4> <p style="text-align: center;Font-Weight: Bold;"> {{ user.username }}</h4>
+                    <p class="texte1"></b>{{ user.profil|raw }}</p>
+
+
+                    <p style="text-align: center;">
+                </div>
+            </div>
+
+
+            <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll;">
+
+                <div class="titre">Expertise Métier</div>
+                <br>
+                <br>
+                <div class="tex">
+                    {{ user.description|raw }}
+
+                </div>
+            </div>
+
+
+            <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
+                <div class="titre">Expérience</div>
+                <br>
+                <br>
+                <div class="tex">
+                    <ul>
+                        <li><b>{{ user.anneeEmb|time_diff  }} </b>  {{ user.experiececontenu|raw }}</li>
+                        <br>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
+                <div class="titre">Références Clients</div>
+                <div style="width: 200px; margin-top: 35px;">
+                    <div class="row">
+                        {% for en in user.client %}
+                            <div class="col-md-4">
+                                <img style="margin: 10px 10px 10px 10px;" src="{{ asset('uploads/' ~en.path) }}" width="60" height="60" alt="logo-tijari">
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+<br>
+
+
+
+
+
+
+<section id="fond-2">
+
+
+    <div class="container" id="#content-2">
+
+
+
+        <div class="row">
+
+            <div class="col-md-3 col-sm-2"></div>
+            <div align=center class="header col-md-6 col-sm-8 col-xs-12">
+                <p class="text-uppercase">PRESENTATION DE L'ENTREPRISE</p></div>
+            <div class="col-md-3 col-sm-2 "></div>
+
+        </div>
+
+
+        <div class="row" style="margin-top: 50px;">
+
+            <div align=center class="col-md-3" >
+                <div class="well" style="height:380px;">
+                    <img class="avatar" style="img-responsive;" src="https://image.noelshack.com/fichiers/2018/08/2/1519136134-logo-telecontact-web.png" alt="logo-telecontact">
+                    <p class="texte1"><p style="text-align: center;"> {{ user.teleconatct.titre|raw }}</p>
+
+
+                </div>
+            </div>
+
+            <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
+
+                <div class="titre">Expertise Métier</div>
+                <br>
+                <br>
+                <div class="tex">
+
+                    {{ user.teleconatct.contenu|raw }}<li>
+
+
+                </div>
+            </div>
+
+            <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
+                <div class="titre">Expérience</div>
+                <br>
+                <br>
+                <div class="tex">
+                    <ul>
+                        <li><b>{{ user.teleconatct.experience|time_diff  }}  </b> {{ user.teleconatct.experiececontenu|raw }}</li>
+                        <br>
+                </div>
+            </div>
+
+
+            <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
+                <div class="titre">Références Clients</div>
+                <div style="width: 200px; margin-top: 35px;">
+                    <div class="row">
+
+                        {% for en in user.client %}
+                            <div class="col-md-4">
+                                <img style="margin: 10px 10px 10px 10px;" src="{{ asset('uploads/' ~en.path) }}" width="60" height="60" alt="logo-tijari">
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+<section id="fond-3">
+
+
+    <div class="container" id="#content-3">
+
+
+
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12" id="marketing">
+                <h1>LE MARKETING DIGITAL</h1>
+                <br>
+                <p style="font-size: 21px;">C'EST QUOI EXACTEMENT ?</p>
+            </div>
+
+            <div class="col-md-8 col-sm-12" id="image-marketing">
+                <img class="img-responsive" src="https://image.noelshack.com/fichiers/2018/08/3/1519214551-marketing-digital-copie.jpg" alt="Marketing-Digital">
+            </div>
+
+            <div align=center class="col-md-12 col-sm-12" id="texte-marketing">
+                <p style="font-size: 25px; text-align: center">Le marketing digital regroupe toutes les solutions de communication innovantes à travers des canaux digitaux (ordinateur, tablette, smartphone ) pour accompagner les entreprises dans la promotion de leurs produits et services.</p>
+                <br>
+                <br>
+                <h2>Les piliers de la communication digitale englobent</h2>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div align=center class="col-md-4 col-sm-6 col-xs-12">
+                <div class="rectangle">
+                    <p style="font-size: 22px;">Référencement</p>
+                </div>
+                <div class="rectangle">
+                    <p style="font-size: 22px;">Réseaux sociaux</p>
+                </div>
+            </div>
+
+            <div align=center class="col-md-4 col-sm-6 col-xs-12">
+                <div class="rectangle">
+                    <p style="font-size: 22px;">Gestion de Contenu</p>
+                </div>
+                <div class="rectangle">
+                    <p style="font-size: 22px;">Google Adwords</p>
+                </div>
+            </div>
+
+            <div align=center class="col-md-4 col-sm-6 col-xs-12">
+                <div class="rectangle">
+                    <p style="font-size: 22px;">Affichage</p>
+                </div>
+                <div class="rectangle">
+                    <p style="font-size: 22px;">Inbound Marketing</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+<br>
+
+<section  id="fond-4">
+
+
+    <div align=center class="container" id="content-4">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 >TELECONTACT, AGENCE DIGITALE</h1>
+                <p>Expert en Marketing Digital & Développeur de solutions web</p>
+                <br>
+                <div class="tiret"></div>
+                <br>
+                <br>
+                <br>
+                <p class="texte"><span style="color: #ffdb2e"><strong>+de 70 %</strong></span> du chiffre d'affaire est réalisé dans le digital</p>
+                <p class="texte"><span style="color: #ffdb2e"><strong>+2000</strong></span> entreprises nous ont déja fait confiance en 2017</p>
+                <h1 id="pourquoi">POURQUOI PAS VOUS ?</h1>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section  id="fond-5" align=center>
+
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12 col-xs-12" align=center>
+            <div class="titre">
+                <h2>Les solutions de Télécontact</h2>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section  id="fond-6">
+
+    <div class="container" id="content-6">
+
+        <div class="row">
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="colone-1">
+                    <div align=center>
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                    </div>
+                    <div class="list-group">
+                        <a class="list-group-item active titre">Référencement</a>
+                        <a class="list-group-item content">Prestations</a>
+                        <a class="list-group-item content">Marques</a>
+                        <a class="list-group-item content">Rubriques</a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content" id="jaune">Carte de visite
+                            &nbsp;
+                            <img src="https://image.noelshack.com/fichiers/2018/08/5/1519388845-icone-hand.png" alt="icone-hand">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="colone-2">
+                    <div align=center>
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
+                    </div>
+                    <div class="list-group">
+                        <a class="list-group-item active titre">Gestion de Contenu</a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Catalogue &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Vidéo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Site internet &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="colone-3">
+                    <div align=center>
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
+                    </div>
+                    <div class="list-group">
+                        <a class="list-group-item active titre">Affichage</a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette thématique &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette localité &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Professionnels du jour &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Espace Promo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette Accueil &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette Vidéo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Habillage &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                        <a href="http://www.telecontact.ma/" class="list-group-item content">Bannière &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<section  id="fond-7" align=center>
+
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12 col-xs-12" align=center>
+            <div class="titre">
+                <h1 class="acroche"><strong>Construisons ensemble
+                        <br>
+                        les piliers de votre <span style="color: #ffdb2e">communication digitale</span>
+                    </strong></h1>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<section  id="fond-8" align=center>
+
+    <div class="container" id="content-8">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <button type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+                    Budgétisation &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </button>
+                <div id="demo-1" class="collapse bouton-2">
+                    <a href="http://www.telecontact.ma/" role="button" class="btn btn-info">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                        Référencement   <span class="glyphicon glyphicon-triangle-right fleche-petit"></span>
+                    </a>
+                    <a href="{{ path('produits') }}" role="button" class="btn btn-info">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
+                        Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
+                    </a>
+                    <a href="{{ path('affichage') }}" role="button" class="btn btn-info">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
+                        Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
+                    </a>
+                    <br>
+                    <a href="http://www.telecontact.ma/" role="button" class="btn btn-info" id="bouton-3">
+                        Budget estimé
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <button type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-2">
+                    Simulation Devis &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </button>
+                <div id="demo-2" class="collapse bouton-2">
+                    <a href="http://www.telecontact.ma/" role="button" class="btn btn-info">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                        Référencement   <span class="glyphicon glyphicon-triangle-right fleche-petit"></span>
+                    </a>
+                    <a href="{{ path('produitsdevis') }}" role="button" class="btn btn-info">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
+                        Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
+                    </a>
+                    <a href="http://www.telecontact.ma/" role="button" class="btn btn-info">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
+                        Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
+                    </a>
+                    <br>
+                    <a href="http://www.telecontact.ma/" role="button" class="btn btn-info" id="bouton-3">
+                        Devis Global
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</section>
+
 <div class="row">
     <div class="span3">
         {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
     </div>
 
-    <div class="span9">
-        <h3>PROFIL DU CONSEILLER COMMERCIAL</h3>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-                <div class="span9">
-
-
-                    <table class="table  table-hover">
-
-
-
-                    <tr>
-                             <td></td>
-                            <td>Expertise Métier</td>
-                            <td>Expérience</td>
-                            <td>Références Clients</td>
-                        </tr>
-                        </tr>
-                        <td class="span2" style="background-color: #fedc32;margin: 0 auto!important;">
-
-                                <img src="{{ asset('uploads/' ~user.path) }}"  width="80" height="80" style="
-                                            -moz-border-radius: 50px!important;
-                                            -webkit-border-radius: 50px!important;
-                                            border-radius: 100%!important; margin: 0 auto">
-                                <p style="text-align: center;Font-Weight: Bold;"> {{ user.username }}
-                                <p style="text-align: center;"> {{ user.profil }}
-
-                        </td>
-                        <td>
-                            <ul>
-                                <li class="span2"><p> {{ user.profil }}</p></li><br>
-                                <li class="span2"><p> {{ user.description }}</p></li>
-                            </ul>
-
-                        </td>
-                        <td>
-                            <ul>
-                                <li class="span2" ><p> <b>{{ user.anneeEmb|time_diff  }}  </b>  {{ 'en tant que Conseiller en Communication auprèes des professionnels' }}<br>
-                                        </p></li>
-
-                            </ul>
-
-                        </td>
-                        <td>
-
-                            <ul>
-                                {% for en in user.client %}
-                                <li>
-                                    <img src="{{ asset('uploads/' ~en.path) }}"  width="80" height="80">
-                                </li>
-                            </ul>
-                            {% endfor %}
-
-                        </td>
-                        </td>
-                    </table>
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="span9">
-        <h3>PRESENTATION DE L'ENTREPRISE</h3>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-                <div class="span9">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <td></td>
-                            <td>Expertise Métier</td>
-                            <td>Expérience</td>
-                            <td>Références Clients</td>
-                        </tr>
-                        </thead>
-                        <td class="span2" style="background-color: #fedc32;margin: 0 auto!important;">
-
-
-                                <p style="text-align: center;Font-Weight: Bold;"> {{ user.teleconatct.nom }}
-                                <p style="text-align: center;"> {{ user.teleconatct.profil }}
-
-                        </td>
-                        <td>
-                            <ul>
-                                <li class="span2"><p> {{ user.teleconatct.profil }}</p></li><br>
-                                <li class="span2"><p> {{ user.teleconatct.description1 }}</p></li><br>
-                                <li class="span2"><p> {{ user.teleconatct.description2 }}</p></li><br>
-                                <li class="span2"><p> {{ user.teleconatct.description3 }}</p></li>
-                            </ul>
-
-                        </td>
-                        <td>
-
-                            <ul>
-                                <li  class="span2"><p> <b>{{ user.teleconatct.experience|time_diff  }}  </b>  {{ ' à collaborer avec lensemble
-                                                             des professionnels du maroc et
-                                                             d\'innovatons pour leur apporter
-                                                              des solution efficaces à leur
-                                                              développement'|trans }}</p></li>
-
-                            </ul>
-
-                        </td>
-                        <td>
-
-                            <ul>
-                                {% for en in user.client %}
-                                <li>
-                                    <img src="{{ asset('uploads/' ~en.path) }}"  width="80" height="80">
-                                </li>
-                            </ul>
-                            {% endfor %}
-
-                        </td>
-                        </td>
-                    </table>
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
 </div>
 
 <div class="fos_user_user_show">
 
-</div>
+</div></div>

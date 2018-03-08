@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Produits
 {
+
     /**
      * @var integer
      *
@@ -20,6 +21,13 @@ class Produits
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code_prod", type="string")
+     */
+    private $code_prod;
+
 
     /**
      * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
@@ -33,11 +41,7 @@ class Produits
      */
     private $categorie;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Tva", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $tva;
+
     
     /**
      * @var string
@@ -67,16 +71,33 @@ class Produits
      */
     private $disponible;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getCodeProd()
+    {
+        return $this->code_prod;
+    }
+
+    /**
+     * @param string $code_prod
+     */
+    public function setCodeProd($code_prod)
+    {
+        $this->code_prod = $code_prod;
+    }
+
+
 
     /**
      * Set nom

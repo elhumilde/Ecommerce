@@ -1,0 +1,125 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {% render(controller('EcommerceBundle:Panier:menu')) %}
+
+
+            </div>
+
+            <div class="span3">
+
+
+
+
+            </div>
+            <h1>Simulation Devis</h1>
+            <h4> Gestion contenu</h4>
+            <h5>Catalogue</h5>
+            <div id="wrap">
+                <div class="span9">
+                    <ul class="thumbnails">
+                        {% for produit in produitsCatalogue %}
+                            <li id="{{ produit.id }}">
+                                <div class="thumbnail">
+
+                                    <h5><input class="my-activity" type="checkbox"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            <h5>Catalogue Référencé</h5>
+            <div class="span9">
+                <ul class="thumbnails">
+                    {% for produit in produitsCatalogueReference %}
+                        <li id="{{ produit.id }}">
+                            <div class="thumbnail">
+
+                                <h5><input type="checkbox"  class="my-activity"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <h5>Vidéo</h5>
+            <div class="span9">
+                <ul class="thumbnails">
+                    {% for produit in produitsVideo %}
+                        <li id="{{ produit.id }}">
+                            <div class="thumbnail">
+
+                                <h5><input type="checkbox" class="my-activity"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <h5>Pack Visibilité</h5>
+            <div class="span9">
+                <ul class="thumbnails">
+                    {% for produit in produitsPack %}
+                        <li id="{{ produit.id }}">
+                            <div class="thumbnail">
+
+                                <h5><input type="checkbox" class="my-activity"  value="{{ produit.prix }}"> {{ produit.nom }}</h5>
+
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            </div>
+            <p>
+                <strong> Budget estimé<br> Gestion de contenu</strong>: <input type="text" name="amount" id="amount" />
+            </p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".my-activity").click(function(event) {
+                var total = 0;
+                $(".my-activity:checked").each(function() {
+                    total += parseInt($(this).val());
+                });
+
+                if (total == 0) {
+                    $('#amount').val('');
+                } else {
+                    $('#amount').val(total);
+                }
+            });
+        });
+    </script>
+
+    </head>
+
+    <body>
+
+
+{% endblock %}

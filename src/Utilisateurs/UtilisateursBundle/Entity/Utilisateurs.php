@@ -49,6 +49,13 @@ class Utilisateurs extends BaseUser
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="experiececontenu", type="text")
+     */
+    private $experiececontenu;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="anneeExpAvtEmb", type="integer")
@@ -71,7 +78,7 @@ class Utilisateurs extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="profil", type="string", length=20)
+     * @ORM\Column(name="profil", type="text")
      */
     private $profil;
 
@@ -88,7 +95,7 @@ class Utilisateurs extends BaseUser
      */
     private $teleconatct;
 
-     /**
+    /**
      *
      * Get id
      *
@@ -164,6 +171,23 @@ class Utilisateurs extends BaseUser
     {
         $this->description = $description;
     }
+
+    /**
+     * @return string
+     */
+    public function getExperiececontenu()
+    {
+        return $this->experiececontenu;
+    }
+
+    /**
+     * @param string $experiececontenu
+     */
+    public function setExperiececontenu($experiececontenu)
+    {
+        $this->experiececontenu = $experiececontenu;
+    }
+
 
     /**
      * @return int

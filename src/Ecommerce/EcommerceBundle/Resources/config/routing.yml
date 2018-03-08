@@ -17,7 +17,6 @@ routingProduitsAdmin:
 routingCategoriesAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingCategoriesAdmin.yml"
     prefix:   /admin/categories
-
 routingClientAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingClientAdmin.yml"
     prefix:   /admin/clients
@@ -30,7 +29,21 @@ routingTelecontactAdmin:
   resource: "@EcommerceBundle/Resources/config/routing/routingTelecontactAdmin.yml"
   prefix:   /admin/telecontact
 
-
+ajax_va:
+    pattern:  /ajax_va
+    defaults: { _controller: EcommerceBundle:Produits:ajaxVA }
+ajax_vl:
+    pattern:  /ajax_vl
+    defaults: { _controller: EcommerceBundle:Produits:ajaxVL }
+ajax_pj:
+    pattern:  /ajax_pj
+    defaults: { _controller: EcommerceBundle:Produits:ajaxPJ }
+ajax_ep:
+    pattern:  /ajax_ep
+    defaults: { _controller: EcommerceBundle:Produits:ajaxEP }
+ajax_hb:
+    pattern:  /ajax_hb
+    defaults: { _controller: EcommerceBundle:Produits:ajaxhb }
 clients:
     pattern:  /admin/clts
     defaults: { _controller: EcommerceBundle:Client:clients   }

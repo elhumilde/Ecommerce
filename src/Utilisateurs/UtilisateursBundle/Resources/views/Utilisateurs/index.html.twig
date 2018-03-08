@@ -13,6 +13,7 @@
             <th>anneeExpAvtEmb</th>
             <th>nbrCltAnneePrec</th>
             <th>Profill</th>
+            <th>Image</th>
         </tr>
         </thead>
         <tbody>
@@ -21,10 +22,10 @@
                 <td>{{ entity.username}}</td>
                 <td>{{ entity.adresse}}</td>
                 <td>{{ entity.telephone }}</td>
-                <td>{{ entity.description }}</td>
+                <td>{{ entity.description|raw }}</td>
                 <td>{{ entity.anneeExpAvtEmb }}</td>
                 <td>{{ entity.nbrCltAnneePrec }}</td>
-                <td>{{ entity.profil}}</td>
+                <td>{{ entity.profil|raw}}</td>
                 <td><img src="{{ asset('uploads/' ~ entity.path) }}"  width="80" height="80"></td>
                 <td>
                     <a href="{{ path('adminUsers_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>

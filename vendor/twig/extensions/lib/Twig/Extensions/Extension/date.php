@@ -53,7 +53,7 @@ class Twig_Extensions_Extension_Date extends Twig_Extension
     protected function getPluralizedInterval($count, $invert, $unit)
     {
         if ($this->translator) {
-            $id = sprintf('diff.%s.%s', $invert ? 'in' : '', $unit);
+            $id = sprintf('diff.%s.%s', $invert ? 'in' : '' );
             return $this->translator->transChoice($id, $count, array('%count%' => $count), 'date');
         }
         if (1 !== $count) {

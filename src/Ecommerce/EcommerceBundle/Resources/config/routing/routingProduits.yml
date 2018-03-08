@@ -13,3 +13,11 @@ categorieProduits:
 rechercheProduits:
     pattern:  /recherche
     defaults: { _controller: EcommerceBundle:Produits:rechercheTraitement }
+
+
+affichage:
+    pattern:  /admin/affichage
+    defaults: { _controller: EcommerceBundle:Produits:affichage }
+produitsdevis:
+    pattern:  /admin/produitsdevis
+    defaults: { _controller: EcommerceBundle:Produits:produitsdevis }

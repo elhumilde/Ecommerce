@@ -117,7 +117,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
          *
          * @access public
          * @param  string   $orientation page orientation, same as TCPDF
-         * @param  mixed    $format      The format used for pages, same as TCPDF
+         * @param  mixed    $format      The format used for ecommerce, same as TCPDF
          * @param  $tring   $langue      Langue : fr, en, it...
          * @param  boolean  $unicode     TRUE means that the input text is unicode (default = true)
          * @param  String   $encoding    charset encoding; default is UTF-8
@@ -4887,7 +4887,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
                 HTML2PDF::$_tables[$param['num']]['marge']['r']      = $this->parsingCss->value['padding']['r']+$this->parsingCss->value['border']['r']['width']+HTML2PDF::$_tables[$param['num']]['cellspacing']*0.5;
                 HTML2PDF::$_tables[$param['num']]['marge']['b']      = $this->parsingCss->value['padding']['b']+$this->parsingCss->value['border']['b']['width']+HTML2PDF::$_tables[$param['num']]['cellspacing']*0.5;
                 HTML2PDF::$_tables[$param['num']]['marge']['l']      = $this->parsingCss->value['padding']['l']+$this->parsingCss->value['border']['l']['width']+HTML2PDF::$_tables[$param['num']]['cellspacing']*0.5;
-                HTML2PDF::$_tables[$param['num']]['page']            = 0;                // number of pages
+                HTML2PDF::$_tables[$param['num']]['page']            = 0;                // number of ecommerce
                 HTML2PDF::$_tables[$param['num']]['new_page']        = true;             // flag : new page for the current TR
                 HTML2PDF::$_tables[$param['num']]['style_value']     = null;             // CSS style of the table
                 HTML2PDF::$_tables[$param['num']]['thead']           = array();          // properties on the thead
