@@ -32,9 +32,10 @@ routingTelecontactAdmin:
 ajax_va:
     pattern:  /ajax_va
     defaults: { _controller: EcommerceBundle:Produits:ajaxVA }
-ajax_vl:
-    pattern:  /ajax_vl
-    defaults: { _controller: EcommerceBundle:Produits:ajaxVL }
+ajax_t:
+    pattern:  /ajax_t
+    defaults: { _controller: EcommerceBundle:Produits:ajaxT}
+
 ajax_pj:
     pattern:  /ajax_pj
     defaults: { _controller: EcommerceBundle:Produits:ajaxPJ }

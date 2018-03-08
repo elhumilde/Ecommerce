@@ -144,13 +144,13 @@ class ProduitsController extends Controller
         }*/
     }
 
-    public function ajaxVLAction(Request $request)
+    public function ajaxTAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $ctar =  $request->request->get('ctar');
         $opt1 =  $request->request->get('opt1');
 
-       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS VL')
+       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS T')
        ->where('t.opt1 = :op')->setParameter('op',  $opt1)
        ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
 
@@ -158,7 +158,7 @@ class ProduitsController extends Controller
         return $response->setData(array('nom' => $query));
 
     }
-    public function ajaxPJAction(Request $request)
+   /* public function ajaxPJAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $ctar =  $request->request->get('ctar');
@@ -199,7 +199,7 @@ class ProduitsController extends Controller
         $response = new JsonResponse();
         return $response->setData(array('nom' => $query));
 
-    }
+    }*/
 
 
 
@@ -209,21 +209,12 @@ class ProduitsController extends Controller
         $session = $this ->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
-
-        $findProduitsCatalogue = $em->getRepository('EcommerceBundle:Produits')->findLimitCatalogue();
-        $findProduitsCatalogueReference = $em->getRepository('EcommerceBundle:Produits')->findLimitCatalogueReference();
-        $findProduitsVideo = $em->getRepository('EcommerceBundle:Produits')->findLimitVideo();
-        $findProduitsPack = $em->getRepository('EcommerceBundle:Produits')->findLimitPack();
         if ($session->has('panier'))
             $panier = $session->get('panier');
         else
             $panier = false;
-        return $this->render('EcommerceBundle:Default:produits/layout/produitsdevis.html.twig', array('produitsCatalogue' => $findProduitsCatalogue,
-            'produitsCatalogueReference' => $findProduitsCatalogueReference,
-            'produitsVideo' => $findProduitsVideo,
-            'produitsPack' => $findProduitsPack,
+        return $this->render('EcommerceBundle:Default:produits/layout/produitsdevis.html.twig', array( 'panier' => $panier));
 
-            'panier' => $panier));
     }
 
 }

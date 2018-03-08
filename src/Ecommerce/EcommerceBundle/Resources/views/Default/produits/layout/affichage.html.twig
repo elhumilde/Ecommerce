@@ -502,7 +502,7 @@
 
                 total=thematique + localite+pfjour+promo+vignette+habillage+banniere;
 
-                
+
                     $("#total").val(total);
             }
 
@@ -560,7 +560,8 @@
 
 
             /////////////////////////
-           $ (".vignette_thematique").change( function () {
+
+            $(document).on('change', '.vignette_thematique', function (){
                 var ctar  = 'VA';
                 console.log("CHANGE rubrique AND prestation....................");
                 var select = jQuery(this);
@@ -572,7 +573,6 @@
                 var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
                 var $input = $( this );
                 if ( $input.is( ":checked" ) )
-
                 {
                 $.ajax({
                     url: '{{ path('ajax_va') }}',
@@ -623,7 +623,7 @@
 
                 {
                     $.ajax({
-                    url:'{{ path('ajax_vl') }}',
+                    url:'{{ path('ajax_t') }}',
                     type: 'POST',
                     data: data_send,
                     statusCode: {
@@ -690,13 +690,13 @@
                 var data_send = {'ctar': ctar,'opt1':opt1};
 
                 $.ajax({
-                    url:'{{ path('ajax_pj') }}',
+                    url:'{{ path('ajax_t') }}',
                     type: 'POST',
                     data: data_send,
                     statusCode: {
                         //traitement en cas de succès
                         200: function (response) {
-                            var successMessage = response.nom.PJ;
+                            var successMessage = response.nom.T;
                             $('input[id=pfjour]').val(successMessage);
                             cal();
                         },
@@ -718,13 +718,13 @@
                 console.log('ctar : ', ctar, 'opt1 :', opt1);
                 var data_send = {'ctar': ctar,'opt1':opt1};
                 $.ajax({
-                    url:'{{ path('ajax_ep') }}',
+                    url:'{{ path('ajax_t') }}',
                     type: 'POST',
                     data: data_send,
                     statusCode: {
                         //traitement en cas de succès
                         200: function (response) {
-                            var successMessage = response.nom.EP;
+                            var successMessage = response.nom.T;
                             $('input[id=promo]').val(successMessage);
                             cal();
                         },
@@ -748,7 +748,7 @@
                 var data_send = {'ctar': ctar,'opt1':opt1};
 
                 $.ajax({
-                    url:'{{ path('ajax_hb') }}',
+                    url:'{{ path('ajax_t') }}',
                     type: 'POST',
                     data: data_send,
                     statusCode: {
@@ -758,7 +758,7 @@
 
 
 
-                                var successMessage =  successMessage = response.nom.HB;
+                                var successMessage =  successMessage = response.nom.T;
                                 cal();
                                     $('input[id=habillage]').val(successMessage);
 
