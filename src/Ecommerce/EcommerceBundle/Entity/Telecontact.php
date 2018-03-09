@@ -1,6 +1,10 @@
 <?php
+
 namespace Ecommerce\EcommerceBundle\Entity;
+
+
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Telecontact
  *
@@ -23,29 +27,35 @@ class Telecontact
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
+
     /**
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
+
     /**
      * @var string
      *
      * @ORM\Column(name="experiececontenu", type="text")
      */
     private $experiececontenu;
+
     /**
      * @var \Date
      *
      * @ORM\Column(name="experience", type="datetimetz")
      */
     private $experience;
+
+
     /**
      * @ORM\OneToMany(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Utilisateurs", mappedBy="teleconatct", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $utilisateurs;
+
     /**
      * Get id
      *
@@ -55,6 +65,7 @@ class Telecontact
     {
         return $this->id;
     }
+
     /**
      * @return mixed
      */
@@ -62,6 +73,7 @@ class Telecontact
     {
         return $this->titre;
     }
+
     /**
      * @param mixed $titre
      */
@@ -69,6 +81,9 @@ class Telecontact
     {
         $this->titre = $titre;
     }
+
+
+
     /**
      * @return mixed
      */
@@ -76,6 +91,7 @@ class Telecontact
     {
         return $this->contenu;
     }
+
     /**
      * @param mixed $contenu
      */
@@ -83,6 +99,7 @@ class Telecontact
     {
         $this->contenu = $contenu;
     }
+
     /**
      * @return mixed
      */
@@ -90,6 +107,7 @@ class Telecontact
     {
         return $this->experiececontenu;
     }
+
     /**
      * @param mixed $experiececontenu
      */
@@ -97,6 +115,8 @@ class Telecontact
     {
         $this->experiececontenu = $experiececontenu;
     }
+
+
     /**
      * @return \Date
      */
@@ -104,6 +124,7 @@ class Telecontact
     {
         return $this->experience;
     }
+
     /**
      * @param \Date $experience
      */
@@ -111,6 +132,8 @@ class Telecontact
     {
         $this->experience = $experience;
     }
+
+
     /**
      * Set utilisateurs
      *
@@ -121,6 +144,7 @@ class Telecontact
     {
         $this->utilisateurs = $utilisateurs;
     }
+
     /**
      * Get utilisateurs
      *

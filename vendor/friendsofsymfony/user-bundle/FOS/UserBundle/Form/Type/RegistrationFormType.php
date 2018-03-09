@@ -50,8 +50,12 @@ class RegistrationFormType extends AbstractType
                  'choices'   => array('' => 'Select Profil','Responsable Equipe Commerciale' => 'Responsable Equipe Commerciale', 'Senior' => 'Senior','Junior' => 'Junior'),
                  'required'  => true,), array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
             ->add('file','file', array('required' => false))
+<<<<<<< HEAD
+            ->add('teleconatct',"entity", array( 'label' => false ,"class"=>"EcommerceBundle:Telecontact", "property"=>"titre",'attr'=>array('style'=>'display:none;')));
+=======
             ->add('teleconatct',"entity", array( 'label' => false ,"class"=>"EcommerceBundle:Telecontact", "property"=>"titre",'attr'=>array('style'=>'display:none;')))
         ->add('experiececontenu', null, array('label' => 'Description Experience', 'translation_domain' => 'FOSUserBundle'));
+>>>>>>> ee97fec43556099e1446799d18ed4c7840a18c44
 
 
 

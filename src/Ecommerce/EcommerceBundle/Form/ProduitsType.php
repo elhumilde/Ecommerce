@@ -20,13 +20,26 @@ class ProduitsType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('prix')
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
 
             ->add('image', new MediaType())
             ->add('categorie')
 
+<<<<<<< HEAD
 
 
+=======
+        ;
+=======
+>>>>>>> ee97fec43556099e1446799d18ed4c7840a18c44
+            ->add('disponible')
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
             ->add('image', new MediaType(),array('label'=> 'Image Produit'))
             ->add('categorie', 'entity', array(
                 'class'    => 'EcommerceBundle:Categories', 'property' => 'nomcategorie', 'empty_value' => '- sélectionner une Categories -','label'    => 'Categorie Produit  ',  ))
@@ -34,7 +47,14 @@ class ProduitsType extends AbstractType
 
 
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 0d140e8403f4d0adf984ce8537b9fe029928ebe8
+>>>>>>> ee97fec43556099e1446799d18ed4c7840a18c44
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
     }
     
     /**

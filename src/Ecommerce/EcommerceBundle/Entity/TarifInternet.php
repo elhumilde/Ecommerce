@@ -4,11 +4,12 @@ namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * TarifInternet
  *
- * @ORM\Table(name="tarif_internet", uniqueConstraints={@ORM\UniqueConstraint(name="uq_tarif_internet", columns={"CTAR", "OPT1"})})
- * @ORM\Entity
+ * @ORM\Table("tarif_internet")
+ * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\TarifInternetRepository")
  */
 class TarifInternet
 {
@@ -19,7 +20,7 @@ class TarifInternet
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $id = '0';
 
     /**
      * @var string
@@ -611,6 +612,8 @@ class TarifInternet
     {
         $this->rGion16 = $rGion16;
     }
+
+
 
 
 }

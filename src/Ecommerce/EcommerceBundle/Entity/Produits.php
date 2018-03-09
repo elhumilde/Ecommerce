@@ -42,6 +42,8 @@ class Produits
     private $categorie;
 
 
+
+
     
     /**
      * @var string
@@ -63,7 +65,6 @@ class Produits
      * @ORM\Column(name="prix", type="float")
      */
     private $prix;
-
 
 
     /**

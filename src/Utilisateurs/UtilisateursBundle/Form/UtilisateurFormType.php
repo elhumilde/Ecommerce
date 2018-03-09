@@ -37,7 +37,11 @@ class UtilisateurFormType extends AbstractType
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle'))
             ->add('profil', 'textarea', array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
             ->add('description','textarea',array('label' => 'Description', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
+<<<<<<< HEAD
+            ->add('experiececontenu','textarea',array('label' => 'Description Année D\' embauche', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
+=======
             ->add('experiececontenu','textarea',array('label' => 'Description Experience', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
+>>>>>>> ee97fec43556099e1446799d18ed4c7840a18c44
 
 
 

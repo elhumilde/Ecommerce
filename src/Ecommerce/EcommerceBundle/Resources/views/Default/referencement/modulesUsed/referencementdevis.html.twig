@@ -32,6 +32,7 @@
 
         &nbsp&nbsp <td>Autres</td>  <input id="addrub-btn" type="text"  placeholder="Renseigner la prestation ou le produit souhaité" data-toggle="collapse" data-target="#demo-1">
               </input>
+<<<<<<< HEAD
 <fieldset>
     <legend>Vos Marques:</legend>   <h4></h4>
 {#<div id="contenu_marq" style=" display: inline-block" >
@@ -58,6 +59,137 @@
         <div class="">
             <h5></h5>
         </div>
+=======
+
+        <h4>Vos Marques:</h4>
+<div id="contenu_marq" style=" display: inline-block">
+    <div id="marq"  style=" display: inline-block">
+        <input type="text" class="form-control"style=" margin-top: 10px;" >
+    </div>
+</div>
+        <button id="addmarq-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1" >
+            Ajouter une marque </button>
+
+
+
+        <div class="">
+            <h5>Ma visibilité sur</h5>
+        </div>
+
+        <input  style="display:none;" type="text" id="amal" value="">
+
+
+
+
+        <div class="span9">
+            <ul class="thumbnails" style="margin-left: -180px">
+
+                <li id="">
+                    <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
+
+
+
+                        <div class="titre">Ville principale</div>
+                        <div class="tex">
+                            <input id="select" class="my-activitys" type="radio" name="villes" value="9">Casablanca
+
+                        </div>
+                        <div class="tex">
+                            <input id="select" class="my-activitys" type="radio" name="villes" value="10">Rabat
+
+                        </div>
+                        <div class="tex">
+                            <input id="select" class="my-activitys" type="radio" name="villes" value="14">Fes
+
+                        </div>
+                        <div class="tex">
+                            <input id="select" class="my-activitys" type="radio" name="villes" value="16">Tanger
+
+                        </div>
+                        <div class="tex">
+                            <input id="select" class="my-activitys" type="radio" name="villes" value="4">Agadir
+
+                        </div>
+
+
+                        {% for ville in villes %}
+                            <div class="tex" >
+                                <input id="select" class="my-activitys" type="radio" name="villes"  value="{{ ville.region.coderegion }}"/>{{ ville.libelle }}
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </li>
+
+                <li id="">
+                    <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
+
+                        <div class="titre">Ville supplementaires</div>
+
+                        <h5><input type="radio" id="chk1" name="chk2"   class="my-activity"  value="0">Sur sa localité</h5>
+
+
+                        <h5><input type="radio" id="chk2" name="chk2"   class="my-activity"  value="1">+1 localité</h5>
+
+
+                        <h5><input type="radio" id="chk3" name="chk2"   class="my-activity"  value="3">+3 localité</h5>
+
+
+                        <h5><input type="radio" id="chk4" name="chk2"   class="my-activity"  value="6">+6 localité</h5>
+
+                        <h5><input type="radio" id="chk4" name="chk2"   class="my-activity"  value="9">+9 localité</h5>
+
+                    </div>
+                </li>
+
+
+                <li id="">
+                    <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
+
+
+
+                        <div class="titre">Region principale</div>
+
+                        {% for  entities in entities %}
+                            <div class="tex xxx" >
+                                <input id="select" class="regiontest" type="radio" name="regions"  value="{{ entities.coderegion }}"/>{{ entities.libelle }}
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </li>
+
+                <li id="">
+                    <div align=center class="col-md-3" style="background-color: white; height:210px; overflow-y:scroll;">
+
+                        <div class="titre">Region supplementaires</div>
+
+                        <h5><input type="radio" id="chk1" name="chk1"   class="region"  value="0">Sur sa region</h5>
+
+
+                        <h5><input type="radio" id="chk2" name="chk1"   class="region"  value="1">+1 region</h5>
+
+
+                        <h5><input type="radio" id="chk3" name="chk1"   class="region"  value="3">+3 region</h5>
+
+
+                        <h5><input type="radio" id="chk4" name="chk1"   class="region"  value="6">+6 region</h5>
+
+                        <h5><input type="radio" id="chk4" name="chk1"   class="region"  value="N">National</h5>
+
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+        <div>
+            <tr><td>    budget estimé</td> <td><input type="text" id="rania"   value=""></td></tr>
+        </div>
+
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
 
         <input  style="display:none;" type="text" id="amal" value="">
 
@@ -249,6 +381,7 @@
 
 
 
+<<<<<<< HEAD
 
         });
 
@@ -266,8 +399,20 @@
 
 console.log(result_final);
 
+=======
 
+        });
 
+var result_final = 400;
+        var n = $('#marq').length;
+            $('#addmarq-btn').on('click', function (){
+
+                    var duplicatedLists = $("#marq").last().clone().find(":input").val('');
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
+
+                    duplicatedLists.appendTo("#contenu_marq").parent();
+
+<<<<<<< HEAD
         });*/
 
 
@@ -296,6 +441,15 @@ console.log(result_final);
                 console.log(result_final);
             });
 
+=======
+                var result = parseInt(n) * 400;
+                result_final = result_final+ result;
+
+
+console.log(result_final);
+
+        });
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
    {# </script>
 
 

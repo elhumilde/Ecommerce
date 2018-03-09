@@ -48,6 +48,7 @@ class Utilisateurs extends BaseUser
      * @ORM\Column(name="experiececontenu", type="text")
      */
     private $experiececontenu;
+
     /**
      * @var integer
      *
@@ -82,6 +83,8 @@ class Utilisateurs extends BaseUser
      * @ORM\JoinColumn(nullable=true)
      */
     private $teleconatct;
+
+
     /**
      *
      * Get id
@@ -162,6 +165,9 @@ class Utilisateurs extends BaseUser
     {
         $this->experiececontenu = $experiececontenu;
     }
+
+
+
     /**
      * @return int
      */

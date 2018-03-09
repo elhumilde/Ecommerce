@@ -13,13 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Region
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="coderegion", type="integer", nullable=false)
+     * @ORM\Column(name="coderegion", type="string", length=11, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $coderegion;
+    private $coderegion = '0';
 
     /**
      * @var string
@@ -29,7 +29,7 @@ class Region
     private $libelle;
 
     /**
-     * @return int
+     * @return string
      */
     public function getCoderegion()
     {
@@ -37,7 +37,7 @@ class Region
     }
 
     /**
-     * @param int $coderegion
+     * @param string $coderegion
      */
     public function setCoderegion($coderegion)
     {
@@ -59,6 +59,7 @@ class Region
     {
         $this->libelle = $libelle;
     }
+
 
 
 }
