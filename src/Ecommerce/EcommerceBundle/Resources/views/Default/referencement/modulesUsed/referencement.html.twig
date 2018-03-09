@@ -54,24 +54,24 @@
 
 </section>
 
-                            {#----------------------------------Mes activités Referencement---------------------------------#}
+{#----------------------------------Mes activités Referencement---------------------------------#}
 <section  id="fond-2">
 
     <div class="container">
 
         <div class="row">
             <div class="form-group" name="form1" method="POST" action="{{ path('referencementdevis') }}" >
-            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
 
-                <div class="btn-1">
-                    <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
-                    Référencement
-                </div>
-                <br>
-                <div class="activites">
-                    <div class="btn-2" align="center">
-                        <p>Mes activités</p>
+                    <div class="btn-1">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                        Référencement
                     </div>
+                    <br>
+                    <div class="activites">
+                        <div class="btn-2" align="center">
+                            <p>Mes activités</p>
+                        </div>
 
 
 
@@ -81,7 +81,7 @@
                                 <input type="number" class="form-control exampleInputAmount "  placeholder="Nbre" name="num1" id="num1">
                             </div>
                         </div>
-<br>
+                        <br>
 
                         <div class="form-group">
                             <label for="exampleInputAmount">Prestations</label>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                    <br>
+                        <br>
                         <div class="form-group">
                             <label for="exampleInputAmount">Prestations supll.</label>
                             <div class="input-group">
@@ -98,31 +98,31 @@
                                 <input type="number" class="form-control exampleInputAmount pres_marq"  placeholder="Nbre" name="num2" id="num2" >
                             </div>
                         </div>
-                    <tr><td><input type="number" name="sum2" id="sum2" class="pres_marq" style="display:none;" /></td></tr>
-                    <br>
+                        <tr><td><input type="number" name="sum2" id="sum2" class="pres_marq" style="display:none;" /></td></tr>
+                        <br>
                         <div class="form-group">
                             <label for="exampleInputAmount">Marque</label>
                             <div class="input-group">
                                 <input type="number" class="form-control exampleInputAmount pres_marq"  placeholder="Nbre" name="num1" id="num3">
                             </div>
                         </div>
-                    <td><input type="number" name="num1" id="sum3" class="pres_marq" style="display:none;" /></td>
-                     <td> <input type="number" id="mari"  style="display:none;"  value=""></td>
-                     <td><input type="number" id="rania"  style="display:none;" value=""></td>
+                        <td><input type="number" name="num1" id="sum3" class="pres_marq" style="display:none;" /></td>
+                        <td> <input type="number" id="mari"  style="display:none;"  value=""></td>
+                        <td><input type="number" id="rania"  style="display:none;" value=""></td>
 
-                </div>
-
-                <br>
-
-
-                <div class="activites">
-
-                    <div class="btn-2" align="center">
-                        <p>Ma visibilité sur</p>
                     </div>
 
+                    <br>
 
-                 <div class="form-group">
+
+                    <div class="activites">
+
+                        <div class="btn-2" align="center">
+                            <p>Ma visibilité sur</p>
+                        </div>
+
+
+                        <div class="form-group">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ville principale <span class="caret"></span></button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="overflow-y:scroll;">
@@ -132,9 +132,9 @@
                                     <li><input id="select" class="my-activitys" type="radio" name="villes" value="16">&nbsp; &nbsp;Tanger</li>
                                     <li><input id="select" class="my-activitys" type="radio" name="villes" value="4">&nbsp; &nbsp;Agadir</li>
                                     {% for ville in villes %}
-                                    <div class="tex" >
-                                    <li><input id="select" class="my-activitys" type="radio" name="villes" value="{{ ville.region.coderegion }}"/>&nbsp; &nbsp;{{ ville.libelle }}</li>
-                                    </div>
+                                        <div class="tex" >
+                                            <li><input id="select" class="my-activitys" type="radio" name="villes" value="{{ ville.region.coderegion }}"/>&nbsp; &nbsp;{{ ville.libelle }}</li>
+                                        </div>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -159,7 +159,7 @@
 
 
 
-                    <div class="form-group">
+                        <div class="form-group">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Région principale <span class="caret"></span></button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" style="overflow-y:scroll;">
@@ -190,7 +190,7 @@
                             </div>
                         </div>
 
-                </div>
+                    </div>
                 </div>
 
             </div>
@@ -200,11 +200,11 @@
     </div>
 
 </section>
-               <br>
+<br>
 <br>
 
 <div>
-    <tr><td>    budget estimé</td> <td><input type="text" id="faysal"   value=""></td></tr>
+    <tr><td>    budget estimé</td> <td><input type="text" id="fayssal"   value=""></td></tr>
 </div>
 {#-------------------------------------------Vidéo---------------------------------------------#}
 
