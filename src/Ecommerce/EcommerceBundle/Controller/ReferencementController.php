@@ -37,22 +37,49 @@ class ReferencementController extends Controller
 
     public function referencementdevisAction()
     {
+       /* die('ici');*/
+        $session = $this->getRequest()->getSession();
+
+        if (!$session->has('referencement')) $session->set('referencement',array());
+        $referencement = $session->get('referencement');
 
         $em = $this->getDoctrine()->getManager();
-
 
         $rubriques = $em->getRepository('EcommerceBundle:Rubrique')->findAll();
         $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
         $entities = $em->getRepository('EcommerceBundle:region')->findAll();
 
+<<<<<<< HEAD
+        $session->set('referencement',$referencement);
+=======
 
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencementdevis.html.twig', array('rubriques' => $rubriques,
             'entities' => $entities,
             'villes' => $villes,
 
         ));
+<<<<<<< HEAD
+
     }
 
+   /* public function validationDevisAction()
+    {
+        if ($this->get('request')->getMethod() == 'POST')
+            $this->referencementdevisAction();
+        die('referencement');
+
+        $em = $this->getDoctrine()->getManager();
+        $prepareCommande = $this->forward('EcommerceBundle:referencementdevis:prepareCommande');
+        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
+
+        return $this->render('EcommerceBundle:Default:panier/layout/referencementdevis.html.twig', array('commande' => $commande));
+    }*/
+
+=======
+    }
+
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
     public function ajaxAction(Request $request)
     {
 
@@ -138,4 +165,16 @@ class ReferencementController extends Controller
 
 
     }
+<<<<<<< HEAD
+
+    public function setCommandeAction()
+    {
+        $session = $this->getRequest()->getSession();
+
+
+
+    }
 }
+=======
+}
+>>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
