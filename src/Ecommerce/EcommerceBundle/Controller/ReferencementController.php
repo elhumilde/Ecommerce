@@ -37,7 +37,7 @@ class ReferencementController extends Controller
 
     public function referencementdevisAction()
     {
-       /* die('ici');*/
+
         $session = $this->getRequest()->getSession();
 
         if (!$session->has('referencement')) $session->set('referencement',array());
@@ -45,41 +45,20 @@ class ReferencementController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+
         $rubriques = $em->getRepository('EcommerceBundle:Rubrique')->findAll();
         $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
         $entities = $em->getRepository('EcommerceBundle:region')->findAll();
 
-<<<<<<< HEAD
         $session->set('referencement',$referencement);
-=======
-
->>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencementdevis.html.twig', array('rubriques' => $rubriques,
             'entities' => $entities,
             'villes' => $villes,
 
         ));
-<<<<<<< HEAD
 
     }
 
-   /* public function validationDevisAction()
-    {
-        if ($this->get('request')->getMethod() == 'POST')
-            $this->referencementdevisAction();
-        die('referencement');
-
-        $em = $this->getDoctrine()->getManager();
-        $prepareCommande = $this->forward('EcommerceBundle:referencementdevis:prepareCommande');
-        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
-
-        return $this->render('EcommerceBundle:Default:panier/layout/referencementdevis.html.twig', array('commande' => $commande));
-    }*/
-
-=======
-    }
-
->>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
     public function ajaxAction(Request $request)
     {
 
@@ -90,58 +69,12 @@ class ReferencementController extends Controller
         $query->setParameter('rub', $prestations);
         $result = $query->getArrayResult();
 
-        /*   $result = $em->getRepository('EcommerceBundle:Prestation')->getPrestation($prestations);*/
-
 
         return new Response(json_encode($result), 200);
 
 
-        /*  $em = $this->getDoctrine()->getManager();
-          $prestations   =  $request->request->get('rubrique');
-       /*   $rubriques = $em->getRepository('EcommerceBundle:Prestation')->findBy(array("rubrique_id"=>$prestations));*/
-
-
-        /*  $response = new JsonResponse();
-
-                  $prest= $this->getDoctrine()->getRepository('EcommerceBundle:Prestation')->findBy(array('rub' => $prestations ));
-
-          */     /*   $var=array();
-            foreach ($prest as $rub){
-                 $var['id'][]=$rub->getId();
-                 $var['presta'][]=$rub->getPrestation();
-        }*/
-
-        /*  $prest = json_encode($prest);
-
-    /*  $prest= json_encode($rubriques);*/
-
-        /*    return $response->setData(array('nom' => $prest));*/
-
-        /*$parametersAsArray = [];
-        if($content = $request ->getContent()){
-            $parametersAsArray = json_decode($content,true);
-        }*/
     }
 
-/*
-    public function ajaxRefAction(Request $request)
-    {
-
-        $em = $this->getDoctrine()->getManager();
-
-        $choix = array('MC','M1');
-        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')
-            ->select('t.rGion1 AS tarif')
-            ->where('t.ctar = :code')
-            ->setParameter('code', $choix)->getQuery()
-            ->getSingleResult();
-
-
-        $response = new JsonResponse();
-        return $response->setData(array('data' => $query));
-
-
-    }*/
 
     public function ajaxRefAction(Request $request)
     {
@@ -165,7 +98,6 @@ class ReferencementController extends Controller
 
 
     }
-<<<<<<< HEAD
 
     public function setCommandeAction()
     {
@@ -175,6 +107,3 @@ class ReferencementController extends Controller
 
     }
 }
-=======
-}
->>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
