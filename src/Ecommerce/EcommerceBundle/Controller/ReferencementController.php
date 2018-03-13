@@ -49,17 +49,15 @@ class ReferencementController extends Controller
         $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
         $entities = $em->getRepository('EcommerceBundle:region')->findAll();
 
-<<<<<<< HEAD
-        $session->set('referencement',$referencement);
-=======
 
->>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
+        $session->set('referencement',$referencement);
+
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencementdevis.html.twig', array('rubriques' => $rubriques,
             'entities' => $entities,
             'villes' => $villes,
 
         ));
-<<<<<<< HEAD
+
 
     }
 
@@ -76,10 +74,10 @@ class ReferencementController extends Controller
         return $this->render('EcommerceBundle:Default:panier/layout/referencementdevis.html.twig', array('commande' => $commande));
     }*/
 
-=======
+
     }
 
->>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
+
     public function ajaxAction(Request $request)
     {
 
@@ -165,7 +163,7 @@ class ReferencementController extends Controller
 
 
     }
-<<<<<<< HEAD
+
 
     public function setCommandeAction()
     {
@@ -175,6 +173,6 @@ class ReferencementController extends Controller
 
     }
 }
-=======
+
 }
->>>>>>> 78c04cd3e2d1b40a1170b78df199c0efa2671291
+
