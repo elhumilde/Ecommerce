@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
 </head>
 
 <body>
+
 
 
 <div class="icon-retour">
@@ -43,6 +45,14 @@
     </div>
 
 </section>
+
+
+                <span id="prestaAjax" style="display: none; position : center;">
+      <img src="../../web/apple-touch-icon.png" alt="loading..." height="25" width="25">
+
+        </span>
+
+
 
 {#----------------------------------Mes activités Referencement---------------------------------#}
 <section  id="fond-2">
@@ -302,6 +312,7 @@
             var select = jQuery(this);
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
+            $('#prestaAjax').show();
             console.log('ville : ', v, 'opt1 :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
@@ -316,11 +327,14 @@
                         console.log(successMessage);
                        rub();
                         Reg();
+                        $('#prestaAjax').hide();
                     },
+
                     412: function (response) {
                         var errorsForm = response.responseJSON.formErrors;
                         //on affiche les erreurs...
                         alert('error');
+                        $('#prestaAjax').hide();
                     }
                 }
             });
@@ -332,6 +346,7 @@
             var select = jQuery(this);
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
+            $('#prestaAjax').show();
             console.log('villesss : ', v, 'opt1sss :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
@@ -344,7 +359,10 @@
                         var successMessage = response.nom.VAR;
                         $('input[id=rania]').val(successMessage);
 
+
                         Reg();
+
+                        $('#prestaAjax').hide();
 
                         console.log(successMessage);
                         /* console.log();
@@ -354,6 +372,7 @@
                         var errorsForm = response.responseJSON.formErrors;
                         //on affiche les erreurs...
                         alert('error');
+                        $('#prestaAjax').hide();
                     }
                 }
             });
@@ -368,6 +387,7 @@
                 var rub = $('input[name=num1]').val();
                 var v = $('input[name=villes]:checked').val();
                 var o = $('input[class=my-activity]:checked').val();
+                $('#prestaAjax').show();
                 console.log('ville : ', v, 'opt1 :', o, 'rubrique: ', rub);
                 var data_send = {'ville': v, 'opt1': o, 'region': v, 'ctar': ctar};
                 $.ajax({
@@ -381,11 +401,13 @@
                             var rubrique = (rub - 1) * successMessage;
                             console.log(rubrique);
                             $('input[id=rubd]').val(rubrique);
+                            $('#prestaAjax').hide();
                         },
                         412: function (response) {
                             var errorsForm = response.responseJSON.formErrors;
                             //on affiche les erreurs...
                             alert('error');
+                            $('#prestaAjax').hide();
                         }
                     }
                 });
@@ -440,15 +462,18 @@
             document.getElementById("mari").value = result3;
         });
         $("#num1").on("keydown keyup change", function() {
-
-             if($('.my-activity').is(':checked')){
-
-                
-
-                 rub();
+            $('#prestaAjax').css('display','');
+             if($('.region').is(':checked')){
+                       Reg();
+                 $('#prestaAjax').css('display','none');
              }
-             else if('') {
-                 Reg();
+
+             else if('.my-activitys') {
+                 rub();
+                 $('#prestaAjax').css('display','none');
+             }
+             else{
+                 $('input[id=rubd]').val(0);
              }
 
 
