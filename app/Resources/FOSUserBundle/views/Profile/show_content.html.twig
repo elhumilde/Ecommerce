@@ -78,7 +78,7 @@
 
                 <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
                     <div class="titre">Références Clients</div>
-                    <div style="width: 200px; margin-top: 35px;">
+                    <div style="width: 219px; margin-top: 35px;float: left">
                         <div class="row">
                             {% for en in user.client %}
                                 <div class="col-md-4">
@@ -160,12 +160,12 @@
 
                 <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
                     <div class="titre">Références Clients</div>
-                    <div style="width: 200px; margin-top: 35px;">
+                    <div style="width: 219px; margin-top: 35px;float: left">
                         <div class="row">
 
                             {% for en in user.client %}
                                 <div class="col-md-4">
-                                    <img style="margin: 10px 10px 10px 10px;" src="{{ asset('uploads/' ~en.path) }}" width="60" height="60" alt="logo-tijari">
+                                    <img style="margin: 10px 10px 10px 10px;" src="{{ asset('uploads/' ~en.path) }}" width="60" height="60" >
                                 </div>
                             {% endfor %}
 
@@ -424,12 +424,12 @@
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
                             Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
                         </a>
-                        <a href="http://www.telecontact.ma/" role="button" class="btn btn-info">
+                        <a href="{{ path('affichage') }}" role="button" class="btn btn-info">
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
                             Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
                         </a>
                         <br>
-                        <a href="http://www.telecontact.ma/" role="button" class="btn btn-info" id="bouton-3">
+                        <a href="" role="button" class="btn btn-info" id="bouton-3">
                             Devis Global
                         </a>
                     </div>

@@ -39,10 +39,8 @@ class Rubrique
 
     /**
      * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Prestation", mappedBy="Rubrique")
-     * @ORM\JoinColumn(nullable=true)
      */
     private $prestation;
-
     /**
      * @return mixed
      */

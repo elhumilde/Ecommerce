@@ -61,13 +61,13 @@ presentationclient:
 
 referencementdevis:
     pattern:  /referencementdevis
-    defaults: { _controller: EcommerceBundle:referencement:referencementdevis }
+    defaults: { _controller: EcommerceBundle:Referencement:referencementdevis }
 
 ajax:
     pattern:  /ajax
-    defaults: { _controller: EcommerceBundle:referencement:ajax }
+    defaults: { _controller: EcommerceBundle:Referencement:ajax }
 
 ajaxRef:
     pattern:  /ajaxRef
-    defaults: { _controller: EcommerceBundle:referencement:ajaxRef }
+    defaults: { _controller: EcommerceBundle:Referencement:ajaxRef }
 

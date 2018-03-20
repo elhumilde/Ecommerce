@@ -20,10 +20,6 @@ class Categories
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-
-
-
     /**
      * @var string
      *
@@ -39,8 +35,10 @@ class Categories
      */
     private $description;
 
-
-
+    /**
+     * @ORM\OneToMany(targetEntity="Ecommerce\EcommerceBundle\Entity\Produits", mappedBy="categorie")
+     */
+    private $produit;
 
     /**
      * Get id

@@ -20,7 +20,7 @@ class ProduitsController extends Controller
             $panier = $session->get('panier');
         else
             $panier = false;
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array( 'panier' => $panier));
+        return $this->render('EcommerceBundle:Default:produits/layout/budgetisationgestiondecontenu.html.twig', array( 'panier' => $panier));
 
 
     }
@@ -64,7 +64,7 @@ class ProduitsController extends Controller
             throw $this->createNotFoundException('La page n\'existe pas.');
         }
         
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits));
+        return $this->render('EcommerceBundle:Default:produits/layout/budgetisationgestiondecontenu.html.twig', array('produits' => $produits));
     }
 
 
@@ -101,7 +101,7 @@ class ProduitsController extends Controller
         $query->setParameter('region',$ville);
         */
          $var='rGion'.$region;
-        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.'.$var.' AS VAR')
+        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.'.$var.' AS VAR','t.libelle AS L','t.libOpt1 AS LO1','t.libOpt2 AS LO2')
         ->where('t.opt1 = :op')->setParameter('op',$opt1)
         ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
         //$var1='rGion'.$region1;
@@ -150,7 +150,7 @@ class ProduitsController extends Controller
         $ctar =  $request->request->get('ctar');
         $opt1 =  $request->request->get('opt1');
 
-       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS T')
+       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS T','t.libelle AS L','t.libOpt1 AS LO1')
        ->where('t.opt1 = :op')->setParameter('op',  $opt1)
        ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
 
@@ -158,48 +158,50 @@ class ProduitsController extends Controller
         return $response->setData(array('nom' => $query));
 
     }
-   /* public function ajaxPJAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $ctar =  $request->request->get('ctar');
-        $opt1 =  $request->request->get('opt1');
+    /*
+    public function ajaxPJAction(Request $request)
+   {
+       $em = $this->getDoctrine()->getManager();
+       $ctar =  $request->request->get('ctar');
+       $opt1 =  $request->request->get('opt1');
 
-        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS PJ')
-            ->where('t.opt1 = :op')->setParameter('op',  $opt1)
-            ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
-        $response = new JsonResponse();
-        return $response->setData(array('nom' => $query));
+       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS PJ')
+           ->where('t.opt1 = :op')->setParameter('op',  $opt1)
+           ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
+       $response = new JsonResponse();
+       return $response->setData(array('nom' => $query));
 
-    }
-    public function ajaxEPAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $ctar =  $request->request->get('ctar');
-        $opt1 =  $request->request->get('opt1');
+   }
+   /*
+   pufunction ajaxEPAction(Request $request)
+   {
+       $em = $this->getDoctrine()->getManager();
+       $ctar =  $request->request->get('ctar');
+       $opt1 =  $request->request->get('opt1');
 
-        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS EP')
-            ->where('t.opt1 = :op')->setParameter('op',  $opt1)
-            ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
+       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS EP')
+           ->where('t.opt1 = :op')->setParameter('op',  $opt1)
+           ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
 
-        $response = new JsonResponse();
-        return $response->setData(array('nom' => $query));
+       $response = new JsonResponse();
+       return $response->setData(array('nom' => $query));
 
-    }
+   }
 
-    public function ajaxHBAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $ctar =  $request->request->get('ctar');
-        $opt1 =  $request->request->get('opt1');
+   public function ajaxHBAction(Request $request)
+   {
+       $em = $this->getDoctrine()->getManager();
+       $ctar =  $request->request->get('ctar');
+       $opt1 =  $request->request->get('opt1');
 
-        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS HB')
-            ->where('t.opt1 = :op')->setParameter('op',  $opt1)
-            ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
+       $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.rGion1 AS HB')
+           ->where('t.opt1 = :op')->setParameter('op',  $opt1)
+           ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
 
-        $response = new JsonResponse();
-        return $response->setData(array('nom' => $query));
+       $response = new JsonResponse();
+       return $response->setData(array('nom' => $query));
 
-    }*/
+   }*/
 
 
 
@@ -213,7 +215,7 @@ class ProduitsController extends Controller
             $panier = $session->get('panier');
         else
             $panier = false;
-        return $this->render('EcommerceBundle:Default:produits/layout/produitsdevis.html.twig', array( 'panier' => $panier));
+        return $this->render('EcommerceBundle:Default:produits/layout/devisgestiondecontenu.html.twig', array( 'panier' => $panier));
 
     }
 

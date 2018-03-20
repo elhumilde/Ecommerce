@@ -1,4 +1,4 @@
 referencement:
     pattern:  /
-    defaults: { _controller: EcommerceBundle:referencement:referencement }
+    defaults: { _controller: EcommerceBundle:Referencement:referencement }
 

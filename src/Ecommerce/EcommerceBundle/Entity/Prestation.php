@@ -23,7 +23,7 @@ class Prestation
 
 
     /**
-     * One Cart has One Customer.
+     *
      * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="prestation")
      * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="CODERUBRIQUE")
      */

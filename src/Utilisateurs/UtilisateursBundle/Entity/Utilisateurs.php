@@ -1,7 +1,7 @@
 <?php
 namespace Utilisateurs\UtilisateursBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Component\validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="Utilisateurs\UtilisateursBundle\Repository\UtilisateursRepository")
@@ -269,6 +269,8 @@ class Utilisateurs extends BaseUser
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     private $path;
+
+
     /**
      * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
      *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")

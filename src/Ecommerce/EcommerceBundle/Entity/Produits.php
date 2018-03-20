@@ -40,11 +40,6 @@ class Produits
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
-
-
-
-
-    
     /**
      * @var string
      *
