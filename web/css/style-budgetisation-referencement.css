@@ -1,5 +1,5 @@
 body .icon-retour {
-<<<<<<< HEAD
+
     margin: 20px;
 }
 
@@ -125,7 +125,7 @@ section {
 #fond-2 .container .activites .dropdown-menu {
     background-color: #f9f9f9;
     width: 264px;
-    height: 200px;
+    height: 150px;
     margin: 0;
     padding: 0;
     border: 0;
@@ -135,8 +135,7 @@ section {
 
 #fond-2 .container .activites .dropdown-menu li {
     margin-top: 8px;
-    font-size: 15px
-=======
+    font-size: 15px;
   margin: 20px;
 }
 
@@ -232,7 +231,7 @@ section {
    width: 10em;
    margin-right: 1em;
    text-align: left;
-   font-size: 18px;
+   font-size: 15px;
    display: block;
    font-weight: normal;
    margin-top: 10px;
@@ -272,8 +271,7 @@ section {
 
 #fond-2 .container .activites .dropdown-menu li {
   margin-top: 8px;
-  font-size: 15px
->>>>>>> 20ae456069635ea95321b8ff9bed293ab0b9e6e7
+  font-size: 15px;
 }
 
 #fond-3 {
@@ -282,7 +280,7 @@ section {
     height: 400px;
 }
 
-<<<<<<< HEAD
+
 #fond-3 .container .btn-1 {
     background-color: #ffdb2e;
     margin: 30px 0 0 0;
@@ -293,7 +291,7 @@ section {
     padding: 10px 0 0 0;
     color: black;
 }
-=======
+
  #fond-3 .container .btn-1 {
    background-color: #ffdb2e;
    margin: 30px 0 0 0;
@@ -304,7 +302,7 @@ section {
    padding: 10px 0 0 0;
    color: black;
  }
->>>>>>> 20ae456069635ea95321b8ff9bed293ab0b9e6e7
+
 
 #fond-3 {
     background-color: white;
@@ -312,7 +310,7 @@ section {
     height: 400px;
 }
 
-<<<<<<< HEAD
+
 #fond-4 .container form .btn {
     background-color: #ffdb2e;
     margin: 50px 0 0 15px;
@@ -345,7 +343,7 @@ span.glyphicon-triangle-right {
     font-size: 16px;
     vertical-align: -2px;
 }
-=======
+
  #fond-4 .container form .btn {
    background-color: #ffdb2e;
    margin: 50px 0 0 15px;
@@ -378,4 +376,4 @@ span.glyphicon-triangle-right {
      font-size: 16px;
      vertical-align: -2px;
  }
->>>>>>> 20ae456069635ea95321b8ff9bed293ab0b9e6e7
+
