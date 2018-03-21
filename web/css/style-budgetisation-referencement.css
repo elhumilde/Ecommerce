@@ -135,6 +135,7 @@ section {
 
 #fond-2 .container .activites .dropdown-menu li {
     margin-top: 8px;
+
     font-size: 15px;
   margin: 20px;
 }
@@ -272,6 +273,9 @@ section {
 #fond-2 .container .activites .dropdown-menu li {
   margin-top: 8px;
   font-size: 15px;
+=======
+    font-size: 15px
+>>>>>>> 830aa68bb6b1b16df68981af48d5e901ca1dadaf
 }
 
 #fond-3 {
@@ -279,6 +283,7 @@ section {
     left: 0;
     height: 400px;
 }
+
 
 
 #fond-3 .container .btn-1 {
@@ -292,6 +297,7 @@ section {
     color: black;
 }
 
+
  #fond-3 .container .btn-1 {
    background-color: #ffdb2e;
    margin: 30px 0 0 0;
@@ -302,6 +308,7 @@ section {
    padding: 10px 0 0 0;
    color: black;
  }
+
 
 
 #fond-3 {
@@ -344,6 +351,7 @@ span.glyphicon-triangle-right {
     vertical-align: -2px;
 }
 
+
  #fond-4 .container form .btn {
    background-color: #ffdb2e;
    margin: 50px 0 0 15px;
@@ -376,4 +384,5 @@ span.glyphicon-triangle-right {
      font-size: 16px;
      vertical-align: -2px;
  }
+
 
