@@ -11,7 +11,8 @@
                     <h4>Inscription</h4>
                     <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
                         {{ form_widget(form) }}
-                        <br />
+
+                        Téléphone <br><input name="telephone" type="number" /><br>
                         <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
                     </form>
                 </div>
@@ -19,3 +20,4 @@
         </div>
     </div>
 </div>
+

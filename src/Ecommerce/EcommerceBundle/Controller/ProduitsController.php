@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProduitsController extends Controller
 {
-    public function produitsAction(Categories $categorie = null)
+    public function budgetgestiondecontenuAction(/*Categories $categorie = null*/)
     {
         $session = $this ->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
@@ -25,78 +25,50 @@ class ProduitsController extends Controller
 
     }
 
-    public function presentationAction($id)
-    {
-        $session = $this->getRequest()->getSession();
-        $em = $this->getDoctrine()->getManager();
-        $produit = $em->getRepository('EcommerceBundle:Produits')->find($id);
-
-        if (!$produit) throw $this->createNotFoundException('La page n\'existe pas.');
-
-        // produit qui existe deja en panier on px pas le rajouter
-
-        if ($session->has('panier'))
-            $panier = $session->get('panier');
-        else
-            $panier = false;
-
-
-        return $this->render('EcommerceBundle:Default:produits/layout/presentation.html.twig', array('produit' => $produit,
-                                                                                                            'panier' => $panier));
-    }
-    
-    public function rechercheAction() 
-    {
-        $form = $this->createForm(new RechercheType());
-        return $this->render('EcommerceBundle:Default:Recherche/modulesUsed/recherche.html.twig', array('form' => $form->createView()));
-    }
-    
-    public function rechercheTraitementAction() 
-    {
-        $form = $this->createForm(new RechercheType());
-        
-        if ($this->get('request')->getMethod() == 'POST')
-        {
-            $form->bind($this->get('request'));
-            $em = $this->getDoctrine()->getManager();
-            $produits = $em->getRepository('EcommerceBundle:Produits')->recherche($form['recherche']->getData());
-        } else {
-            throw $this->createNotFoundException('La page n\'existe pas.');
-        }
-        
-        return $this->render('EcommerceBundle:Default:produits/layout/budgetisationgestiondecontenu.html.twig', array('produits' => $produits));
-    }
-
-
-
-        public function affichageAction(){
+        public function budgetaffichageAction(){
 
             $em = $this->getDoctrine()->getManager();
             $villes = $em->getRepository('EcommerceBundle:Ville')->findAll();
 
 
 
-            return $this->render('EcommerceBundle:Default:produits/layout/affichage.html.twig',array('villes'=>$villes));
+            return $this->render('EcommerceBundle:Default:produits/layout/budgetisationaffichage.html.twig',array('villes'=>$villes));
         }
 
+                                                 /*Simulation devis*/
 
+    public function devisgestiondecontenuAction()
+    {
+        $session = $this ->getRequest()->getSession();
+        $em = $this->getDoctrine()->getManager();
+
+        if ($session->has('panier'))
+            $panier = $session->get('panier');
+        else
+            $panier = false;
+        return $this->render('EcommerceBundle:Default:produits/layout/devisgestiondecontenu.html.twig', array( 'panier' => $panier));
+
+    }
+
+    public function devisaffichageAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $villes = $em->getRepository('EcommerceBundle:Ville')->findAll();
+
+
+        return $this->render('EcommerceBundle:Default:produits/layout/devisaffichage.html.twig', array('villes' => $villes));
+
+
+    }
+
+                                                                  /* ajax*/
     public function ajaxVAAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-     $ville  =  $request->request->get('ville');
         $opt1  =  $request->request->get('opt1');
         $region =  $request->request->get('region');
         $ctar =  $request->request->get('ctar');
-        $ctar1 =  $request->request->get('ctar1');
-        $zone1 =  $request->request->get('zone1');
-        $zone2 =  $request->request->get('zone2');
-        $zone3 =  $request->request->get('zone3');
-        $zone4 =  $request->request->get('zone4');
-        $region1 =  $request->request->get('region1');
-
-
-
-
 /*        $query = $em->createQuery('SELECT t FROM  Ecommerce\EcommerceBundle\Entity\TarifInternet t WHERE t.opt1='.$opt1.' and t.ctar=.'.$ctar);
         $query->setParameter('region',$ville);
         */
@@ -118,11 +90,6 @@ class ProduitsController extends Controller
         //$response1 = new JsonResponse();
      return $response->setData(array('nom' => $query));
         //return $response1->setData(array('localite' => $query1));
-
-
-
-
-
         /*   $result = $em->getRepository('EcommerceBundle:Prestation')->getPrestation($prestations);*/
 
         /*  $em = $this->getDoctrine()->getManager();
@@ -205,18 +172,6 @@ class ProduitsController extends Controller
 
 
 
-    /////Simulation devis
-    public function produitsdevisAction(Categories $categorie = null)
-    {
-        $session = $this ->getRequest()->getSession();
-        $em = $this->getDoctrine()->getManager();
 
-        if ($session->has('panier'))
-            $panier = $session->get('panier');
-        else
-            $panier = false;
-        return $this->render('EcommerceBundle:Default:produits/layout/devisgestiondecontenu.html.twig', array( 'panier' => $panier));
-
-    }
 
 }

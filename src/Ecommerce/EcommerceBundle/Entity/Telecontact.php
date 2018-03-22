@@ -4,11 +4,10 @@ namespace Ecommerce\EcommerceBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Telecontact
  *
- * @ORM\Table()
+ * @ORM\Table("telecontact")
  * @ORM\Entity(repositoryClass="Ecommerce\EcommerceBundle\Repository\TelecontactRepository")
  */
 class Telecontact

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>{% block titre %}E-contact | Simulation Devis - Gestion de contenu{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -58,17 +58,6 @@
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
 <section  id="fond-2">
 
     <div class="container">
@@ -93,17 +82,17 @@
                             <div id="demo-1" class="collapse ">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input class="my-activity " type="checkbox" id="ct0" value="3500" onclick="check_ct(this, 'ct1'),check_ct(this,'ct2'),check_ct(this,'ct3');" >5 pages
+                                        <input class="my-activity checkbox " type="checkbox" id="ct0" value="3500" >5 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input class="my-activity " type="checkbox" id="ct1" value="5000" onclick="check_ct(this, 'ct0'),check_ct(this,'ct2'),check_ct(this,'ct3');">10 pages
+                                        <input class="my-activity checkbox " type="checkbox" id="ct1" value="5000" >10 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input class="my-activity " type="checkbox" id="ct2" value="7500" onclick="check_ct(this, 'ct1'),check_ct(this,'ct0'),check_ct(this,'ct3');">20 pages
+                                        <input class="my-activity checkbox " type="checkbox" id="ct2" value="7500" >20 pages
                                     </div>
                                 </label>
                             </div>
@@ -117,17 +106,17 @@
                             <div id="demo-2" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox"  class="my-activity " id="cr1"  value="5000" onclick="check_cr(this, 'cr2'),check_cr(this,'cr3'),check_cr(this,'cr4');">5 pages
+                                        <input type="checkbox"  class="my-activity checkboxs " id="cr1"  value="5000" >5 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox"  class="my-activity " id="cr2" value="6500" onclick="check_cr(this, 'cr1'),check_cr(this,'cr3'),check_cr(this,'cr4')";>10 pages
+                                        <input type="checkbox"  class="my-activity checkboxs " id="cr2" value="6500" >10 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox"  class="my-activity " id="cr3" value="9000" onclick="check_cr(this, 'cr2'),check_cr(this,'cr1'),check_cr(this,'cr4');">20 pages
+                                        <input type="checkbox"  class="my-activity checkboxs " id="cr3" value="9000" >20 pages
                                     </div>
                                 </label>
 
@@ -143,32 +132,32 @@
                             <div id="demo-3" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd4" value="6500" {#onclick="check_vd(this, 'vd1'),check_vd(this,'vd2'),check_vd(this,'vd3'),check_vd(this,'vd0'),check_vd(this,'vd5');"#}>Graphique
+                                        <input type="checkbox" class="my-activity " id="vd4" value="6500" >Graphique
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd5" value="9500" {#onclick="check_vd(this, 'vd1'),check_vd(this,'vd2'),check_vd(this,'vd3'),check_vd(this,'vd4'),check_vd(this,'vd0');"#}>Vidéo
+                                        <input type="checkbox" class="my-activity " id="vd5" value="9500" >Vidéo
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd0"  value="12500" {#onclick="check_vd(this, 'vd1'),check_vd(this,'vd2'),check_vd(this,'vd3'),check_vd(this,'vd4'),check_vd(this,'vd5');"#}>Film
+                                        <input type="checkbox" class="my-activity " id="vd0"  value="12500" >Film
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd1"  value="20000" {#onclick="check_vd(this, 'vd0'),check_vd(this,'vd2'),check_vd(this,'vd3'),check_vd(this,'vd4'),check_vd(this,'vd5');"#}>Motion Design
+                                        <input type="checkbox" class="my-activity " id="vd1"  value="20000" >Motion Design
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd2" value="30000" {#onclick="check_vd(this, 'vd1'),check_vd(this,'vd0'),check_vd(this,'vd3'),check_vd(this,'vd4'),check_vd(this,'vd5');"#}>Vidéo Premium
+                                        <input type="checkbox" class="my-activity " id="vd2" value="30000" >Vidéo Premium
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd3" value="3500" {#onclick="check_vd(this, 'vd1'),check_vd(this,'vd2'),check_vd(this,'vd0'),check_vd(this,'vd4'),check_vd(this,'vd5');"#}>Diffusion
+                                        <input type="checkbox" class="my-activity " id="vd3" value="3500" >Diffusion
                                     </div>
                                 </label>
                             </div>
@@ -182,32 +171,32 @@
                             <div id="demo-4" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv0" value="2000" {#onclick="check_pv(this, 'pv1'),check_pv(this,'pv2'),check_pv(this,'pv3'),check_pv(this,'pv4'),check_pv(this,'pv5');"#}>Page Web
+                                        <input type="checkbox" class="my-activity " id="pv0" value="2000" >Page Web
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv1"  value="3000" {#onclick="check_pv(this, 'pv0'),check_pv(this,'pv2'),check_pv(this,'pv3'),check_pv(this,'pv4'),check_pv(this,'pv5');"#}>Pack Présence
+                                        <input type="checkbox" class="my-activity " id="pv1"  value="3000" >Pack Présence
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv2" value="4500" {#onclick="check_pv(this, 'pv1'),check_pv(this,'pv0'),check_pv(this,'pv3'),check_pv(this,'pv4'),check_pv(this,'pv5');"#}>Web
+                                        <input type="checkbox" class="my-activity " id="pv2" value="4500" >Web
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv3"  value="7000" {#onclick="check_pv(this, 'pv1'),check_pv(this,'pv2'),check_pv(this,'pv0'),check_pv(this,'pv4'),check_pv(this,'pv5');"#}>Web +
+                                        <input type="checkbox" class="my-activity " id="pv3"  value="7000" >Web +
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv4" value="9500" {#onclick="check_pv(this, 'pv1'),check_pv(this,'pv2'),check_pv(this,'pv3'),check_pv(this,'pv0'),check_pv(this,'pv5');"#}>Web Interactif
+                                        <input type="checkbox" class="my-activity " id="pv4" value="9500" >Web Interactif
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv5" value="12000" {#onclick="check_pv(this, 'pv1'),check_pv(this,'pv2'),check_pv(this,'pv3'),check_pv(this,'pv4'),check_pv(this,'pv0');"#}>E-commerce
+                                        <input type="checkbox" class="my-activity " id="pv5" value="12000" >E-commerce
                                     </div>
                                 </label>
                             </div>
@@ -271,7 +260,7 @@
                                 </a>
                             </div>
                             <div class="form-group">
-                                <a href="{{ path('affichage') }}" role="button" class="btn" style="width: 165px;">
+                                <a href="{{ path('devis_affichage') }}" role="button" class="btn" style="width: 165px;">
                                     <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
                                     Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
                                 </a>
@@ -292,6 +281,14 @@
 
 </body>
 <script>
+
+    $('.checkbox').on('change', function() {
+        $('.checkbox').not(this).prop('checked', false);
+    });
+    $('.checkboxs').on('change', function() {
+        $('.checkboxs').not(this).prop('checked', false);
+    });
+
     function showhide_r()
     {
         var div = document.getElementById("ref");
@@ -313,74 +310,6 @@
             div.style.display = "none";
         }
     }
-</script>
-{#
-</head>
-<body>
-<button id="button" onclick="showhide()">Click Me</button>
-<div id="newpost" style="display: none">
-
-    <input type="text" name="total" id="total" value="0"  readonly/>
-</div>
-#}
-
-
-
-<script>
-    $(document).on('click', '#total', function () {
-        cal();
-        document.getElementById('fayssal')/*.style.display = 'block'*/;
-    });
-    function check_ct(chk, id){
-        var chk1 = document.getElementById(id);
-        if(chk.checked){
-            chk1.disabled = true;
-            chk1.parentNode.className = "disabled";
-        }
-        else {
-            chk1.disabled = false;
-            chk1.parentNode.className = "";
-        }
-
-    }
-
-    function check_cr(chk, id){
-        var chk1 = document.getElementById(id);
-        if(chk.checked){
-            chk1.disabled = true;
-            chk1.parentNode.className = "disabled";
-        }
-        else {
-            chk1.disabled = false;
-            chk1.parentNode.className = "";
-        }
-
-    }
-
-    /* function check_vd(chk, id){
-     var chk1 = document.getElementById(id);
-     if(chk.checked){
-     chk1.disabled = true;
-     chk1.parentNode.className = "disabled";
-     }
-     else {
-     chk1.disabled = false;
-     chk1.parentNode.className = "";
-     }
-
-     }
-     function check_pv(chk, id){
-     var chk1 = document.getElementById(id);
-     if(chk.checked){
-     chk1.disabled = true;
-     chk1.parentNode.className = "disabled";
-     }
-     else {
-     chk1.disabled = false;
-     chk1.parentNode.className = "";
-     }
-
-     }*/
 
     $(document).ready(function() {
         $(".my-activity").change(function(event) {
