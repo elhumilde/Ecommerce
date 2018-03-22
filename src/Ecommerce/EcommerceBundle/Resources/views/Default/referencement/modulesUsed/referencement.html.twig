@@ -51,6 +51,7 @@
 
         </span>
 
+<<<<<<< HEAD
 
 
 {#----------------------------------Mes activités Referencement---------------------------------#}
@@ -74,6 +75,31 @@
 
 
 
+=======
+
+
+{#----------------------------------Mes activités Referencement---------------------------------#}
+<section  id="fond-2">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="form-group"  >
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="btn-1">
+                        <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                        Référencement
+                    </div>
+                    <br>
+                    <div class="activites">
+                        <div class="btn-2" align="center">
+                            <p>Mes activités</p>
+                        </div>
+
+
+
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                         <div class="form-group">
                             <label for="exampleInputAmount">Rubriques</label>
                             <div class="input-group ">
@@ -120,10 +146,17 @@
 
                         <div class="btn-2" align="center">
                             <p>Ma visibilité sur</p>
+<<<<<<< HEAD
 
                         </div>
 
 
+=======
+                    
+                        </div>
+
+
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                         <div class="form-group">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ville principale <span class="caret"></span></button>
@@ -141,6 +174,7 @@
                                 </ul>
                             </div>
                         </div>
+<<<<<<< HEAD
 
                         <div class="form-group">
                             <div class="dropdown">
@@ -163,6 +197,30 @@
 
                         <div class="form-group">
                             <div class="dropdown">
+=======
+
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ville suppl. <span class="caret"></span></button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="overflow-y:scroll;">
+
+
+                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="0"/>&nbsp; &nbsp;Sur sa localité</label></li>
+                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="1"/>&nbsp; &nbsp;+1 Localité</label></li>
+                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="3"/>&nbsp; &nbsp;+3 Localités</label></li>
+                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="6"/>&nbsp; &nbsp;+6 Localités</label></li>
+                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="9"/>&nbsp; &nbsp;+9 Localités</label></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <div class="dropdown">
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Région principale <span class="caret"></span></button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" style="overflow-y:scroll;">
 
@@ -208,9 +266,15 @@
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
 <section  id="fond-4">
 
     <div class="container">
@@ -244,13 +308,21 @@
                     <div class="form-group pull-right">
 
                         <div class="form-group">
+<<<<<<< HEAD
                             <a href="{{ path('budget_gestion_contenu') }}" role="button" class="btn">
+=======
+                            <a href="{{ path('produits') }}" role="button" class="btn">
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                                 <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
                                 Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
                             </a>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <a href="{{ path('budget_affichage') }}" role="button" class="btn" style="width: 165px;">
+=======
+                            <a href="{{ path('affichage') }}" role="button" class="btn" style="width: 165px;">
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                                 <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
                                 Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
                             </a>
@@ -283,8 +355,15 @@
     $('.region').on('change', function() {
         $('.region').not(this).prop('checked', false);
     });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
 </script>
 <script type="text/javascript">
+
+
     $(document).ready(function() {
         function cal(){
             var total = +$("#rania").val() || 0;
@@ -504,6 +583,10 @@
                 $('#dropdownMenu4').prop('disabled', false);
                 $("#dropdownMenu1").attr({
                     "aria-expanded" : "true"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                 });
             }else{
                 $('#dropdownMenu2').prop('disabled', 'disabled');
@@ -511,6 +594,7 @@
                 $('#dropdownMenu4').prop('disabled', 'disabled');
                 $("#dropdownMenu1").attr({
                     "aria-expanded" : "false"
+<<<<<<< HEAD
                 });
             }
         };
@@ -522,6 +606,35 @@
             }else{
             }
         };
+=======
+
+                });
+            }
+
+
+
+        };
+
+
+        $(selectfct);
+        $(".my-activitys").click(selectfct);
+
+
+        var selectfcts = function () {
+            if($(".my-activity").is(":checked")){
+                $('.region').prop('checked', false);
+
+            }else{
+
+
+        }
+
+
+
+        };
+
+
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
         $(selectfcts);
         $(".my-activity").click(selectfcts);
     });
