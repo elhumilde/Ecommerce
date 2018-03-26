@@ -1,5 +1,7 @@
 body .icon-retour {
   margin: 20px;
+  height: auto;
+  overflow-y: scroll;
 }
 
 section {
@@ -50,7 +52,7 @@ section {
  #fond-2 {
     background-color: white;
     left: 0;
-    height: 800px;
+    height: 900px;
   }
 
 #fond-2 .container .btn-1 {
@@ -88,10 +90,54 @@ section {
 }
 
 
-#fond-2 .container .produits   #demo-1, #demo-2,#demo-3, #demo-4, #demo-5 {
-  margin: -50px 0 0 300px;
+
+
+#fond-2 .container .produits #demo-1 {
+  margin: -53px 0 0 300px;
   width: 600px;
+  height: 195px;
 }
+
+
+#fond-2 .container .produits #demo-2 {
+  margin: -53px 0 0 300px;
+  width: 600px;
+  height: 195px;
+}
+
+#fond-2 .container .produits #demo-3 {
+  margin: -53px 0 0 300px;
+}
+
+
+
+
+#fond-2 .container .produits #demo-4 {
+  margin: -53px 0 0 300px;
+  width: 800px;
+}
+
+#fond-2 .container .produits #demo-5 {
+  margin: -53px 0 0 300px;
+  width: 8600px;
+}
+
+
+#fond-2 .container .produits #demo-6 {
+  margin: -53px 0 0 300px;
+
+}
+
+
+#fond-2 .container .produits #demo-7 {
+  margin: -53px 0 0 300px;
+  width: 700px;
+
+}
+
+#fond-2 .container .produits #nombre-afichage {
+}
+
 
 
 #fond-2 .container .produits label{
@@ -101,11 +147,53 @@ section {
   margin: 3px;
 }
 
+#fond-2 .container .produits .villes .btn {
+  width: 220px;
+  height: 40px;
+  color: white;
+  background-color: black;
+  border-radius: 0;
+  font-size: 17px;
+  margin: 4px 0 0 0;
+}
+
+
+#fond-2 .container .produits #demo-1-1, #demo-2-1, #demo-2-2, #demo-2-3, #demo-2-4 {
+  width: 220px;
+  position: absolute;
+  background-color: #dadada;
+  margin-top : 0;
+    height: 155px;
+}
+
+
+#fond-2 .container .produits #demo-1 .region {
+  margin: -43px 0 0 230px;
+  width: 400px;
+}
+
+#fond-2 .container .produits #demo-2 .categorie-1 {
+  margin: -43px 0 0 230px;
+  width: 400px;
+}
+
+#fond-2 .container .produits #demo-2 .categorie-2 {
+  margin: -43px 0 0 460px;
+  width: 400px;
+}
+
+#fond-2 .container .produits #demo-2 .categorie-3 {
+  margin: -43px 0 0 690px;
+  width: 400px;
+}
+#fond-2 .container .produits #demo-2 .categorie-4 {
+    margin: -43px 0 0 800px;
+    width: 400px;
+}
 
 #fond-4 {
    background-color: white;
-   height: 250px;
-   /*position: fixed;*/
+   height: 220px;
 
  }
 

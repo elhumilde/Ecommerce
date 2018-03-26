@@ -10,7 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('Logo-econtact-2.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/style-budgetisation-referencement.css') }}" />
-   
+
 </head>
 
 <body>
@@ -120,7 +120,7 @@
 
                         <div class="btn-2" align="center">
                             <p>Ma visibilité sur</p>
-                    
+
                         </div>
 
 
@@ -244,13 +244,13 @@
                     <div class="form-group pull-right">
 
                         <div class="form-group">
-                            <a href="{{ path('produits') }}" role="button" class="btn">
+                            <a href="{{ path('budget_gestion_contenu') }}" role="button" class="btn">
                                 <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
                                 Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
                             </a>
                         </div>
                         <div class="form-group">
-                            <a href="{{ path('affichage') }}" role="button" class="btn" style="width: 165px;">
+                            <a href="{{ path('budget_affichage') }}" role="button" class="btn" style="width: 165px;">
                                 <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
                                 Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
                             </a>
@@ -283,12 +283,8 @@
     $('.region').on('change', function() {
         $('.region').not(this).prop('checked', false);
     });
-
-
 </script>
 <script type="text/javascript">
-
-
     $(document).ready(function() {
         function cal(){
             var total = +$("#rania").val() || 0;
@@ -508,7 +504,6 @@
                 $('#dropdownMenu4').prop('disabled', false);
                 $("#dropdownMenu1").attr({
                     "aria-expanded" : "true"
-
                 });
             }else{
                 $('#dropdownMenu2').prop('disabled', 'disabled');
@@ -516,33 +511,17 @@
                 $('#dropdownMenu4').prop('disabled', 'disabled');
                 $("#dropdownMenu1").attr({
                     "aria-expanded" : "false"
-
                 });
             }
-
-
-
         };
-
-
         $(selectfct);
         $(".my-activitys").click(selectfct);
-
-
         var selectfcts = function () {
             if($(".my-activity").is(":checked")){
                 $('.region').prop('checked', false);
-
             }else{
-
-
-        }
-
-
-
+            }
         };
-
-
         $(selectfcts);
         $(".my-activity").click(selectfcts);
     });

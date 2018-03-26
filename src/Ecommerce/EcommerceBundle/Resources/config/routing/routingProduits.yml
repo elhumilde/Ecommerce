@@ -1,6 +1,19 @@
-produits:
-    pattern:  /admin/produits
-    defaults: { _controller: EcommerceBundle:Produits:produits }
+budget_gestion_contenu:
+    pattern:  /budget_g_c
+    defaults: { _controller: EcommerceBundle:Produits:budgetgestiondecontenu }
+
+devis_gestion_contenu:
+    pattern:  /devis_g_c
+    defaults: { _controller: EcommerceBundle:Produits:devisgestiondecontenu }
+
+budget_affichage:
+    pattern:  /budget_affichage
+    defaults: { _controller: EcommerceBundle:Produits:budgetaffichage }
+
+devis_affichage:
+    pattern:  /devis_affichage
+    defaults: { _controller: EcommerceBundle:Produits:devisaffichage }
+
 
 presentation:
     pattern:  /produit/{id}
@@ -15,9 +28,3 @@ rechercheProduits:
     defaults: { _controller: EcommerceBundle:Produits:rechercheTraitement }
 
 
-affichage:
-    pattern:  /admin/affichage
-    defaults: { _controller: EcommerceBundle:Produits:affichage }
-produitsdevis:
-    pattern:  /admin/produitsdevis
-    defaults: { _controller: EcommerceBundle:Produits:produitsdevis }

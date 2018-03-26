@@ -21,9 +21,9 @@ class ReferencementController extends Controller
 
         if (!$session->has('referencement')) $session->set('referencement', array());
 
-        $villes = $em->getRepository('EcommerceBundle:ville')->findBy(array(), array('libelle' => 'asc'));
+        $villes = $em->getRepository('EcommerceBundle:Ville')->findBy(array(), array('libelle' => 'asc'));
 
-        $entities = $em->getRepository('EcommerceBundle:region')->findAll();
+        $entities = $em->getRepository('EcommerceBundle:Region')->findAll();
 
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencement.html.twig',
             array('entities' => $entities,
@@ -47,8 +47,8 @@ class ReferencementController extends Controller
 
 
         $rubriques = $em->getRepository('EcommerceBundle:Rubrique')->findAll();
-        $villes = $em->getRepository('EcommerceBundle:ville')->findAll();
-        $entities = $em->getRepository('EcommerceBundle:region')->findAll();
+        $villes = $em->getRepository('EcommerceBundle:Ville')->findAll();
+        $entities = $em->getRepository('EcommerceBundle:Region')->findAll();
 
         $session->set('referencement',$referencement);
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencementdevis.html.twig', array('rubriques' => $rubriques,
@@ -158,4 +158,12 @@ class ReferencementController extends Controller
 
 
     }
+<<<<<<< HEAD
+
 }
+
+
+
+=======
+}
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10

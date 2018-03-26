@@ -1,7 +1,7 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Client Utilisateurs</h1>
+    <h1>Editer Utilisateurs</h1>
 
     <form action="{{ path('adminUsers_update', { 'id' : entity.id }) }}" method="POST" {{ form_enctype(edit_form) }}>
         {{ form(edit_form) }}

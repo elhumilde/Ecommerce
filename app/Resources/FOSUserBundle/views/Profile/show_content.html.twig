@@ -1,21 +1,22 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}" />
+
 </head>
 <div class="container-fluid" id="fond-1">
     <section >
         <div class="transparence"></div>
 
-        <a href="{{ path('produits') }}"> <img class="logo" src="https://image.noelshack.com/fichiers/2018/07/4/1518687555-logo-econtact-2.png" alt="logo"></a>
+        <a > <img class="logo" src="https://image.noelshack.com/fichiers/2018/07/4/1518687555-logo-econtact-2.png" alt="logo"></a>
 
 
 
@@ -38,11 +39,12 @@
                 <div align=center class="col-md-3 col-md-12">
                     <div class="well" style="height:380px;padding: 50px">
 
-                        <img class="avatar" src="{{ asset('uploads/' ~user.path) }}" alt="icone-avatar" width="80" height="80" style="
+                            <img class="avatar" src="{{ asset('uploads/' ~user.path) }}" alt="icone-avatar" width="80" height="80" style="
                                             -moz-border-radius: 50px!important;
                                             -webkit-border-radius: 50px!important;
                                             border-radius: 100%!important; margin: 0 auto">
-                        <h4> <p style="text-align: center;Font-Weight: Bold;"> {{ user.username }}</h4>
+
+                        <h4> <p style="text-align: center;Font-Weight: Bold;"> {{ user.nom }}</h4>
                         <p class="texte1"></b>{{ user.profil|raw }}</p>
 
 
@@ -62,14 +64,13 @@
                     </div>
                 </div>
 
-
                 <div align=center class="col-md-3" style="background-color: white; height:380px; overflow-y:scroll; ">
                     <div class="titre">Expérience</div>
                     <br>
                     <br>
                     <div class="tex">
                         <ul>
-                            <li><b>{{ user.anneeEmb|time_diff  }} </b>  {{ user.experiececontenu|raw }}</li>
+                            <li>{#<b>{{ user.anneeEmb|time_diff  }} </b>#}  {{ user.experiececontenu|raw }}</li>
                             <br>
                         </ul>
                     </div>
@@ -96,12 +97,11 @@
 
             </div>
         </div>
+
+        <a href="#fond-2"> <img class="logo" src="https://image.noelshack.com/fichiers/2018/12/3/1521627424-btn-suivant.png" alt="logo" style="float: right!important;position: relative;margin: 0 10px  auto"></a>
     </section>
 
     <br>
-
-
-
 
 
 
@@ -152,8 +152,9 @@
                     <br>
                     <div class="tex">
                         <ul>
-                            <li><b>{{ user.teleconatct.experience|time_diff  }}  </b> {{ user.teleconatct.experiececontenu|raw }}</li>
+                            <li>{#<b>{{ user.teleconatct.experience|time_diff  }}  </b>#} {{ user.teleconatct.experiececontenu|raw }}</li>
                             <br>
+                        </ul>
                     </div>
                 </div>
 
@@ -172,10 +173,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </section>
@@ -319,9 +316,9 @@
                         </div>
                         <div class="list-group">
                             <a class="list-group-item active titre">Gestion de Contenu</a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Catalogue &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Vidéo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Site internet &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/pubs/catalogues/C3211272/" target="_blank" class="list-group-item content">Catalogue &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/annonceur/belakhdim-s-b-s-/3211272/casablanca.php#lavideo" target="_blank" class="list-group-item content">Vidéo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.assurances-mohamedv-casablanca.ma/" target="_blank" class="list-group-item content">Site internet &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
                         </div>
                     </div>
                 </div>
@@ -333,14 +330,14 @@
                         </div>
                         <div class="list-group">
                             <a class="list-group-item active titre">Affichage</a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette thématique &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette localité &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Professionnels du jour &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Espace Promo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette Accueil &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Vignette Vidéo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Habillage &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="http://www.telecontact.ma/" class="list-group-item content">Bannière &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/pubs/vignettes/V3333511/index.html" target="_blank" target="_blank" class="list-group-item content">Vignette thématique &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/pubs/vignettes/V3333511/index.html" target="_blank" class="list-group-item content">Vignette localité &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/" target="_blank" class="list-group-item content">Professionnels du jour &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/Promotions-destockage" target="_blank" class="list-group-item content">Espace Promo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/pubs/vignettes/V3333511/index.html" target="_blank" class="list-group-item content">Vignette Accueil &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/pubs/vignettes/V3333511/index.html" target="_blank" class="list-group-item content">Vignette Vidéo &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/" target="_blank" class="list-group-item content">Habillage &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="http://www.telecontact.ma/trouver/index.php?nxo=moteur&nxs=process&string=enseigne&ou=casa&aproximite=&produit=" target="_blank" class="list-group-item content">Bannière &nbsp;   <span class="glyphicon glyphicon-zoom-in"></span></a>
                         </div>
                     </div>
                 </div>
@@ -391,11 +388,11 @@
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
                             Référencement   <span class="glyphicon glyphicon-triangle-right fleche-petit"></span>
                         </a>
-                        <a href="{{ path('produits') }}" role="button" class="btn btn-info">
+                        <a href="{{ path('budget_gestion_contenu') }}" role="button" class="btn btn-info">
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
                             Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
                         </a>
-                        <a href="{{ path('affichage') }}" role="button" class="btn btn-info">
+                        <a href="{{ path('budget_affichage') }}" role="button" class="btn btn-info">
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
                             Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
                         </a>
@@ -420,11 +417,15 @@
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
                             Référencement   <span class="glyphicon glyphicon-triangle-right fleche-petit"></span>
                         </a>
+<<<<<<< HEAD
+                        <a href="{{ path('devis_gestion_contenu') }}" role="button" class="btn btn-info">
+=======
                         <a href="{{ path('produitsdevis') }}" role="button" class="btn btn-info">
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icona-2.png" alt="icone-3">
                             Gestion de Contenu   <span class="glyphicon glyphicon-triangle-right"></span>
                         </a>
-                        <a href="{{ path('affichage') }}" role="button" class="btn btn-info">
+                        <a href="{{ path('devis_affichage') }}" role="button" class="btn btn-info">
                             <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
                             Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
                         </a>
@@ -440,6 +441,7 @@
 
 
         </div>
+
     </section>
 
     <div class="row">
@@ -452,3 +454,9 @@
     <div class="fos_user_user_show">
 
     </div></div>
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
