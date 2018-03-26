@@ -121,6 +121,8 @@ class ReferencementController extends Controller
 
         $result =array('rubrique'=>$var,'r_count'=>$r_count,'m_count'=> $m_count,'marque'=>$mub,'activite'=>$activite ,'rub_sup'=> $sup,'villes'=>$villes,'regions'=>$regions,'villes_sup'=>$villes_sup,'regions_sup'=>$regions_sup);
 
+        $this->get('session')->set('referencement', $result);
+
         return new Response(json_encode($result), 200);
 
 
@@ -150,6 +152,14 @@ class ReferencementController extends Controller
 
 
     }
+    public function gettingAction()
+    {
+     $var=   $this->get('session')->get('referencement');
+ var_dump($var);
+        die('here');
+
+
+    }
 
     public function setCommandeAction()
     {
@@ -158,12 +168,12 @@ class ReferencementController extends Controller
 
 
     }
-<<<<<<< HEAD
+
+
+
+
+
+
 
 }
 
-
-
-=======
-}
->>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10
