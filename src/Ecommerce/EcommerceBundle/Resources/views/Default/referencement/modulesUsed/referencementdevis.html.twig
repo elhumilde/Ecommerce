@@ -2,15 +2,27 @@
 
 
 {% block body -%}
+    <style>
+        .multiselect-container>li>a>label {
+            padding: 4px 20px 3px 20px;
+        }
 
-    <form class="form-group" action="" method="GET">
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
+
+
+
+    <form id="jsForm" class="form-group" action="" method="GET">
+<input type="text" id="r_count" name="r_count" style="display:none;">
+<input type="text" id="m_count" name="m_count" style="display:none;">
 
         <h4>Mes activités:</h4>
-        <textarea></textarea><br>
+        <textarea rows="4" cols="50" style="margin: 0px 0px 10px; width: 476px; height: 75px;" name="activite"></textarea><br>
         selectionner rubrique principale  :
         <div id="contenu_lists">
-            <div id="select_rub_prest">
-                <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique">
+        <div id="select_rub_prest">
+                <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique" name="sel">
                     <option  selected >Selectionné une rubrique</option>
                     {% for rubriqu in rubriques %}
 
@@ -18,19 +30,32 @@
                     {% endfor %}
                 </select>
 
-                <span id="prestaAjax" style="display: none">
+        <span id="prestaAjax" style="display: none">
         <img src='../../web/ajax-loader.gif' alt='loading...'  height="25" width="25"/>
-
-        </span><select   id="prestation">
+        </span>
+        <select   id="prestation" multiple="multiple" name="prest">
                     <option  selected >Selectionné une prestation</option>
-                </select> <br>
-            </div>
+        </select> <br>
+        </div>
         </div>
 
-        <button id="addrub-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1">
+
+        {# <select id="chkveg" multiple="multiple">
+
+             <option value="cheese">Cheese</option>
+             <option value="tomatoes">Tomatoes</option>
+             <option value="mozarella">Mozzarella</option>
+             <option value="mushrooms">Mushrooms</option>
+             <option value="pepperoni">Pepperoni</option>
+             <option value="onions">Onions</option>
+
+         </select>
+ #}
+
+        <button id="addrub-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1" >
             Ajouter rubrique suplémentaire  </button>
 
-        &nbsp&nbsp <td>Autres</td>  <input id="addrub-btn" type="text"  placeholder="Renseigner la prestation ou le produit souhaité" data-toggle="collapse" data-target="#demo-1">
+        &nbsp&nbsp <td>Autres</td>  <input id="addrub-btn" type="text"  placeholder="Renseigner la prestation ou le produit souhaité" data-toggle="collapse" data-target="#demo-1" name="sup">
         </input>
         <fieldset>
             <legend>Vos Marques:</legend>   <h4></h4>
@@ -43,15 +68,14 @@
                     <button id="addmarq-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1" >
                         Ajouter une marque </button>#}
 
-            <div class="input_fields_wrap" >
-                <div id="marq" style=" display: inline-block">
-                    <input type="text" name="mytext[]" class="form-control"style=" margin-top: 10px;">
-
+            <div class="input_fields_wrap" id="set_now" >
+                <div id="marq" style=" display: inline-block" >
+                    <input type="text" name="marque" id="marque" class="form-control" style=" margin-top: 10px;"  placeholder="Ecrire votre marque">
                 </div>
-                <button class="add_field_button btn btn-info bouton-1" type="button">Ajouter une marque</button>
 
-            </div>
-        </fieldset>
+             </div>
+            <button class="add_field_button btn btn-info bouton-1" type="button">Ajouter une marque</button>
+             </fieldset>
 
         <fieldset>
             <legend>Ma visibilité sur</legend>
@@ -60,7 +84,6 @@
             </div>
 
             <input  style="display:none;" type="text" id="amal" value="">
-
 
 
 
@@ -173,14 +196,79 @@
                 </div>
             </div>
         </fieldset>
-
+ <button type="button" name="test" id="ajax_test">Test</button>
 
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function() {
+
+            $('#ajax_test').on('click', function (){
+
+                form =$('#jsForm ');
+              var r= $('#r_count').val();
+              var  m= $('#m_count').val();
+               var mar= $('#set_now').serialize();
+               var rub=
+
+                console.log(rub);
+
+                var data_send = { 'r_count': r,'m_count' : m};
+
+                $.ajax({
+                    url: '{{ path('referencement_commande') }}',
+                    type: 'POST',
+                    data: form.serialize(),
+                    statusCode: {
+                        //traitement en cas de succès
+                        200: function (response) {
+                            var successMessage = response;
+
+                            console.log(successMessage.test);
+                            console.log(successMessage.m_count);
+                            console.log(successMessage.r_count);
+                            console.log(successMessage);
+                            /*  $('#prestation').children("option").remove();*/
+                            //on vide les champs formulaires ou on le supprime ou ...
+                            //on retire le loader...
+                        },
+                        //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                        412: function (response) {
+                            var errorsForm = response.responseJSON.formErrors;
+                            //on affiche les erreurs...
+                            alert('error');
+
+                        }
+                    }
+                });
+
+            });
+
+            $(function() {
+
+              /*  $('#prestation').multiselect({
+
+                    includeSelectAllOption: true
+
+                });*/
+
+                $('#chkveg').multiselect({
+
+                    includeSelectAllOption: true
+
+                });
+
+                $('#btnget').click(function() {
+
+                    alert($('#chkveg').val());
+
+                })
+
+            });
+
             /*  var rubrique = $(this);
               console.log(rubrique .val());*/
 
@@ -194,7 +282,7 @@
                 console.log("CHANGE rubrique AND prestation....................");
                 var select = jQuery(this);
                 var r = rubrique.val();
-                console.log('rubrique sss: ', r)
+                console.log('rubrique sss: ', r);
                 //     console.log('rubrique : ', r);
                 var data_send = { 'rubrique': r};
                 $.ajax({
@@ -210,8 +298,9 @@
 
                             $(current).siblings("select").first().find("option").remove();
 
+
                             $.each(JSON.parse(successMessage), function(i, pres) {
-                                $(current).siblings("select").first().append(('<option value="' +pres.id+'">'+pres.prestation+'</option>'));
+                                $(current).siblings("select").first().append(('<option  value="' +pres.id+'">'+pres.prestation+'</option>'));
 
 
 
@@ -241,8 +330,12 @@
             var count = 1 ;
             $('#addrub-btn').on('click', function (){
                 if (count < 5) {
+
                     var duplicatedLists = $("#select_rub_prest").last().clone();
+                    duplicatedLists.find('#select-rubrique').prop('name','sel'+count);
+                    duplicatedLists.find('#prestation').prop('name','prest'+count);
                     duplicatedLists.appendTo("#contenu_lists");
+                    $('#r_count').val(count);
                     count++;
                 }
             });
@@ -279,13 +372,18 @@
         var n = $('#marq').length;
         var x = 1; //initlal text box count
         $(add_button).click(function(e){ //on add input button click
-            e.preventDefault();
+//            e.preventDefault();
             if(x < max_fields){ //max input box allowed
-                x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                //text box increment
+//                $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
 
+                var duplicatedLists = $("#marq").last().clone();
+                duplicatedLists.find('#marque').prop('name','marque'+x);
+                duplicatedLists.appendTo("#set_now");
                 var result = parseInt(n) * 400;
                 result_final = result_final+ result;
+                $('#m_count').val(x);
+                x++;
             }
             console.log(result_final);
         });
@@ -310,7 +408,7 @@
             $("#fayssal").val(vat + total);
         }
         var sum_result =0;
-        var total = 0
+        var total = 0;
 
         $(document).on('click', '.my-activitys', function () {
             var o = $(this).attr("value");
@@ -394,6 +492,8 @@
             });
 
         });
+
+
         /*    $(document).on("keydown keyup", function() {
 
                 sum();
