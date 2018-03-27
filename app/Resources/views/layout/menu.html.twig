@@ -1,0 +1,55 @@
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+
+    <div class="menu_section">
+
+        <ul class="nav side-menu">
+            <li><a  href="{{ path('acceuil') }}" ><i class="fa fa-home"></i> Accueil </a>
+
+            <li><a><i class="fa fa-user"></i> Utilisateurs <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ path('adminUsers') }}">Consulter</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">Ajouter</a></li>
+
+
+
+
+                </ul>
+            </li>
+            <li><a><i class="fa fa-users"></i> Clients <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ path('adminClient') }}">Consulter</a></li>
+                    <li><a href="{{ path('adminClient_new') }}">Ajouter</a></li>
+
+                </ul>
+            </li>
+
+            <li><a><i class="fa fa-shopping-cart"></i> Produits <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ path('adminProduits')}}">Consulter</a></li>
+                    <li><a href="{{ path('adminProduits_new')}}">Ajouter</a></li>
+
+
+
+
+                </ul>
+            </li>
+            <li><a><i class="fa fa-briefcase"></i> Entreprise <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ path('adminTelecontact')}}">Consulter</a></li>
+
+
+                </ul>
+            </li>
+            <li><a><i class="fa fa-sign-out"></i>Deconnexion </a>
+
+            </li>
+        </ul>
+
+    </div>
+    <div class="menu_section">
+
+
+    </div>
+
+</div>

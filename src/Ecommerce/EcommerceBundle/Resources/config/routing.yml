@@ -71,3 +71,6 @@ ajaxRef:
     pattern:  /ajaxRef
     defaults: { _controller: EcommerceBundle:Referencement:ajaxRef }
 
+acceuil:
+    pattern:  /admin/acceuil
+    defaults: { _controller: EcommerceBundle:Admin:acceuil   }

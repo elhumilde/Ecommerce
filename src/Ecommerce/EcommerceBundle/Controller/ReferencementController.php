@@ -40,7 +40,7 @@ class ReferencementController extends Controller
 
         $session = $this->getRequest()->getSession();
 
-        if (!$session->has('referencement')) $session->set('referencement',array());
+        if (!$session->has('referencement')) $session->set('referencement', array());
         $referencement = $session->get('referencement');
 
         $em = $this->getDoctrine()->getManager();
@@ -50,7 +50,7 @@ class ReferencementController extends Controller
         $villes = $em->getRepository('EcommerceBundle:Ville')->findAll();
         $entities = $em->getRepository('EcommerceBundle:Region')->findAll();
 
-        $session->set('referencement',$referencement);
+        $session->set('referencement', $referencement);
         return $this->render('EcommerceBundle:Default:referencement/modulesUsed/referencementdevis.html.twig', array('rubriques' => $rubriques,
             'entities' => $entities,
             'villes' => $villes,
@@ -79,18 +79,16 @@ class ReferencementController extends Controller
     public function ajaxRefAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $ville  =  $request->request->get('ville');
-        $opt1  =  $request->request->get('opt1');
-        $region =  $request->request->get('region');
-        $ctar =  $request->request->get('ctar');
+        $ville = $request->request->get('ville');
+        $opt1 = $request->request->get('opt1');
+        $region = $request->request->get('region');
+        $ctar = $request->request->get('ctar');
 
 
-        $var='rGion'.$region;
-        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.'.$var.' AS VAR')
-            ->where('t.opt1 = :op')->setParameter('op',$opt1)
-            ->andWhere('t.ctar = :ct')->setParameter('ct',$ctar)->getQuery()->getSingleResult();
-
-
+        $var = 'rGion' . $region;
+        $query = $em->getRepository('EcommerceBundle:TarifInternet')->createQueryBuilder('t')->select('t.' . $var . ' AS VAR')
+            ->where('t.opt1 = :op')->setParameter('op', $opt1)
+            ->andWhere('t.ctar = :ct')->setParameter('ct', $ctar)->getQuery()->getSingleResult();
 
 
         $response = new JsonResponse();
@@ -104,14 +102,5 @@ class ReferencementController extends Controller
         $session = $this->getRequest()->getSession();
 
 
-
     }
-<<<<<<< HEAD
-
 }
-
-
-
-=======
-}
->>>>>>> 1238199c9c0f4a5cd0e77896ddd0e9037b1d2f10

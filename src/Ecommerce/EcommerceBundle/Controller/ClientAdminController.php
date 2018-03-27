@@ -31,6 +31,8 @@ class ClientAdminController extends Controller
 
     public function createAction(Request $request)
     {
+
+        $session = $this->getRequest()->getSession();
         $entity = new Client();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -39,16 +41,15 @@ class ClientAdminController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('adminClient_show', array('id' => $entity->getId())));
+            $this->get('session')->getFlashBag()->add('success','Client ajouté avec succès');
+
+            return $this->redirect($this->generateUrl('adminClient', array('id' => $entity->getId())));
         }
-
-
         return $this->render('EcommerceBundle:Administration:Client/newClient.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
-
     private function createCreateForm(Client $entity)
     {
         $form = $this->createForm(new ClientType(), $entity, array(
@@ -56,7 +57,7 @@ class ClientAdminController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       /* $form->add('submit', 'submit', array('label' => 'Create'));*/
 
         return $form;
     }
@@ -89,6 +90,7 @@ class ClientAdminController extends Controller
     }
     public function editAction($id)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EcommerceBundle:Client')->find($id);
@@ -131,6 +133,7 @@ class ClientAdminController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EcommerceBundle:Client')->find($id);
@@ -146,6 +149,7 @@ class ClientAdminController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success','Client modifié avec succès');
             return $this->redirect($this->generateUrl('adminClient', array('id' => $id)));
         }
 
@@ -161,6 +165,7 @@ class ClientAdminController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -175,7 +180,7 @@ class ClientAdminController extends Controller
             $em->remove($entity);
             $em->flush();
         }
-
+        $this->get('session')->getFlashBag()->add('success','Client supprimé avec succès');
         return $this->redirect($this->generateUrl('adminClient'));
     }
 

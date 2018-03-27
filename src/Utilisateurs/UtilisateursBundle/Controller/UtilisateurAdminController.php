@@ -80,13 +80,14 @@ class UtilisateurAdminController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Update' , 'attr' => array('class' => 'btn btn-success')));
 
         return $form;
     }
 
     public function updateAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('UtilisateursBundle:Utilisateurs')->find($id);
@@ -101,7 +102,7 @@ class UtilisateurAdminController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->get('session')->getFlashBag()->add('success','Utilisateur modifié avec succès');
             return $this->redirect($this->generateUrl('adminUsers'));
         }
 
@@ -117,6 +118,7 @@ class UtilisateurAdminController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -131,7 +133,7 @@ class UtilisateurAdminController extends Controller
             $em->remove($entity);
             $em->flush();
         }
-
+        $this->get('session')->getFlashBag()->add('success','Utilisateur supprimé avec succès');
         return $this->redirect($this->generateUrl('adminUsers'));
     }
 
@@ -147,7 +149,7 @@ class UtilisateurAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminUsers_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Delete' , 'attr' => array('class' => 'btn btn-danger ')))
             ->getForm()
             ;
     }

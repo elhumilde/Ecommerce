@@ -1,16 +1,14 @@
-{% trans_default_domain 'FOSUserBundle' %}
+    {% trans_default_domain 'FOSUserBundle' %}
 
     <!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8" />
-        <link href="{{asset ('https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-min.css') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('Logo-econtact-2.png') }}" />
         {% block stylesheets %}{% endblock %}
-
-
     </head>
+
     <body>
     <div class="bg-img "
          style="
@@ -23,15 +21,10 @@
 
     <div class="bg-img">
         <a href="{{ path("fos_user_security_login") }}">
-            <img class="logo  img-logo" src="https://image.noelshack.com/fichiers/2018/02/1/1515423139-logo.png"  >
+            <img class="{#logo#}  img-logo" src="https://image.noelshack.com/fichiers/2018/02/1/1515423139-logo.png"  >
         </a>
     </div>
 
-
-    <!-- /Logo -->
-
-
-    <!-- /login -->
     <div class="login-page">
         {% block fos_user_content %}
         {% if error %}
@@ -41,8 +34,6 @@
             <form action="{{ path("fos_user_security_check") }}" method="post" class="login-form">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                 <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Identifiant" />
-
-
                 <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe " />
                 <br />
                 <button>Se connecter</button>
@@ -52,27 +43,9 @@
         </div>
 
     </div>
-
-    <!-- /login -->
-
-
-
-    <!-- Back to top -->
-    <div id="back-to-top"></div>
-    <!-- /Back to top -->
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
     </body>
     </html>
-{% endblock fos_user_content %}
+    {% endblock fos_user_content %}
 
 
 

@@ -66,6 +66,13 @@ section {
 .avatar {
     margin-top: 50px;
 }
+.client {
+    -moz-border-radius: 50px!important;
+    -webkit-border-radius: 50px!important;
+    border-radius: 100%!important; margin: 0 auto;
+    width: 80px;
+    height:80px;
+}
 .well {
     background-color: #ffdb2e;
     border: 0
@@ -314,3 +321,6 @@ span.glyphicon-triangle-right {
     height: 50px;
     padding: 0;
 }
+/*amal*/
+
+

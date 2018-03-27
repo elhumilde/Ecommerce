@@ -1,17 +1,17 @@
 budget_gestion_contenu:
-    pattern:  /budget_g_c
+    pattern:  /user/budget_g_c
     defaults: { _controller: EcommerceBundle:Produits:budgetgestiondecontenu }
 
 devis_gestion_contenu:
-    pattern:  /devis_g_c
+    pattern:  /user/devis_g_c
     defaults: { _controller: EcommerceBundle:Produits:devisgestiondecontenu }
 
 budget_affichage:
-    pattern:  /budget_affichage
+    pattern:  /user/budget_affichage
     defaults: { _controller: EcommerceBundle:Produits:budgetaffichage }
 
 devis_affichage:
-    pattern:  /devis_affichage
+    pattern:  /user/devis_affichage
     defaults: { _controller: EcommerceBundle:Produits:devisaffichage }
 
 

@@ -24,7 +24,7 @@ class ProduitsAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('EcommerceBundle:Produits')->findAll();
-        $produits = $this->get('knp_paginator')->paginate($entities,$this->get('request')->query->get('page', 1),6);
+        $produits = $this->get('knp_paginator')->paginate($entities,$this->get('request')->query->get('page', 1),15);
 
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/index.html.twig', array(
@@ -39,6 +39,8 @@ class ProduitsAdminController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $this->getRequest()->getSession();
+
         $entity = new Produits();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -47,8 +49,8 @@ class ProduitsAdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('adminProduits_show', array('id' => $entity->getId())));
+            $this->get('session')->getFlashBag()->add('success','Client ajouté avec succès');
+            return $this->redirect($this->generateUrl('adminProduits', array('id' => $entity->getId())));
         }
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/new.html.twig', array(
@@ -160,6 +162,7 @@ class ProduitsAdminController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EcommerceBundle:Produits')->find($id);
@@ -174,8 +177,8 @@ class ProduitsAdminController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
-            return $this->redirect($this->generateUrl('adminProduits_edit', array('id' => $id)));
+            $this->get('session')->getFlashBag()->add('success','Client modifié avec succès');
+            return $this->redirect($this->generateUrl('adminProduits', array('id' => $id)));
         }
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/edit.html.twig', array(
@@ -190,6 +193,7 @@ class ProduitsAdminController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -204,7 +208,7 @@ class ProduitsAdminController extends Controller
             $em->remove($entity);
             $em->flush();
         }
-
+        $this->get('session')->getFlashBag()->add('success','Client supprimé avec succès');
         return $this->redirect($this->generateUrl('adminProduits'));
     }
 

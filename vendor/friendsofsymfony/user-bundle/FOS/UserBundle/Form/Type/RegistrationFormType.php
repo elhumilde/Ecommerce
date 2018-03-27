@@ -37,15 +37,15 @@ class RegistrationFormType extends AbstractType
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('adresse', null, array('label' => 'Adresse', 'translation_domain' => 'FOSUserBundle'))
             ->add('telephone', null, array('label' => 'Téléphone', 'translation_domain' => 'FOSUserBundle'/*,'attr' => array(   'min' => 10,  'max' => 10)*/))
-            ->add('description', null, array('label' => 'Description', 'translation_domain' => 'FOSUserBundle'))
             ->add('anneeExpAvtEmb', null, array('label' => 'Année expérience evant embauche', 'translation_domain' => 'FOSUserBundle','attr' => array(   'min' => 0)))
             ->add('nbrCltAnneePrec', null, array('label' => 'Nombre client d\'année precidente', 'translation_domain' => 'FOSUserBundle','attr' => array(   'min' => 0)))
-            ->add('anneeEmb', 'date', array ('widget' => 'choice','pattern' => '{{ day }}-{{ month }}-{{ year }', 'years'       => range(date('Y'), date('Y') - 30, -1)))
+            ->add('anneeEmb', 'date', array ('label' => 'Année d\'embauche','widget' => 'choice','pattern' => '{{ day }}-{{ month }}-{{ year }', 'years'       => range(date('Y'), date('Y') - 30, -1)))
             ->add('profil', 'choice', array('choices'   => array('' => 'Select Profil','Responsable Equipe Commerciale' => 'Responsable Equipe Commerciale', 'Senior' => 'Senior','Junior' => 'Junior'),   'required'  => true,), array('label' => 'Profil', 'translation_domain' => 'FOSUserBundle'))
             ->add('file','file', array('required' => false))
             ->add('teleconatct',"entity", array( 'label' => false ,"class"=>"EcommerceBundle:Telecontact", "property"=>"titre",'attr'=>array('style'=>'display:none;')))
             ->add('teleconatct',"entity", array( 'label' => false ,"class"=>"EcommerceBundle:Telecontact", "property"=>"titre",'attr'=>array('style'=>'display:none;')))
-            ->add('experiececontenu', null, array('label' => 'Description Experience', 'translation_domain' => 'FOSUserBundle'));
+            ->add('description', null, array('label' => 'Description', 'translation_domain' => 'FOSUserBundle','attr' => array('class' => 'ckeditor')))
+            ->add('experiececontenu', null, array('label' => 'Description Experience', 'translation_domain' => 'FOSUserBundle' ,'attr' => array('class' => 'ckeditor')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

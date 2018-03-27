@@ -1,17 +1,166 @@
-{% extends '::layout/layoutAdmin.html.twig' %}
+{#{% extends '::layout/layoutAdmin.html.twig' %}#}
 
-{% block body -%}
-    <h1>Ajouter  Client</h1>
 
-    <form action="{{ path('adminClient_create') }}" method="POST" {{ form_enctype(form) }}>
-        {{ form(form) }}
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style-admin.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/nprogress.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
+    <title>E-contact | Accueil </title>
+</head>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminClient') }}">
-                Back to the list
-            </a>
-        </li>
-    </ul>
-{% endblock %}
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    {#<a > <img class="logo" src="https://image.noelshack.com/fichiers/2018/07/4/1518687555-logo-econtact-2.png" alt="logo"></a>#}
+                </div>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+
+                    <div class="menu_section">
+
+                        <ul class="nav side-menu">
+                            <li><a  href="{{ path('acceuil') }}" ><i class="fa fa-home"></i> Accueil </a>
+
+                            <li><a><i class="fa fa-user"></i> Utilisateurs <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('adminUsers') }}">Consulter</a></li>
+                                    <li><a href="{{ path('fos_user_registration_register') }}">Ajouter</a></li>
+
+
+
+
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-users"></i> Clients <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('adminClient') }}">Consulter</a></li>
+                                    <li><a href="{{ path('adminClient_new') }}">Ajouter</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-shopping-cart"></i> Produits <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('adminProduits')}}">Consulter</a></li>
+                                    <li><a href="{{ path('adminProduits_new')}}">Ajouter</a></li>
+
+
+
+
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-briefcase"></i> Entreprise <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('adminTelecontact')}}">Consulter</a></li>
+
+
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-sign-out"></i>Deconnexion </a>
+
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="menu_section">
+
+
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="clearfix"></div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% block body -%}
+                            <h1>Ajouter  Client</h1>
+
+                            <form action="{{ path('adminClient_create') }}" method="POST" {{ form_enctype(form) }}>
+                                {{ form_widget(form) }}
+                                <br><br>
+                                <input class="btn btn-primary" type="submit" value="{{ 'Enregistrer'}}" onclick="return confirm('Vous Voulez confirmer l\'enregistrement')"; />
+
+                            </form>
+
+                            {#<ul class="record_actions">
+                                <li>
+                                    <a href="{{ path('adminClient') }}">
+                                        Back to the list
+                                    </a>
+                                </li>
+                            </ul>#}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- /page content -->
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+
+<!-- jQuery -->
+<script src="{{ asset('js/admin/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('js/admin/bootstrap.min.js') }}"></script>
+<!-- FastClick -->
+<script src="{{ asset('js/admin/fastclick.js') }}"></script>
+<!-- NProgress -->
+<script src="{{ asset('js/admin/nprogress.js') }}"></script>
+<!-- validator -->
+<script src="{{ asset('js/admin/validator.js') }}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{{ asset('js/custom.min.js') }}"></script>
+{#<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>#}
+
+</body>
+</html>
