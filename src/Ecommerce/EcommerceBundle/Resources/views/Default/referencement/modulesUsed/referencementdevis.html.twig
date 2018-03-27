@@ -6,8 +6,6 @@
         .multiselect-container>li>a>label {
             padding: 4px 20px 3px 20px;
         }
-
-
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
 
@@ -41,14 +39,12 @@
 
 
         {# <select id="chkveg" multiple="multiple">
-
              <option value="cheese">Cheese</option>
              <option value="tomatoes">Tomatoes</option>
              <option value="mozarella">Mozzarella</option>
              <option value="mushrooms">Mushrooms</option>
              <option value="pepperoni">Pepperoni</option>
              <option value="onions">Onions</option>
-
          </select>
  #}
 
@@ -64,7 +60,6 @@
                     <input type="text" class="form-control"style=" margin-top: 10px;" >
                 </div>
             </div>
-
                     <button id="addmarq-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1" >
                         Ajouter une marque </button>#}
 
@@ -206,19 +201,14 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
             $('#ajax_test').on('click', function (){
-
                 form =$('#jsForm ');
                 var r= $('#r_count').val();
                 var  m= $('#m_count').val();
                 var mar= $('#set_now').serialize();
                 var rub=
-
                     console.log(rub);
-
                 var data_send = { 'r_count': r,'m_count' : m};
-
                 $.ajax({
                     url: '{{ path('referencement_commande') }}',
                     type: 'POST',
@@ -227,7 +217,6 @@
                         //traitement en cas de succès
                         200: function (response) {
                             var successMessage = response;
-
                             console.log(successMessage.test);
                             console.log(successMessage.m_count);
                             console.log(successMessage.r_count);
@@ -241,44 +230,27 @@
                             var errorsForm = response.responseJSON.formErrors;
                             //on affiche les erreurs...
                             alert('error');
-
                         }
                     }
                 });
-
             });
-
             $(function() {
-
                 /*  $('#prestation').multiselect({
-
                  includeSelectAllOption: true
-
                  });*/
-
                 $('#chkveg').multiselect({
-
                     includeSelectAllOption: true
-
                 });
-
                 $('#btnget').click(function() {
-
                     alert($('#chkveg').val());
-
                 })
-
             });
-
             /*  var rubrique = $(this);
              console.log(rubrique .val());*/
-
             // declanché lorsqu'on change le choix de la rub
             $(document).on('change', '#select-rubrique', function () {
                 var current = this;
                 var rubrique = $(this);
-
-
                 $('#prestaAjax').css('display','');
                 console.log("CHANGE rubrique AND prestation....................");
                 var select = jQuery(this);
@@ -294,27 +266,16 @@
                         //traitement en cas de succès
                         200: function (response) {
                             var successMessage = response;
-
                             /*  $('#prestation').children("option").remove();*/
-
                             $(current).siblings("select").first().find("option").remove();
-
-
                             $.each(JSON.parse(successMessage), function(i, pres) {
                                 $(current).siblings("select").first().append(('<option  value="' +pres.id+'">'+pres.prestation+'</option>'));
-
-
-
                                 /* $(current).next().remove();*/
-
-
-
                                 $('#prestaAjax').css('display','none');
                             });
                             $('#prestaAjax').css('display','none');
                             //on vide les champs formulaires ou on le supprime ou ...
                             //on retire le loader...
-
                         },
                         //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
                         412: function (response) {
@@ -331,7 +292,6 @@
             var count = 1 ;
             $('#addrub-btn').on('click', function (){
                 if (count < 5) {
-
                     var duplicatedLists = $("#select_rub_prest").last().clone();
                     duplicatedLists.find('#select-rubrique').prop('name','sel'+count);
                     duplicatedLists.find('#prestation').prop('name','prest'+count);
@@ -340,36 +300,20 @@
                     count++;
                 }
             });
-
-
-
-
         });
-
         /*var result_final = 400;
          var n = $('#marq').length;
          $('#addmarq-btn').on('click', function (e){
-
          var duplicatedLists = $("#marq").last().clone().find(":input").val('');
-
          duplicatedLists.appendTo("#contenu_marq").parent();
-
          var result = parseInt(n) * 400;
          result_final = result_final+ result;
-
-
          console.log(result_final);
-
-
-
          });*/
-
-
         var max_fields      = 10; //maximum input boxes allowed
         var wrapper         = $(".input_fields_wrap"); //Fields wrapper
         var add_button      = $(".add_field_button"); //Add button ID
         var result_final = 400;
-
         var n = $('#marq').length;
         var x = 1; //initlal text box count
         $(add_button).click(function(e){ //on add input button click
@@ -377,7 +321,6 @@
             if(x < max_fields){ //max input box allowed
                 //text box increment
 //                $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-
                 var duplicatedLists = $("#marq").last().clone();
                 duplicatedLists.find('#marque').prop('name','marque'+x);
                 duplicatedLists.appendTo("#set_now");
@@ -388,18 +331,12 @@
             }
             console.log(result_final);
         });
-
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').remove(); x--;
             result_final = result_final - 400;
             console.log(result_final);
         });
-
         {# </script>
-
-
-
-
          <script type="text/javascript">
              $(document).ready(function() {#}
         cal();
@@ -410,20 +347,16 @@
         }
         var sum_result =0;
         var total = 0;
-
         $(document).on('click', '.my-activitys', function () {
             var o = $(this).attr("value");
             $('.xxx input[value='+o+']').prop("checked", true);
         });
-
         $(document).on('click', '.my-activity', function () {
-
             var ctar  = 'MV';
             console.log("CHANGE rubrique AND prestation....................");
             var select = jQuery(this);
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
-
             console.log('ville : ', v, 'opt1 :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
@@ -433,36 +366,24 @@
                 statusCode: {
                     //traitement en cas de succès
                     200: function (response) {
-
                         var successMessage = response.nom.VAR;
-
-
                         $('input[id=rania]').val(successMessage);
-
                         cal();
-
                     },
-
                     412: function (response) {
                         var errorsForm = response.responseJSON.formErrors;
                         //on affiche les erreurs...
                         alert('error');
-
                     }
                 }
             });
-
         });
-
-
         $(document).on('click', '.region', function () {
-
             var ctar  = 'ML';
             console.log("CHANGE rubrique AND prestation....................");
             var select = jQuery(this);
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
-
             console.log('villesss : ', v, 'opt1sss :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
@@ -472,67 +393,39 @@
                 statusCode: {
                     //traitement en cas de succès
                     200: function (response) {
-
                         var successMessage = response.nom.VAR;
-
-
                         $('input[id=rania]').val(successMessage);
                         cal();
                         /* console.log();
                          $('input[id=rania]').val(sum_result+successMessage);*/
-
                     },
-
                     412: function (response) {
                         var errorsForm = response.responseJSON.formErrors;
                         //on affiche les erreurs...
                         alert('error');
-
                     }
                 }
             });
-
         });
-
-
         /*    $(document).on("keydown keyup", function() {
-
          sum();
-
-
          function sum() {
          var num1 = document.getElementById('num1').value;
          var num2 = document.getElementById('num2').value;
          var num3 = document.getElementById('num3').value;
-
-
          var result = parseInt(num1) * 3;
          var result2 = parseInt(num2) * 1500;
          var result3 = parseInt(num3) * 400;
-
          if (!isNaN(result)) {
          document.getElementById('sum').value = result;
          document.getElementById('sum2').value = result2;
          document.getElementById('sum3').value = result3;
-
          }
          document.getElementById("mari").value = result2 + result3 ;
-
          sum_result =  result2 + result3;
          cal();
          }
-
-
-
          });*/
-
-
-
-
-
-
     </script>
 
 {% endblock %}
-
-

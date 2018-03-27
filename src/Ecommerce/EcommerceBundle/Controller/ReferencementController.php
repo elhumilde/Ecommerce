@@ -75,6 +75,60 @@ class ReferencementController extends Controller
 
     }
 
+    public function refcomAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $marque = $request->request->get('marque');
+        $rubrique = $request->request->get('sel');
+        $prest = $request->request->get('prest');
+        $activite = $request->request->get('activite');
+        $sup = $request->request->get('sup');
+        $villes = $request->request->get('villes');
+        $regions = $request->request->get('regions');
+        $villes_sup = $request->request->get('chk2');
+        $regions_sup = $request->request->get('chk1');
+
+        $r_count = $request->request->get('r_count');
+        $m_count = $request->request->get('m_count');
+
+        $var=array();
+        for ($i = 0; $i <= $r_count; $i++) {
+
+          if ($i==0){
+            $var[0]['rubrique']= $rubrique = $request->request->get('sel');
+            $var[0]['prestation']= $prest = $request->request->get('prest');
+          }
+            else{
+                $var[$i]['rubrique']= $rubrique = $request->request->get('sel'.$i);
+                $var[$i]['prestation']= $prest = $request->request->get('prest'.$i);
+
+            }
+        }
+        $mub=array();
+        for ($j = 0; $j <= $m_count; $j++) {
+
+            if ($j==0){
+                $mub[0]['marque']= $rubrique = $request->request->get('marque');
+            }
+            else{
+                $mub[$j]['marque']= $rubrique = $request->request->get('marque'.$j);
+
+            }
+
+        }
+
+
+        $result =array('rubrique'=>$var,'r_count'=>$r_count,'m_count'=> $m_count,'marque'=>$mub,'activite'=>$activite ,'rub_sup'=> $sup,'villes'=>$villes,'regions'=>$regions,'villes_sup'=>$villes_sup,'regions_sup'=>$regions_sup);
+
+        $this->get('session')->set('referencement', $result);
+
+        return new Response(json_encode($result), 200);
+
+
+    }
+
+
 
     public function ajaxRefAction(Request $request)
     {
@@ -96,6 +150,14 @@ class ReferencementController extends Controller
 
 
     }
+    public function gettingAction()
+    {
+     $var=   $this->get('session')->get('referencement');
+ var_dump($var);
+        die('here');
+
+
+    }
 
     public function setCommandeAction()
     {
@@ -103,4 +165,15 @@ class ReferencementController extends Controller
 
 
     }
+
+
+
+
+
+
+
+
+
 }
+
+

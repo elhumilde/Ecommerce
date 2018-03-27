@@ -2,3 +2,12 @@ referencement:
     pattern:  /
     defaults: { _controller: EcommerceBundle:Referencement:referencement }
 
+referencement_commande:
+    pattern:  /commande
+    defaults: { _controller: EcommerceBundle:Referencement:refcom }
+
+referencement_commande_getting:
+    pattern:  /getting
+    defaults: { _controller: EcommerceBundle:Referencement:getting }
+
+
