@@ -2,24 +2,38 @@
 
 
 {% block body -%}
+    <link rel="stylesheet" href="{{ asset('css/style-budgetisation-gestion-de-contenu.css') }}" />
     <style>
         .multiselect-container>li>a>label {
             padding: 4px 20px 3px 20px;
         }
+        .loaders {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../../web/ajax-loaderd.gif) center center no-repeat rgba(57, 66, 100, 0.6);
+            z-index: 500;
+        }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
 
 
 
     <form id="jsForm" class="form-group" action="" method="GET">
-        <input type="text" id="r_count" name="r_count" style="display:none;">
-        <input type="text" id="m_count" name="m_count" style="display:none;">
+        <div class="loaders" style="display: none"></div>
+<input type="text" id="r_count" name="r_count" style="display:none;">
+<input type="text" id="m_count" name="m_count" style="display:none;">
 
         <h4>Mes activités:</h4>
         <textarea rows="4" cols="50" style="margin: 0px 0px 10px; width: 476px; height: 75px;" name="activite"></textarea><br>
         selectionner rubrique principale  :
         <div id="contenu_lists">
-            <div id="select_rub_prest">
+        <div id="select_rub_prest">
                 <select {#class="selectpicker "   multiple data-max-options="1" data-live-search="true"#} id="select-rubrique" name="sel">
                     <option  selected >Selectionné une rubrique</option>
                     {% for rubriqu in rubriques %}
@@ -28,23 +42,25 @@
                     {% endfor %}
                 </select>
 
-                <span id="prestaAjax" style="display: none">
+        <span id="prestaAjax" style="display: none">
         <img src='../../web/ajax-loader.gif' alt='loading...'  height="25" width="25"/>
         </span>
-                <select   id="prestation" multiple="multiple" name="prest">
+        <select   id="prestation" multiple="multiple" name="prest[]">
                     <option  selected >Selectionné une prestation</option>
-                </select> <br>
-            </div>
+        </select> <br>
+        </div>
         </div>
 
 
         {# <select id="chkveg" multiple="multiple">
+
              <option value="cheese">Cheese</option>
              <option value="tomatoes">Tomatoes</option>
              <option value="mozarella">Mozzarella</option>
              <option value="mushrooms">Mushrooms</option>
              <option value="pepperoni">Pepperoni</option>
              <option value="onions">Onions</option>
+
          </select>
  #}
 
@@ -60,6 +76,7 @@
                     <input type="text" class="form-control"style=" margin-top: 10px;" >
                 </div>
             </div>
+
                     <button id="addmarq-btn" type="button" class="btn btn-info bouton-1" data-toggle="collapse" data-target="#demo-1" >
                         Ajouter une marque </button>#}
 
@@ -68,9 +85,9 @@
                     <input type="text" name="marque" id="marque" class="form-control" style=" margin-top: 10px;"  placeholder="Ecrire votre marque">
                 </div>
 
-            </div>
+             </div>
             <button class="add_field_button btn btn-info bouton-1" type="button">Ajouter une marque</button>
-        </fieldset>
+             </fieldset>
 
         <fieldset>
             <legend>Ma visibilité sur</legend>
@@ -191,24 +208,56 @@
                 </div>
             </div>
         </fieldset>
-        <button type="button" name="test" id="ajax_test">Test</button>
+ {#<button type="button" name="test" id="ajax_test">Test</button>#}
 
     </form>
-    <a type="button" name="test" id="ajax_test" target="_blank" href="{{ path('referencement_commande_getting') }}">getting</a>
+    {#<a type="button" name="test" id="ajax_test" target="_blank" href="{{ path('referencement_commande_getting') }}">getting</a>#}
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <div class="form-inline">
+            <div class="form-group pull-right">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <a href="{{ path('devis_gestion_contenu') }}" role="button" class="btn btn-info" id="ajax_test_gestion">
+                            <span class="glyphicon glyphicon-triangle-left fleche-petit"></span> <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                            Gestion contenu
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <a href="{{ path('devis_affichage') }}" role="button" class="btn" style="width: 165px;" id="ajax_test_affichage">
+                            <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-1.png" alt="icone-3">
+                            Affichage   <span class="glyphicon glyphicon-triangle-right"></span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
 
 
     <script type="text/javascript">
+
         $(document).ready(function() {
-            $('#ajax_test').on('click', function (){
+
+
+            $('#ajax_test_affichage').on('click', function (event){
+
+                event.preventDefault();
+
+                $('.loaders').css('display','');
+
                 form =$('#jsForm ');
                 var r= $('#r_count').val();
                 var  m= $('#m_count').val();
                 var mar= $('#set_now').serialize();
-                var rub=
-                    console.log(rub);
+
+
                 var data_send = { 'r_count': r,'m_count' : m};
+
                 $.ajax({
                     url: '{{ path('referencement_commande') }}',
                     type: 'POST',
@@ -217,6 +266,7 @@
                         //traitement en cas de succès
                         200: function (response) {
                             var successMessage = response;
+
                             console.log(successMessage.test);
                             console.log(successMessage.m_count);
                             console.log(successMessage.r_count);
@@ -224,33 +274,147 @@
                             /*  $('#prestation').children("option").remove();*/
                             //on vide les champs formulaires ou on le supprime ou ...
                             //on retire le loader...
+
+                            $('.loaders').css('display','none');
+
+                            window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
                         },
                         //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
                         412: function (response) {
                             var errorsForm = response.responseJSON.formErrors;
                             //on affiche les erreurs...
                             alert('error');
+
                         }
                     }
                 });
+
+
             });
-            $(function() {
-                /*  $('#prestation').multiselect({
-                 includeSelectAllOption: true
-                 });*/
-                $('#chkveg').multiselect({
-                    includeSelectAllOption: true
+
+            $('#ajax_test_gestion').on('click', function (event){
+
+                event.preventDefault();
+
+                $('.loaders').css('display','');
+
+                form =$('#jsForm ');
+                var r= $('#r_count').val();
+                var  m= $('#m_count').val();
+                var mar= $('#set_now').serialize();
+
+
+                var data_send = { 'r_count': r,'m_count' : m};
+
+                $.ajax({
+                    url: '{{ path('referencement_commande') }}',
+                    type: 'POST',
+                    data: form.serialize(),
+                    statusCode: {
+                        //traitement en cas de succès
+                        200: function (response) {
+                            var successMessage = response;
+
+                            console.log(successMessage.test);
+                            console.log(successMessage.m_count);
+                            console.log(successMessage.r_count);
+                            console.log(successMessage);
+                            /*  $('#prestation').children("option").remove();*/
+                            //on vide les champs formulaires ou on le supprime ou ...
+                            //on retire le loader...
+
+                            $('.loaders').css('display','none');
+
+                            window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_g_c";
+                        },
+                        //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                        412: function (response) {
+                            var errorsForm = response.responseJSON.formErrors;
+                            //on affiche les erreurs...
+                            alert('error');
+
+                        }
+                    }
                 });
-                $('#btnget').click(function() {
-                    alert($('#chkveg').val());
-                })
+
+
             });
+
+            $('#ajax_test').on('click', function (){
+                $('.loaders').css('display','');
+
+                form =$('#jsForm ');
+              var r= $('#r_count').val();
+              var  m= $('#m_count').val();
+               var mar= $('#set_now').serialize();
+
+
+                var data_send = { 'r_count': r,'m_count' : m};
+
+                $.ajax({
+                    url: '{{ path('referencement_commande') }}',
+                    type: 'POST',
+                    data: form.serialize(),
+                    statusCode: {
+                        //traitement en cas de succès
+                        200: function (response) {
+                            var successMessage = response;
+
+                            console.log(successMessage.test);
+                            console.log(successMessage.m_count);
+                            console.log(successMessage.r_count);
+                            console.log(successMessage);
+                            /*  $('#prestation').children("option").remove();*/
+                            //on vide les champs formulaires ou on le supprime ou ...
+                            //on retire le loader...
+
+                            $('.loaders').css('display','none');
+
+                            window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_g_c";
+                        },
+                        //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                        412: function (response) {
+                            var errorsForm = response.responseJSON.formErrors;
+                            //on affiche les erreurs...
+                            alert('error');
+
+                        }
+                    }
+                });
+
+            });
+
+            $(function() {
+
+              /*  $('#prestation').multiselect({
+
+                    includeSelectAllOption: true
+
+                });*/
+
+                $('#chkveg').multiselect({
+
+                    includeSelectAllOption: true
+
+                });
+
+                $('#btnget').click(function() {
+
+                    alert($('#chkveg').val());
+
+                })
+
+            });
+
             /*  var rubrique = $(this);
-             console.log(rubrique .val());*/
+              console.log(rubrique .val());*/
+
             // declanché lorsqu'on change le choix de la rub
             $(document).on('change', '#select-rubrique', function () {
                 var current = this;
                 var rubrique = $(this);
+
+
                 $('#prestaAjax').css('display','');
                 console.log("CHANGE rubrique AND prestation....................");
                 var select = jQuery(this);
@@ -266,16 +430,23 @@
                         //traitement en cas de succès
                         200: function (response) {
                             var successMessage = response;
+
                             /*  $('#prestation').children("option").remove();*/
+
                             $(current).siblings("select").first().find("option").remove();
+
+
                             $.each(JSON.parse(successMessage), function(i, pres) {
                                 $(current).siblings("select").first().append(('<option  value="' +pres.id+'">'+pres.prestation+'</option>'));
+
                                 /* $(current).next().remove();*/
+
                                 $('#prestaAjax').css('display','none');
                             });
                             $('#prestaAjax').css('display','none');
                             //on vide les champs formulaires ou on le supprime ou ...
                             //on retire le loader...
+
                         },
                         //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
                         412: function (response) {
@@ -292,28 +463,45 @@
             var count = 1 ;
             $('#addrub-btn').on('click', function (){
                 if (count < 5) {
+
                     var duplicatedLists = $("#select_rub_prest").last().clone();
                     duplicatedLists.find('#select-rubrique').prop('name','sel'+count);
-                    duplicatedLists.find('#prestation').prop('name','prest'+count);
+                    duplicatedLists.find('#prestation').prop('name','prest'+count+'[]');
                     duplicatedLists.appendTo("#contenu_lists");
                     $('#r_count').val(count);
                     count++;
                 }
             });
+
+
+
+
         });
+
         /*var result_final = 400;
-         var n = $('#marq').length;
-         $('#addmarq-btn').on('click', function (e){
-         var duplicatedLists = $("#marq").last().clone().find(":input").val('');
-         duplicatedLists.appendTo("#contenu_marq").parent();
-         var result = parseInt(n) * 400;
-         result_final = result_final+ result;
-         console.log(result_final);
-         });*/
+                var n = $('#marq').length;
+                    $('#addmarq-btn').on('click', function (e){
+
+                            var duplicatedLists = $("#marq").last().clone().find(":input").val('');
+
+                            duplicatedLists.appendTo("#contenu_marq").parent();
+
+                        var result = parseInt(n) * 400;
+                        result_final = result_final+ result;
+
+
+        console.log(result_final);
+
+
+
+                });*/
+
+
         var max_fields      = 10; //maximum input boxes allowed
         var wrapper         = $(".input_fields_wrap"); //Fields wrapper
         var add_button      = $(".add_field_button"); //Add button ID
         var result_final = 400;
+
         var n = $('#marq').length;
         var x = 1; //initlal text box count
         $(add_button).click(function(e){ //on add input button click
@@ -321,6 +509,7 @@
             if(x < max_fields){ //max input box allowed
                 //text box increment
 //                $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+
                 var duplicatedLists = $("#marq").last().clone();
                 duplicatedLists.find('#marque').prop('name','marque'+x);
                 duplicatedLists.appendTo("#set_now");
@@ -331,12 +520,18 @@
             }
             console.log(result_final);
         });
+
         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').remove(); x--;
             result_final = result_final - 400;
             console.log(result_final);
         });
+
         {# </script>
+
+
+
+
          <script type="text/javascript">
              $(document).ready(function() {#}
         cal();
@@ -347,16 +542,20 @@
         }
         var sum_result =0;
         var total = 0;
+
         $(document).on('click', '.my-activitys', function () {
             var o = $(this).attr("value");
             $('.xxx input[value='+o+']').prop("checked", true);
         });
+
         $(document).on('click', '.my-activity', function () {
+
             var ctar  = 'MV';
             console.log("CHANGE rubrique AND prestation....................");
             var select = jQuery(this);
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
+
             console.log('ville : ', v, 'opt1 :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
@@ -366,24 +565,36 @@
                 statusCode: {
                     //traitement en cas de succès
                     200: function (response) {
+
                         var successMessage = response.nom.VAR;
+
+
                         $('input[id=rania]').val(successMessage);
+
                         cal();
+
                     },
+
                     412: function (response) {
                         var errorsForm = response.responseJSON.formErrors;
                         //on affiche les erreurs...
                         alert('error');
+
                     }
                 }
             });
+
         });
+
+
         $(document).on('click', '.region', function () {
+
             var ctar  = 'ML';
             console.log("CHANGE rubrique AND prestation....................");
             var select = jQuery(this);
             var v = $('input[name=villes]:checked').val();
             var o = $(this).attr("value");
+
             console.log('villesss : ', v, 'opt1sss :',o);
             var data_send = { 'ville': v,'opt1':o,'region':v,'ctar':ctar};
             $.ajax({
@@ -393,39 +604,67 @@
                 statusCode: {
                     //traitement en cas de succès
                     200: function (response) {
+
                         var successMessage = response.nom.VAR;
+
+
                         $('input[id=rania]').val(successMessage);
                         cal();
                         /* console.log();
-                         $('input[id=rania]').val(sum_result+successMessage);*/
+                            $('input[id=rania]').val(sum_result+successMessage);*/
+
                     },
+
                     412: function (response) {
                         var errorsForm = response.responseJSON.formErrors;
                         //on affiche les erreurs...
                         alert('error');
+
                     }
                 }
             });
+
         });
+
+
         /*    $(document).on("keydown keyup", function() {
-         sum();
-         function sum() {
-         var num1 = document.getElementById('num1').value;
-         var num2 = document.getElementById('num2').value;
-         var num3 = document.getElementById('num3').value;
-         var result = parseInt(num1) * 3;
-         var result2 = parseInt(num2) * 1500;
-         var result3 = parseInt(num3) * 400;
-         if (!isNaN(result)) {
-         document.getElementById('sum').value = result;
-         document.getElementById('sum2').value = result2;
-         document.getElementById('sum3').value = result3;
-         }
-         document.getElementById("mari").value = result2 + result3 ;
-         sum_result =  result2 + result3;
-         cal();
-         }
-         });*/
+
+                sum();
+
+
+                function sum() {
+                    var num1 = document.getElementById('num1').value;
+                    var num2 = document.getElementById('num2').value;
+                    var num3 = document.getElementById('num3').value;
+
+
+                    var result = parseInt(num1) * 3;
+                    var result2 = parseInt(num2) * 1500;
+                    var result3 = parseInt(num3) * 400;
+
+                    if (!isNaN(result)) {
+                        document.getElementById('sum').value = result;
+                        document.getElementById('sum2').value = result2;
+                        document.getElementById('sum3').value = result3;
+
+                    }
+                    document.getElementById("mari").value = result2 + result3 ;
+
+                    sum_result =  result2 + result3;
+                    cal();
+                }
+
+
+
+            });*/
+
+
+
+
+
+
     </script>
 
 {% endblock %}
+
+
