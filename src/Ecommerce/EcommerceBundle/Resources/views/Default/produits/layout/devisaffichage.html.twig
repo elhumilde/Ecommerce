@@ -10,11 +10,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('Logo-econtact-2.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/style-budgetisation-affichage.css') }}" />
+
+    <style>
+        .loaders {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../../web/ajax-loaderd.gif) center center no-repeat rgba(57, 66, 100, 0.6);
+            z-index: 500;
+        }
+    </style>
+
 </head>
 <body>
 <div class="icon-retour">
     <a style="color: #2eb2ff;" href="{{ path('fos_user_profile_show') }}">< Retour  ( chemins des onglets parcourus )</a>
 </div>
+
+<form id="jsForm" class="form-group" action="" method="GET">
+
+    <div class="loaders" style="display: none"></div>
 
 <section  id="fond-1" align=center>
 
@@ -81,22 +100,22 @@
 
                                     <div class="form-inline region">
                                         <label class="checkbox-inline">
-                                            <input class="checkbox_region vignette_thematique" type="checkbox" value="L">Ma ville
+                                            <input class="checkbox_region vignette_thematique" name="regions" type="checkbox" value="L">Ma ville
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input class="checkbox_region vignette_thematique " type="checkbox" value="0">Sa région
+                                            <input class="checkbox_region vignette_thematique" name="regions" type="checkbox" value="0">Sa région
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input class="checkbox_region vignette_thematique" type="checkbox" value="1">+1 région
+                                            <input class="checkbox_region vignette_thematique" name="regions" type="checkbox" value="1">+1 région
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input class="checkbox_region vignette_thematique" type="checkbox" value="3">+3 régions
+                                            <input class="checkbox_region vignette_thematique" name="regions" type="checkbox" value="3">+3 régions
                                         </label>
                                         <label  class="checkbox-inline">
-                                            <input class="checkbox_region vignette_thematique" type="checkbox" value="6">+6 régions
+                                            <input class="checkbox_region vignette_thematique" name="regions" type="checkbox" value="6">+6 régions
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input class="checkbox_region vignette_thematique" type="checkbox" value="9">+9 régions
+                                            <input class="checkbox_region vignette_thematique" name="regions" type="checkbox" value="9">+9 régions
                                         </label>
                                         <label class="checkbox-inline" style="display: none" >
                                             <input type="text" id="thematique" value="0" readonly  >
@@ -126,7 +145,7 @@
                                         <div id="demo-2-1" class="collapse bouton-2" style="overflow-y:scroll;">
                                             <div class="form-inline" >
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="24000">Casablanca
+                                                    <input class="vignette_localite" name="cat1" type="checkbox" value="24000">Casablanca
                                                 </label>
 
                                             </div>
@@ -140,19 +159,19 @@
                                         <div id="demo-2-2" class="collapse bouton-2" style="overflow-y:scroll;">
                                             <div class="form-inline" >
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="12000">&nbsp; &nbsp;Rabat
+                                                    <input class="vignette_localite" name="cat2" type="checkbox" value="12000">&nbsp; &nbsp;Rabat
                                                 </label>
                                                 <label  class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="12000">&nbsp; &nbsp;Fés
+                                                    <input class="vignette_localite" name="cat2" type="checkbox" value="12000">&nbsp; &nbsp;Fés
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="12000">&nbsp; &nbsp;Marrakech
+                                                    <input class="vignette_localite" name="cat2" type="checkbox" value="12000">&nbsp; &nbsp;Marrakech
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="12000">&nbsp; &nbsp;Meknès
+                                                    <input class="vignette_localite" name="cat2" type="checkbox" value="12000">&nbsp; &nbsp;Meknès
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="12000">&nbsp; &nbsp;Agadir
+                                                    <input class="vignette_localite" name="cat2" type="checkbox" value="12000">&nbsp; &nbsp;Agadir
                                                 </label>
                                             </div>
                                         </div>
@@ -165,22 +184,22 @@
                                         <div id="demo-2-3" class="collapse bouton-2" style="overflow-y:scroll;">
                                             <div class="form-inline" >
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="8000">&nbsp; &nbsp;Kénitra
+                                                    <input class="vignette_localite" name="cat3" type="checkbox" value="8000">&nbsp; &nbsp;Kénitra
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="8000">&nbsp; &nbsp;Oujda
+                                                    <input class="vignette_localite" name="cat3" type="checkbox" value="8000">&nbsp; &nbsp;Oujda
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="8000">&nbsp; &nbsp;Essaouira
+                                                    <input class="vignette_localite" name="cat3" type="checkbox" value="8000">&nbsp; &nbsp;Essaouira
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="8000">&nbsp; &nbsp;Safi
+                                                    <input class="vignette_localite" name="cat3" type="checkbox" value="8000">&nbsp; &nbsp;Safi
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="8000">&nbsp; &nbsp;Settat
+                                                    <input class="vignette_localite" name="cat3" type="checkbox" value="8000">&nbsp; &nbsp;Settat
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="8000">&nbsp; &nbsp;Tétouan
+                                                    <input class="vignette_localite" name="cat3" type="checkbox" value="8000">&nbsp; &nbsp;Tétouan
                                                 </label>
                                             </div>
                                         </div>
@@ -193,7 +212,7 @@
                                         <div id="demo-2-4" class="collapse bouton-2" style="overflow-y:scroll;">
                                             <div class="form-inline" >
                                                 <label class="checkbox-inline">
-                                                    <input class="vignette_localite" type="checkbox" value="5000" >&nbsp; &nbsp;Toutes les autres villes y compris les alentours des grandes villes.
+                                                    <input class="vignette_localite" name="cat4" type="checkbox" value="5000" >&nbsp; &nbsp;Toutes les autres villes y compris les alentours des grandes villes.
                                                     <br>Ex: Bouskoura
                                                 </label>
                                             </div>
@@ -209,10 +228,10 @@
                                 </button>
                                 <div id="demo-3" class="collapse">
                                     <label class="checkbox-inline">
-                                        <input class=" checkbox_prof professionnels_du_jour" type="checkbox" value="1"/>1 Mois
+                                        <input class=" checkbox_prof professionnels_du_jour" name="pro_du_jour" type="checkbox" value="1"/>1 Mois
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class=" checkbox_prof professionnels_du_jour" type="checkbox" value="3">3 Mois
+                                        <input class=" checkbox_prof professionnels_du_jour" name="pro_du_jour" type="checkbox" value="3">3 Mois
                                     </label><br>
                                     <label class="checkbox-inline" style="display: none">
                                         <input type="text" id="pfjour" value="0" readonly >
@@ -227,16 +246,16 @@
                                 </button>
                                 <div id="demo-4" class="collapse">
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_promo espace_promo" type="checkbox" value="1"/>1 Promo / An
+                                        <input class="checkbox_promo espace_promo" name="promo" type="checkbox" value="1"/>1 Promo / An
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_promo espace_promo" type="checkbox" value="2">3 Promos / An
+                                        <input class="checkbox_promo espace_promo" name="promo" type="checkbox" value="2">3 Promos / An
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_promo espace_promo" type="checkbox" value="3">6 Promos / An
+                                        <input class="checkbox_promo espace_promo" name="promo" type="checkbox" value="3">6 Promos / An
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_promo espace_promo" type="checkbox" value="4">12 Promos / An
+                                        <input class="checkbox_promo espace_promo" name="promo" type="checkbox" value="4">12 Promos / An
                                     </label><br>
                                     <label class="checkbox-inline" style="display: none">
                                         <input type="text" id="promo" value="0" readonly >
@@ -256,10 +275,10 @@
                                         <input  class="vignette_acc_video" type="text" name="nbr1" id="nbr1"  value=""/>
                                     </label><br>
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_vignette_acc_video vignette_acc_video" type="checkbox" value="V0">Accueil
+                                        <input class="checkbox_vignette_acc_video vignette_acc_video" name="vign_ac" type="checkbox" value="V0">Accueil
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_vignette_acc_video vignette_acc_video"  type="checkbox" value="VV">Vidéo
+                                        <input class="checkbox_vignette_acc_video vignette_acc_video" name="vign_ac"  type="checkbox" value="VV">Vidéo
                                     </label><br>
                                     <label class="checkbox-inline" style="display: none">
                                         <input type="text" id="vignette" name="vignette" value="0" readonly style="display: none" >
@@ -277,10 +296,10 @@
                                 </button>
                                 <div id="demo-6" class="collapse">
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_habillage habillage" type="checkbox" value="1"/>Jour
+                                        <input class="checkbox_habillage habillage" name="habil" type="checkbox" value="1"/>Jour
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="checkbox_habillage habillage" type="checkbox" value="2">Semaine
+                                        <input class="checkbox_habillage habillage" name="habil" type="checkbox" value="2">Semaine
                                     </label><br>
                                     <label class="checkbox-inline" style="display: none">
                                         <input type="text" id="habillage" value="0" readonly >
@@ -301,16 +320,16 @@
                                         <input  class="banniere" type="text" name="nombre" id="nombre"  value=""/>
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="banniere" type="checkbox" value="80">En haut sur la page de résultats
+                                        <input class="banniere" type="checkbox" name="bann_up_engin" value="80">En haut sur la page de résultats
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="banniere" type="checkbox" value="90">En bas sur la page de résultats
+                                        <input class="banniere" type="checkbox"  name="bann_down_engin"  value="90">En bas sur la page de résultats
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="banniere" type="checkbox" value="150">En haut sur les fiches prospects
+                                        <input class="banniere" type="checkbox" name="bann_up_customer" value="150">En haut sur les fiches prospects
                                     </label>
                                     <label class="checkbox-inline">
-                                        <input class="banniere" type="checkbox" value="150">En bas sur les fiches prospects
+                                        <input class="banniere" type="checkbox" name="bann_down_customer" value="150">En bas sur les fiches prospects
                                     </label><br>
                                     <label class="checkbox-inline" style="display: none">
                                         <input type="text"  id="banniere" name="banniere" value="0" readonly >
@@ -339,7 +358,10 @@
         <div class="row">
 
             <div class="col-md-12 col-sm-12 col-xs-12" >
-
+                <a href="#" role="button" class="btn btn-info pull-left" id="ajax_test_referencement">
+                    <span class="glyphicon glyphicon-triangle-left fleche-petit"></span> <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
+                    TEST
+                </a>
                 <div class="form-group pull-right">
                     <div class="form-inline">
                         <div class="form-group">
@@ -362,9 +384,12 @@
         </div>
     </div>
 
-    </div>
+
 
 </section>
+
+</form>
+
 </body>
 </html>
 
@@ -383,6 +408,51 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 
 <script>
+
+    $('#ajax_test_referencement').on('click', function (event) {
+
+        event.preventDefault();
+
+        $('.loaders').css('display','');
+
+        form =$('#jsForm ');
+
+        $.ajax({
+            url: '{{ path('referencement_commande_affichage') }}',
+            type: 'POST',
+            data: form.serialize(),
+            statusCode: {
+                //traitement en cas de succès
+                200: function (response) {
+                    var successMessage = response;
+
+
+                    console.log(successMessage);
+                    /*  $('#prestation').children("option").remove();*/
+                    //on vide les champs formulaires ou on le supprime ou ...
+                    //on retire le loader...
+
+                    $('.loaders').css('display','none');
+
+//                    window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
+                },
+                //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                412: function (response) {
+                    var errorsForm = response.responseJSON.formErrors;
+                    //on affiche les erreurs...
+                    alert('error');
+
+                }
+            }
+            });
+
+
+
+
+    });
+
+
+
     /*single-checkbox*/
     $('.checkbox_villes').on('change', function() {
         $('.checkbox_villes').not(this).prop('checked', false);
