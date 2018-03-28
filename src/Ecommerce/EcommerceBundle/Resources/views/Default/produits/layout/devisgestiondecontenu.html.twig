@@ -13,23 +13,29 @@
     {#<link rel="stylesheet" href="css/style-budgétisation-gestion-de-contenu.css">#}
 </head>
 <style>
-
+    .loaders {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: url(../../web/ajax-loaderd.gif) center center no-repeat rgba(57, 66, 100, 0.6);
+        z-index: 500;
+    }
 </style>
 
 <body>
-
-
-
-
 
 <div class="icon-retour">
     <a style="color: #2eb2ff;" href="{{ path('fos_user_profile_show') }}">< Retour  ( chemins des onglets parcourus )</a>
 </div>
 
 
+<form id="jsForm" class="form-group" action="" method="GET">
 
-
-
+    <div class="loaders" style="display: none"></div>
 
 
 
@@ -82,17 +88,17 @@
                             <div id="demo-1" class="collapse ">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input class="my-activity checkbox " type="checkbox" id="ct0" value="3500" >5 pages
+                                        <input name="catalogue" class="my-activity checkbox " type="checkbox" id="ct0" value="3500" >5 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input class="my-activity checkbox " type="checkbox" id="ct1" value="5000" >10 pages
+                                        <input name="catalogue" class="my-activity checkbox " type="checkbox" id="ct1" value="5000" >10 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input class="my-activity checkbox " type="checkbox" id="ct2" value="7500" >20 pages
+                                        <input name="catalogue" class="my-activity checkbox " type="checkbox" id="ct2" value="7500" >20 pages
                                     </div>
                                 </label>
                             </div>
@@ -106,17 +112,17 @@
                             <div id="demo-2" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox"  class="my-activity checkboxs " id="cr1"  value="5000" >5 pages
+                                        <input type="checkbox" name="catalogue_ref"  class="my-activity checkboxs " id="cr1"  value="5000" >5 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox"  class="my-activity checkboxs " id="cr2" value="6500" >10 pages
+                                        <input type="checkbox" name="catalogue_ref"  class="my-activity checkboxs " id="cr2" value="6500" >10 pages
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox"  class="my-activity checkboxs " id="cr3" value="9000" >20 pages
+                                        <input type="checkbox" name="catalogue_ref"  class="my-activity checkboxs " id="cr3" value="9000" >20 pages
                                     </div>
                                 </label>
 
@@ -132,32 +138,32 @@
                             <div id="demo-3" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd4" value="6500" >Graphique
+                                        <input type="checkbox" name="video[]" class="my-activity " id="vd4" value="6500" >Graphique
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd5" value="9500" >Vidéo
+                                        <input type="checkbox" name="video[]" class="my-activity " id="vd5" value="9500" >Vidéo
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd0"  value="12500" >Film
+                                        <input type="checkbox" name="video[]" class="my-activity " id="vd0"  value="12500" >Film
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd1"  value="20000" >Motion Design
+                                        <input type="checkbox" name="video[]" class="my-activity " id="vd1"  value="20000" >Motion Design
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd2" value="30000" >Vidéo Premium
+                                        <input type="checkbox" name="video[]" class="my-activity " id="vd2" value="30000" >Vidéo Premium
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="vd3" value="3500" >Diffusion
+                                        <input type="checkbox" name="video[]" class="my-activity " id="vd3" value="3500" >Diffusion
                                     </div>
                                 </label>
                             </div>
@@ -171,32 +177,32 @@
                             <div id="demo-4" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv0" value="2000" >Page Web
+                                        <input type="checkbox" name="page[]" class="my-activity " id="pv0" value="2000" >Page Web
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv1"  value="3000" >Pack Présence
+                                        <input type="checkbox" name="page[]" class="my-activity " id="pv1"  value="3000" >Pack Présence
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv2" value="4500" >Web
+                                        <input type="checkbox" name="page[]" class="my-activity " id="pv2" value="4500" >Web
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv3"  value="7000" >Web +
+                                        <input type="checkbox" name="page[]" class="my-activity " id="pv3"  value="7000" >Web +
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv4" value="9500" >Web Interactif
+                                        <input type="checkbox" name="page[]" class="my-activity " id="pv4" value="9500" >Web Interactif
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv5" value="12000" >E-commerce
+                                        <input type="checkbox" name="page[]" class="my-activity " id="pv5" value="12000" >E-commerce
                                     </div>
                                 </label>
                             </div>
@@ -209,17 +215,17 @@
                             <div id="demo-5" class="collapse">
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv0" value="7800" >Site Vitrine
+                                        <input type="checkbox" name="site_web[]" class="my-activity " id="pv0" value="7800" >Site Vitrine
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv1"  value="10000" >Site Catalogue
+                                        <input type="checkbox" name="site_web[]" class="my-activity " id="pv1"  value="10000" >Site Catalogue
                                     </div>
                                 </label>
                                 <label class="checkbox-inline">
                                     <div>
-                                        <input type="checkbox" class="my-activity " id="pv2" value="20000" >Site Premium
+                                        <input type="checkbox" name="site_web[]" class="my-activity " id="pv2" value="20000" >Site Premium
                                     </div>
                                 </label>
 
@@ -254,7 +260,7 @@
                     <div class="form-group pull-right">
                         <form class="form-inline">
                             <div class="form-group">
-                                <a href="{{ path('referencementdevis') }}" role="button" class="btn btn-info">
+                                <a href="{{ path('referencementdevis') }}" role="button" class="btn btn-info" id="ajax_test_referencement">
                                     <span class="glyphicon glyphicon-triangle-left fleche-petit"></span> <img class="icone" src="https://image.noelshack.com/fichiers/2018/08/5/1519379743-icone-3.png" alt="icone-3">
                                     Référencement
                                 </a>
@@ -278,9 +284,53 @@
 
 <br><br><br>
 
-
+</form>
 </body>
 <script>
+
+    $('#ajax_test_referencement').on('click', function (event) {
+
+        event.preventDefault();
+
+        $('.loaders').css('display','');
+
+        form =$('#jsForm ');
+
+        $.ajax({
+            url: '{{ path('referencement_commande_contenu') }}',
+            type: 'POST',
+            data: form.serialize(),
+            statusCode: {
+                //traitement en cas de succès
+                200: function (response) {
+                    var successMessage = response;
+
+
+                    console.log(successMessage);
+                    /*  $('#prestation').children("option").remove();*/
+                    //on vide les champs formulaires ou on le supprime ou ...
+                    //on retire le loader...
+
+                    $('.loaders').css('display','none');
+
+//                    window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
+                },
+                //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                412: function (response) {
+                    var errorsForm = response.responseJSON.formErrors;
+                    //on affiche les erreurs...
+                    alert('error');
+
+                }
+            }
+        });
+
+
+
+
+    });
+
+
 
     $('.checkbox').on('change', function() {
         $('.checkbox').not(this).prop('checked', false);
