@@ -10,4 +10,10 @@ referencement_commande_getting:
     pattern:  /getting
     defaults: { _controller: EcommerceBundle:Referencement:getting }
 
+referencement_commande_contenu:
+    pattern:  /contenu
+    defaults: { _controller: EcommerceBundle:Referencement:contenu }
 
+referencement_commande_affichage:
+    pattern:  /affichage
+    defaults: { _controller: EcommerceBundle:Referencement:affichage }
