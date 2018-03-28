@@ -116,83 +116,121 @@
                     <br>
 
 
-                    <div class="activites">
+
+
+
+
+                    <div class="visibilite">
 
                         <div class="btn-2" align="center">
                             <p>Ma visibilité sur</p>
-
                         </div>
 
+                        <br>
 
-                        <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ville principale <span class="caret"></span></button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="overflow-y:scroll;">
-                                    <li><label><input id="select" class="my-activitys" type="checkbox" name="villes" value="9">&nbsp; &nbsp;Casablanca</label></li>
-                                    <li><label><input id="select" class="my-activitys" type="checkbox" name="villes" value="10">&nbsp; &nbsp;Rabat</label></li>
-                                    <li><label><input id="select" class="my-activitys" type="checkbox" name="villes" value="14">&nbsp; &nbsp;Fes</label></li>
-                                    <li><label>&nbsp; &nbsp;Tanger</label></li>
-                                    <li><label><input id="select" class="my-activitys" type="checkbox" name="villes" value="4">&nbsp; &nbsp;Agadir</label></li>
+
+                        <div class="form-group" style="margin-left: -10px;">
+                            <button type="button" class="btn" data-toggle="collapse" data-target="#demo-2-1">
+                                Ville principale &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </button>
+                            <div id="demo-2-1" class="collapse bouton-2" style="overflow-y:scroll;">
+                                <div class="form-inline" id="dropdownMenu1" >
+                                    <label class="checkbox-inline">
+                                        <input id="select" class="my-activitys" type="checkbox" name="villes" value="9">&nbsp; &nbsp;Casablanca
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input id="select" class="my-activitys" type="checkbox" name="villes" value="10">&nbsp; &nbsp;Rabat
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input id="select" class="my-activitys" type="checkbox" name="villes" value="14">&nbsp; &nbsp;Fes
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input id="select" class="my-activitys" type="checkbox" name="villes" value="4">&nbsp; &nbsp;Agadir
+                                    </label>
                                     {% for ville in villes %}
-                                        <div class="tex" >
-                                            <li><label><input id="select" class="my-activitys" type="checkbox" name="villes" value="{{ ville.region.coderegion }}"/>&nbsp; &nbsp;{{ ville.libelle }}</label></li>
-                                        </div>
+
+                                        <label>
+                                            <input id="select" class="my-activitys" type="checkbox" name="villes" value="{{ ville.region.coderegion }}"/>&nbsp; &nbsp;{{ ville.libelle }}
+                                        </label>
+
                                     {% endfor %}
-                                </ul>
+
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ville suppl. <span class="caret"></span></button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="overflow-y:scroll;">
-
-
-                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="0"/>&nbsp; &nbsp;Sur sa localité</label></li>
-                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="1"/>&nbsp; &nbsp;+1 Localité</label></li>
-                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="3"/>&nbsp; &nbsp;+3 Localités</label></li>
-                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="6"/>&nbsp; &nbsp;+6 Localités</label></li>
-                                    <li><label><input  type="checkbox" name="radio1" class="my-activity"  value="9"/>&nbsp; &nbsp;+9 Localités</label></li>
-
-                                </ul>
+                        <div class="form-group" >
+                            <button type="button" class="btn" id="dropdownMenu2" data-toggle="collapse" data-target="#demo-2-2">
+                                Ville suppl.&nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </button>
+                            <div id="demo-2-2" class="collapse bouton-2" style="overflow-y:scroll;">
+                                <div class="form-inline" >
+                                    <label class="checkbox-inline">
+                                        <input  type="checkbox" name="radio1" class="my-activity"  value="0"/>&nbsp; &nbsp;Sur sa localité
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input  type="checkbox" name="radio1" class="my-activity"  value="1"/>&nbsp; &nbsp;+1 Localité
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input  type="checkbox" name="radio1" class="my-activity"  value="3"/>&nbsp; &nbsp;+3 Localités
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input  type="checkbox" name="radio1" class="my-activity"  value="6"/>&nbsp; &nbsp;+6 Localités
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input  type="checkbox" name="radio1" class="my-activity"  value="9"/>&nbsp; &nbsp;+9 Localités
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
-
-
-
-                        <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Région principale <span class="caret"></span></button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" style="overflow-y:scroll;">
-
-
+                        <div class="form-group" >
+                            <button type="button" id="dropdownMenu3" class="btn" data-toggle="collapse" data-target="#demo-2-3">
+                                Région principale &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </button>
+                            <div id="demo-2-3" class="collapse bouton-2" style="overflow-y:scroll;">
+                                <div class="form-inline" >
                                     {% for entities in entities  %}
                                         <div class="tex xxx" >
-                                            <li><label><input id="select" class="regiontest" type="checkbox" name="regions" value="{{ entities.coderegion }}" disabled/>&nbsp; &nbsp;{{ entities.libelle }}</label></li>
+                                            <label class="checkbox-inline">
+                                                <input id="select" class="regiontest" type="checkbox" name="regions" value="{{ entities.coderegion }}" disabled/>&nbsp; &nbsp;{{ entities.libelle }}
+                                            </label>
+
                                         </div>
                                     {% endfor %}
-                                </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Région suppl. <span class="caret"></span></button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu4" style="overflow-y:scroll;">
-                                    <li><label><input  type="checkbox" name="radio" class="region"  value="0"/>&nbsp; &nbsp;Sur sa region</label></li>
-                                    <li><label><input  type="checkbox" name="radio" class="region"  value="1"/>&nbsp; &nbsp;+1 Région</label></li>
-                                    <li><label><input  type="checkbox" name="radio" class="region"  value="3"/>&nbsp; &nbsp;+3 Régions</label></li>
-                                    <li><label><input  type="checkbox" name="radio" class="region"  value="6"/>&nbsp; &nbsp;+6 Régions</label></li>
-                                    <li><label><input  type="checkbox" name="radio" class="region"  value="N"/>&nbsp; &nbsp;National</label></li>
+                        <div class="form-group" >
+                            <button type="button"  id="dropdownMenu4" class="btn" data-toggle="collapse" data-target="#demo-2-4">
+                                Région suppl. &nbsp;   <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </button>
+                            <div id="demo-2-4" class="collapse bouton-2" style="overflow-y:scroll;">
+                                <div class="form-inline" >
+                                    <label>
+                                        <input  type="checkbox" name="radio" class="region"  value="0"/>&nbsp; &nbsp;Sur sa region
+                                    </label>
+                                    <label>
+                                        <input  type="checkbox" name="radio" class="region"  value="1"/>&nbsp; &nbsp;+1 Région
+                                    </label>
+                                    <label>
+                                        <input  type="checkbox" name="radio" class="region"  value="3"/>&nbsp; &nbsp;+3 Régions
+                                    </label>
+                                    <label>
+                                        <input  type="checkbox" name="radio" class="region"  value="6"/>&nbsp; &nbsp;+6 Régions
+                                    </label>
+                                    <label>
+                                        <input  type="checkbox" name="radio" class="region"  value="N"/>&nbsp; &nbsp;National
+                                    </label>
 
-
-
-                                </ul>
+                                </div>
                             </div>
                         </div>
-
                     </div>
+
+
+
                 </div>
 
             </div>
@@ -204,12 +242,6 @@
 </section>
 <br>
 <br>
-
-
-
-
-
-
 
 <section  id="fond-4">
 
@@ -231,16 +263,16 @@
                         </Button>
 
 
-
-
-                    </div>
-
-                    <div class="form-group">
-                        <div id="ref" style="display: none">
-                            <input style="  "  id="fayssal" type="number"  value="" readonly>
+                        <div id="ref" style="display: none;margin-top: 20px;">
+                            <input  class="form-control" style="  "  id="fayssal" type="number"  value="" readonly>
                         </div>
 
                     </div>
+
+                    {#<div class="form-group">
+
+
+                    </div>#}
                     <div class="form-group pull-right">
 
                         <div class="form-group">
