@@ -4,7 +4,7 @@ body .icon-retour {
 
 section {
     width:100%;
-    height: auto;
+    height: 800px;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -50,7 +50,7 @@ section {
 #fond-2 {
     background-color: white;
     left: 0;
-    height: 800px;
+    height: 850px;
 }
 
 #fond-2 .container .btn-1 {
@@ -71,10 +71,9 @@ section {
     padding: 0;
 }
 
-#fond-2 .container .activites {
+#fond-2 .container .activites, .visibilite {
     margin-left: 30px;
 }
-
 
 #fond-2 .container .activites .btn-2 {
     background-color: black;
@@ -83,7 +82,16 @@ section {
     color: white;
     font-size: 20px;
     padding-top: 7px;
-    margin-bottom: 20px;
+}
+
+
+#fond-2 .container .visibilite .btn-2 {
+    background-color: black;
+    width: 180px;
+    height: 45px;
+    color: white;
+    font-size: 20px;
+    padding-top: 7px;
 }
 .form-group{
     display:inline-block;
@@ -97,68 +105,50 @@ section {
     font-size: 18px;
     display: block;
     font-weight: normal;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
-#fond-2 .container .activites .exampleInputAmount {
-    margin-top: 10px;
+#fond-2 .container .activites #exampleInputAmount {
+    margin-top: 20px;
 }
 
-#fond-2 .container .activites .btn {
-    background-color: black;
-    margin: 20px 10px 0 0;
-    width: 264px;
+
+
+#fond-2 .container .visibilite label{
+    background-color: #dadada;
+    padding: 10px 14px 10px 34px;
+    font-size: 16px;
+    margin: 3px;
+}
+
+#fond-2 .container .visibilite .btn {
+    width: 200px;
     height: 40px;
-    border: 0;
-    font-size: 17px;
-    padding: 0;
     color: white;
-    letter-spacing: 1px;
+    background-color: black;
+    border-radius: 0;
+    font-size: 17px;
+    margin: 10px 10px 0 10px;
 }
 
-#fond-2 .container .activites .btn:hover {
+#fond-2 .container .visibilite .btn:hover {
     background-color: #ffdb2e;
     color: black;
 }
 
-#fond-2 .container .activites .dropdown-menu {
-    background-color: #f9f9f9;
-    width: 264px;
-    height: 200px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    padding: 5px 0 0 10px;
-    border: 5px;
+
+#fond-2 .container .visibilite #demo-1-1, #demo-2-1, #demo-2-2, #demo-2-3, #demo-2-4 {
+    width: 200px;
+    position: absolute;
+    background-color: #dadada;
+    margin: 0 10px 0 10px;
+    height: 155px;
 }
 
-#fond-2 .container .activites .dropdown-menu li {
-    margin-top: 8px;
-    font-size: 15px
-}
 
-#fond-3 {
-    background-color: white;
-    left: 0;
-    height: 400px;
-}
 
-#fond-3 .container .btn-1 {
-    background-color: #ffdb2e;
-    margin: 30px 0 0 0;
-    width: 240px;
-    height: 45px;
-    border: 0;
-    font-size: 20px;
-    padding: 10px 0 0 0;
-    color: black;
-}
 
-#fond-3 {
-    background-color: white;
-    left: 0;
-    height: 400px;
-}
+
 
 #fond-4 .container form .btn {
     background-color: #ffdb2e;
@@ -173,7 +163,7 @@ section {
 
 #fond-4 .container form .black {
     background-color: black;
-    margin: 50px 0 50px 0;
+    margin: 50px 0 0 0;
     width: 200px;
     height: 65px;
     border: 0;
@@ -191,8 +181,4 @@ section {
 span.glyphicon-triangle-right {
     font-size: 16px;
     vertical-align: -2px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3adb56e0c6819589edbb45f54b431854b51d802c
